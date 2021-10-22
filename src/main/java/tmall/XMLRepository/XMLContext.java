@@ -286,6 +286,14 @@ public class XMLContext<T> {
         assert document != null;
         Element root = document.getRootElement();
 
+        // 获取id表示： 规定id必须以类名小写加Id组成，如orderId
+        String claName = ClassName;
+        char[] charArray = claName.toCharArray();
+        if('A' <= charArray[0] && charArray[0] <= 'Z'){
+            charArray[0] += 32;
+        }
+        String littleClassName = String.valueOf(charArray);
+
         /**
          * 迭代器查找要删除的元素
          */
@@ -294,7 +302,7 @@ public class XMLContext<T> {
         while (it.hasNext()) {
             // 获取元素
             Element next = it.next();
-            String id1 = next.element("Id").getText();
+            String id1 = next.element(littleClassName + "Id").getText();
             if (id.equals(id1)) {
                 next.getParent().remove(next);
                 break;  // 只删除第一个id相等的元素
@@ -367,12 +375,20 @@ public class XMLContext<T> {
         }
         Assert.notNull(constructor, "Class's Constructor Not Found");
 
+        // 获取id表示： 规定id必须以类名小写加Id组成，如orderId
+        String claName = ClassName;
+        char[] charArray = claName.toCharArray();
+        if('A' <= charArray[0] && charArray[0] <= 'Z'){
+            charArray[0] += 32;
+        }
+        String littleClassName = String.valueOf(charArray);
 
-//        List<T> list = new ArrayList<>();
+//        System.out.println(littleClassName);
+
         while (it.hasNext()) {
             // 获取元素
             Element next = it.next();
-            String id1 = next.element("Id").getText();
+            String id1 = next.element(littleClassName + "Id").getText();
             if (id.equals(id1)) {
 
                 // 反序列化为class对象
@@ -433,7 +449,5 @@ public class XMLContext<T> {
 
         return null;
     }
-
-
 
 }

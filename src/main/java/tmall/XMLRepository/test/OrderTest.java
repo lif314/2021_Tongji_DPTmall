@@ -9,7 +9,7 @@ package tmall.XMLRepository.test;
 
 public class OrderTest {
 
-    private String orderId;
+    private String orderTestId;
 
     private String buyerId;
 
@@ -27,7 +27,7 @@ public class OrderTest {
     }
 
     public OrderTest(String orderId, String buyerId, String addressId, String shopId, String createDate, String status, String orderAmount) {
-        this.orderId = orderId;
+        this.orderTestId = orderId;
         this.buyerId = buyerId;
         this.addressId = addressId;
         this.shopId = shopId;
@@ -36,12 +36,12 @@ public class OrderTest {
         this.orderAmount = orderAmount;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderTestId() {
+        return orderTestId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrderTestId(String orderTestId) {
+        this.orderTestId = orderTestId;
     }
 
     public String getBuyerId() {
@@ -95,7 +95,7 @@ public class OrderTest {
     @Override
     public String toString() {
         return "XMLContextTest{" +
-                "OrdersId='" + orderId + '\'' +
+                "OrderTestId='" + orderTestId + '\'' +
                 ", BuyerId='" + buyerId + '\'' +
                 ", ReceivedId='" + addressId + '\'' +
                 ", ShopId='" + shopId + '\'' +
