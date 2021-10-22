@@ -1,6 +1,6 @@
 # DPTmall
 Design Pattern Tmall Implement
 
-- a simple to review design pattern 
+- a simple demo to review design patterns 
 - a little XML database
 - java + generic + reflection
