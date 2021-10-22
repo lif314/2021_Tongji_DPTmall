@@ -4,6 +4,7 @@ public class Commodity {
 
     private String commodityId;
 
+    // 店铺应该具有添加商品的功能，添加时将自动为商品的shipId进行初始化
     private String shopId;
 
     public String price;

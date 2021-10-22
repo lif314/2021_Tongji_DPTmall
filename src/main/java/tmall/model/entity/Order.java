@@ -1,6 +1,7 @@
 package tmall.model.entity;
 
 public class Order {
+
     private String orderId;
 
     private String buyerId;
