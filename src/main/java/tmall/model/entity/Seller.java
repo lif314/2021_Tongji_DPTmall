@@ -1,29 +1,32 @@
 package tmall.model.entity;
 
+/**
+ * 卖家实体表
+ */
 public class Seller {
 
-    private String sellerId;
+    private String sellerId;  // 卖家Id
 
-    private String shopId;
+    private String password;  // 密码
 
-    public String sname;
+    private String name;      // 真实姓名
 
-    public String creditScore;
+    private String idNumber;  // 身份证号
 
-    public String category;
+    public String nickname;   // 昵称
 
-    public String description;
+    public String phone;      // 电话号码
 
     public Seller() {
     }
 
-    public Seller(String sellerId, String shopId, String sname, String creditScore, String category, String description) {
+    public Seller(String sellerId, String password, String name, String idNumber, String nickname, String phone) {
         this.sellerId = sellerId;
-        this.shopId = shopId;
-        this.sname = sname;
-        this.creditScore = creditScore;
-        this.category = category;
-        this.description = description;
+        this.password = password;
+        this.name = name;
+        this.idNumber = idNumber;
+        this.nickname = nickname;
+        this.phone = phone;
     }
 
     public String getSellerId() {
@@ -34,55 +37,55 @@ public class Seller {
         this.sellerId = sellerId;
     }
 
-    public String getShopId() {
-        return shopId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setShopId(String shopId) {
-        this.shopId = shopId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getSname() {
-        return sname;
+    public String getName() {
+        return name;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCreditScore() {
-        return creditScore;
+    public String getIdNumber() {
+        return idNumber;
     }
 
-    public void setCreditScore(String creditScore) {
-        this.creditScore = creditScore;
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 
-    public String getCategory() {
-        return category;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
         return "Seller{" +
                 "sellerId='" + sellerId + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", sname='" + sname + '\'' +
-                ", creditScore='" + creditScore + '\'' +
-                ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

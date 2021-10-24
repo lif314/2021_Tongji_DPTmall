@@ -1,20 +1,23 @@
 package tmall.model.entity;
 
+/**
+ * 买家实体表
+ */
 public class Buyer {
 
-    private String buyerId;
+    private String buyerId;  // 买家Id
 
-    private String passwd;
+    private String passwd;   // 密码
 
-    private String idNumber;
+    private String idNumber;  // 身份证号
 
-    public String phone;
+    public String phone;      // 电话好妈妈
 
-    public String nickname;
+    public String nickname;   // 昵称
 
-    public String gender;
+    public String gender;     // 性别
 
-    public String birthday;
+    public String birthday;   // 生日
 
     public Buyer() {
     }

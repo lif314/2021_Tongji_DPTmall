@@ -1,21 +1,22 @@
 package tmall.model.entity;
 
 /**
- * 收获信息
+ * 收获信息实体表
  */
+
 public class ReceiveInfo {
 
-    private String receiveInfoId;
+    private String receiveInfoId;  // 收获信息Id
 
-    private String buyerId;
+    private String buyerId;        // 买家Id
 
-    public String receiverName;
+    public String receiverName;    // 收获人姓名
 
-    public String phone;
+    public String phone;           // 收获人电话
 
-    public String address;
+    public String address;         // 收货人地址
 
-    public String status;
+    public String status;          // 货物状态
 
     public ReceiveInfo() {
     }

@@ -1,21 +1,25 @@
 package tmall.model.entity;
 
+/**
+ * 购物车实体表
+ */
+
 public class ShoppingCart {
 
-    private String buyerId;
+    private String buyerId;  // 买家Id
 
-    private String commodity;
+    private String commodityId;  // 商品Id
 
-    public String amount;
+    public String amount;  // 商品数量
 
-    public String createDate;
+    public String createDate;  // 创建时间
 
     public ShoppingCart() {
     }
 
-    public ShoppingCart(String buyerId, String commodity, String amount, String createDate) {
+    public ShoppingCart(String buyerId, String commodityId, String amount, String createDate) {
         this.buyerId = buyerId;
-        this.commodity = commodity;
+        this.commodityId = commodityId;
         this.amount = amount;
         this.createDate = createDate;
     }
@@ -28,12 +32,12 @@ public class ShoppingCart {
         this.buyerId = buyerId;
     }
 
-    public String getCommodity() {
-        return commodity;
+    public String getCommodityId() {
+        return commodityId;
     }
 
-    public void setCommodity(String commodity) {
-        this.commodity = commodity;
+    public void setCommodityId(String commodityId) {
+        this.commodityId = commodityId;
     }
 
     public String getAmount() {
@@ -52,11 +56,12 @@ public class ShoppingCart {
         this.createDate = createDate;
     }
 
+
     @Override
     public String toString() {
         return "ShoppingCart{" +
                 "buyerId='" + buyerId + '\'' +
-                ", commodity='" + commodity + '\'' +
+                ", commodityId='" + commodityId + '\'' +
                 ", amount='" + amount + '\'' +
                 ", createDate='" + createDate + '\'' +
                 '}';

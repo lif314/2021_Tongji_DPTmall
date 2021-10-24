@@ -1,26 +1,29 @@
 package tmall.model.entity;
 
+/**
+ * 店铺实体表
+ */
 public class Shop {
 
-    private String shopId;
+    private String shopId;   // 店铺Id
 
-    private String sellerId;
+    private String sellerId; // 卖家Id
 
-    public String sname;
+    public String shopName;     // 店铺名称
 
-    public String creditScore;
+    public String creditScore;  // 店铺积分
 
-    public String category;
+    public String category;     // 店铺类别
 
-    public String description;
+    public String description;   // 店铺描述
 
     public Shop() {
     }
 
-    public Shop(String shopId, String sellerId, String sname, String creditScore, String category, String description) {
+    public Shop(String shopId, String sellerId, String shopName, String creditScore, String category, String description) {
         this.shopId = shopId;
         this.sellerId = sellerId;
-        this.sname = sname;
+        this.shopName = shopName;
         this.creditScore = creditScore;
         this.category = category;
         this.description = description;
@@ -42,12 +45,12 @@ public class Shop {
         this.sellerId = sellerId;
     }
 
-    public String getSname() {
-        return sname;
+    public String getShopName() {
+        return shopName;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     public String getCreditScore() {
@@ -79,7 +82,7 @@ public class Shop {
         return "Shop{" +
                 "shopId='" + shopId + '\'' +
                 ", sellerId='" + sellerId + '\'' +
-                ", sname='" + sname + '\'' +
+                ", shopName='" + shopName + '\'' +
                 ", creditScore='" + creditScore + '\'' +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +

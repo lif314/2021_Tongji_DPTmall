@@ -1,6 +1,7 @@
 package tmall.XMLRepository.test;
 
 import tmall.XMLRepository.XMLContext;
+import tmall.model.entity.Buyer;
 
 import java.util.List;
 
@@ -25,6 +26,12 @@ public class XMLContextTest {
         // sava test
         xmlContext.save(order1, order2);
 
+
+        XMLContext<Buyer> buyerXMLContext = new XMLContext<>(Buyer.class);
+        Buyer buyer = new Buyer();
+        buyerXMLContext.save(buyer);
+
+
         // findById test
         System.out.println("============ findById Test ============");
         OrderTest orderFindById = xmlContext.findById("00002");
@@ -37,6 +44,7 @@ public class XMLContextTest {
         for (OrderTest orderTest : orderList) {
             System.out.println(orderTest.toString());
         }
+
 
         // deleteById test
         System.out.println("============ deleteById Test ============");

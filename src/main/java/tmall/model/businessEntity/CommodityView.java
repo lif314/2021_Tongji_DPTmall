@@ -1,5 +1,8 @@
-package tmall.model.entityView;
+package tmall.model.businessEntity;
 
+/**
+ * 商品
+ */
 
 public class CommodityView {
 

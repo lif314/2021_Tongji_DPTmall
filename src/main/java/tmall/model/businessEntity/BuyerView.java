@@ -1,4 +1,4 @@
-package tmall.model.entityView;
+package tmall.model.businessEntity;
 
 /**
  * 展示用户信息类
