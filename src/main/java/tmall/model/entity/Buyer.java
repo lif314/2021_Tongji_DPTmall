@@ -1,6 +1,6 @@
 package tmall.model.entity;
 
-public class Buyer {
+public class Buyer extends User{
 
     private String buyerId;
 
