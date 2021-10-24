@@ -1,5 +1,6 @@
 package tmall.tmallSystem;
 
+import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.Buyer;
 import tmall.model.entity.Seller;
@@ -23,7 +24,7 @@ public class TMallSystem {
 
         Buyer buyer = new Buyer(buyerId.toString(), passwd, idNumber, phone, nickname, gender, birthday);
 
-        XMLContext<Buyer> buyerXMLContext = new XMLContext<>(Buyer.class);
+        XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
         buyerXMLContext.save(buyer);
 
         return buyer;

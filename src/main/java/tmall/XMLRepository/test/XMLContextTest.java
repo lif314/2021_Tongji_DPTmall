@@ -1,5 +1,6 @@
 package tmall.XMLRepository.test;
 
+import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.Buyer;
 
@@ -10,7 +11,7 @@ public class XMLContextTest {
     public static void main(String[] args) {
 
         // 订单XML数据库上下文，你可以通过对订单数据进行操作
-        XMLContext<OrderTest> xmlContext = new XMLContext<>(OrderTest.class);
+        XMLContext<OrderTest> xmlContext = new ProxyXmlContext<>(OrderTest.class);
 
         OrderTest order1 = new OrderTest();
         order1.setOrderTestId("00001");
@@ -27,9 +28,9 @@ public class XMLContextTest {
         xmlContext.save(order1, order2);
 
 
-        XMLContext<Buyer> buyerXMLContext = new XMLContext<>(Buyer.class);
-        Buyer buyer = new Buyer();
-        buyerXMLContext.save(buyer);
+//        XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
+//        Buyer buyer = new Buyer();
+//        buyerXMLContext.save(buyer);
 
 
         // findById test
@@ -50,9 +51,9 @@ public class XMLContextTest {
         System.out.println("============ deleteById Test ============");
         xmlContext.deleteById("00001");
         List<OrderTest> orderListAfterDelete = xmlContext.init(OrderTest.class);
-                for (OrderTest order : orderListAfterDelete) {
-                    System.out.println(order.toString());
-                }
+        for (OrderTest order : orderListAfterDelete) {
+            System.out.println(order.toString());
+        }
     }
 
 }
