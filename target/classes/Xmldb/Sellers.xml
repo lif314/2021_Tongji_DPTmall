@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Sellers>
+  <Seller>
+    <sellerId>e1281b04-28c9-45c7-9dbb-bb1e8342e76d</sellerId>
+    <sname>123</sname>
+    <creditScore>456</creditScore>
+  </Seller>
+</Sellers>

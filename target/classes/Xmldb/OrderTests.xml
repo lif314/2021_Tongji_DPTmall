@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<OrderTests> 
+  <OrderTest> 
+    <orderTestId>00002</orderTestId>  
+    <buyerId>00002</buyerId>  
+    <addressId>00002</addressId>  
+    <shopId>00002</shopId>  
+    <createDate>2021-10-22</createDate>  
+    <status>已发送</status>  
+    <orderAmount>2</orderAmount> 
+  </OrderTest> 
+</OrderTests>
