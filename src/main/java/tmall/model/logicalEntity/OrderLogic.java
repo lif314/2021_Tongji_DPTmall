@@ -17,7 +17,7 @@ package tmall.model.logicalEntity;
  *
  * 业务实体(Order)是存在数据库中的表，它的数据类型只能是基本数据类型，而逻辑实体不需要存放在数据库中，类型随意
  */
-public class OrderLogic {
+public class OrderLogic implements EntityLogic {
 
 
 

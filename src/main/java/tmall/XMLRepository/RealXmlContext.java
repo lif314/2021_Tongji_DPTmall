@@ -151,15 +151,106 @@ public class RealXmlContext<T> implements XMLContext<T>{
         }
     }
 
+    /**
+     * 动态添加数据
+     *
+     * @param entity
+     */
+    @Override
+    public void add(T... entity) {
+
+        Assert.notNull(entity, "Entity Class must not be null");
+
+        // 判断文件是否存在
+        File entityFile = new File(InstancePath);
+        // 如果文件不存在，直接调用save函数创建
+        if(!entityFile.exists()){
+            save(entity);
+            return;  // 结束
+        }
+
+
+
+        // 文件存在，读取文件
+        // 文件对象
+        Document document = DocumentHelper.createDocument();
+        // 根元素
+        Element root = null;
+        // 读取文件
+        SAXReader reader = new SAXReader();
+        try {
+            document = reader.read(InstancePath);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        Assert.notNull(document, "document not found");
+
+        // 获取根元素
+        root = document.getRootElement();
+
+
+        // [2] 通过DocumentHelper生成一个Document对象
+//        Document doc = DocumentHelper.createDocument();
+
+
+
+        // 迭代遍历参数表，为每个实例创建xml文件
+        for (T t : entity) {
+            // 类名
+            String simpleName = InstanceClass.getSimpleName();
+            // [4] 迭代添加根元素和元素值
+            // 为根元素添加子元素
+            Element element = root.addElement(simpleName);
+            // 获取类的所有属性值
+            Field[] declaredFields = InstanceClass.getDeclaredFields();
+            for (Field declaredField : declaredFields) {
+                declaredField.setAccessible(true);  // 暴力反射
+                try {
+                    // 为子元素添加属性 --- 假设每个子元素都有id ,
+                    Element elem = element.addElement(declaredField.getName());
+                    // 为属性设置值
+                    elem.addText(declaredField.get(t).toString());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        // 将doc输入到文件中
+        // Pretty print the document to System.out
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        XMLWriter prettyWriter = null;
+        try {
+            // 文件路径
+            prettyWriter = new XMLWriter(new FileWriter(new File(InstancePath)), format);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            // 写入文件
+            assert prettyWriter != null;
+            prettyWriter.write(document);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // 关闭文件
+            prettyWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 解析XML文件：通过XML文件创建实例
      *
-     * @param entity 传入类，eg:User.class
      * @return 返回该类的实例对象
      */
     @Override
-    public List<T> init(Class<T> entity) {
+    public List<T> init() {
 
         // 解析XML文件的入口是一个Document对象
         // [1] 创建SAXReader对象，用于读取xml文件
@@ -192,15 +283,15 @@ public class RealXmlContext<T> implements XMLContext<T>{
         /**
          * 获取类的属性集合来创建对象
          */
-        Field[] declaredFields = entity.getDeclaredFields();
+        Field[] declaredFields = InstanceClass.getDeclaredFields();
 
         // 获取类的方法集合初始化实例
-        Method[] declaredMethods = entity.getDeclaredMethods();
+        Method[] declaredMethods = InstanceClass.getDeclaredMethods();
 
         // 获取对象的构造函数
         Constructor<T> constructor = null;
         try {
-            constructor = entity.getConstructor();
+            constructor = InstanceClass.getConstructor();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -242,7 +333,7 @@ public class RealXmlContext<T> implements XMLContext<T>{
                 Method method = null;
                 try {
 //                    System.out.println(methodName);       // setUserId
-                    method = entity.getDeclaredMethod(methodName, String.class);
+                    method = InstanceClass.getDeclaredMethod(methodName, String.class);
                 } catch (NoSuchMethodException ex) {
                     ex.printStackTrace();
                 }

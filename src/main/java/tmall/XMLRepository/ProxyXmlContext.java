@@ -20,14 +20,22 @@ public class ProxyXmlContext<T> implements XMLContext<T>{
     }
 
     /**
-     * 解析XML文件：通过XML文件创建实例
+     * 动态添加数据
      *
-     * @param entity 传入类，eg:User.class
+     * @param entity 实体类
+     */
+    @Override
+    public void add(T... entity) {
+        realXmlContext.add(entity);
+    }
+
+    /**
+     * 解析XML文件：通过XML文件创建实例
      * @return 返回该类的实例对象
      */
     @Override
-    public List<T> init(Class entity) {
-        return realXmlContext.init(entity);
+    public List<T> init() {
+        return realXmlContext.init();
     }
 
     /**

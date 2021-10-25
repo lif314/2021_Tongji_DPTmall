@@ -1,44 +1,30 @@
 package tmall.XMLRepository;
 
-
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-import tmall.XMLRepository.util.Assert;
-
-import java.io.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-
-import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
+
 
 public interface XMLContext<T> {
 
     /**
-     * 数据存储
+     * 数据重写：会覆盖源文件
+     * 用于初始化数据和数据最终存储
      *
      * @param entity 实例类
      */
     void save(T... entity);
 
+    /**
+     * 动态添加数据
+     * @param entity
+     */
+    void add(T... entity);
+
 
     /**
      * 解析XML文件：通过XML文件创建实例
-     *
-     * @param entity 传入类，eg:User.class
      * @return 返回该类的实例对象
      */
-    List<T> init(Class<T> entity);
+    List<T> init();
 
     /**
      * 根据ID删除XML数据库中的数据

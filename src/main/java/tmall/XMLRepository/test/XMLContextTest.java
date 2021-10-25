@@ -2,7 +2,6 @@ package tmall.XMLRepository.test;
 
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
-import tmall.model.entity.Buyer;
 
 import java.util.List;
 
@@ -24,14 +23,8 @@ public class XMLContextTest {
 
         OrderTest order2 = new OrderTest("00002", "00002", "00002", "00002", "2021-10-22", "已发送", "2");
 
-        // sava test
-        xmlContext.save(order1, order2);
-
-
-//        XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
-//        Buyer buyer = new Buyer();
-//        buyerXMLContext.save(buyer);
-
+        // add test
+        xmlContext.add(order1, order2);
 
         // findById test
         System.out.println("============ findById Test ============");
@@ -41,7 +34,7 @@ public class XMLContextTest {
 
         // init test
         System.out.println("============ init Test ============");
-        List<OrderTest> orderList = xmlContext.init(OrderTest.class);
+        List<OrderTest> orderList = xmlContext.init();
         for (OrderTest orderTest : orderList) {
             System.out.println(orderTest.toString());
         }
@@ -50,10 +43,13 @@ public class XMLContextTest {
         // deleteById test
         System.out.println("============ deleteById Test ============");
         xmlContext.deleteById("00001");
-        List<OrderTest> orderListAfterDelete = xmlContext.init(OrderTest.class);
+        List<OrderTest> orderListAfterDelete = xmlContext.init();
         for (OrderTest order : orderListAfterDelete) {
             System.out.println(order.toString());
         }
+
+        // sava test
+        xmlContext.save(order1, order2);
     }
 
 }
