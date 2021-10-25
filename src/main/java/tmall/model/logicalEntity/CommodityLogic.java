@@ -1,11 +1,22 @@
-package tmall.model.businessEntity;
+package tmall.model.logicalEntity;
+
 
 /**
  * 商品
  */
 
-public class CommodityView {
+public class CommodityLogic {
 
+    // 单例模式
+    private static CommodityLogic instance = new CommodityLogic();
+
+    private CommodityLogic(){
+
+    }
+
+    public CommodityLogic getInstance(){
+        return instance;
+    }
     private String commodityId;
 
     // 店铺应该具有添加商品的功能，添加时将自动为商品的shipId进行初始化

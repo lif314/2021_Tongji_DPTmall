@@ -13,9 +13,9 @@ public class Activity {
 
     public String endTime;     // 中终止时间
 
-    public String activityName;      // 活动名称
+    public String activityName; // 活动名称
 
-    public String discount;   // 打折
+    public String discount;    // 打折
 
     public Activity() {
     }
