@@ -396,7 +396,6 @@ public class RealXmlContext<T> implements XMLContext<T>{
             String id1 = next.element(littleClassName + "Id").getText();
             if (id.equals(id1)) {
                 next.getParent().remove(next);
-                break;  // 只删除第一个id相等的元素
             }
         }
 

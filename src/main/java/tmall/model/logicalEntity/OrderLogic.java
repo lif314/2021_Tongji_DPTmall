@@ -1,25 +1,176 @@
 package tmall.model.logicalEntity;
 
-/**
- * 理解逻辑实体与业务实体
- * entity文件中存放的是业务实体
- * logicalEntity中存放的是逻辑实体
- *
- * - https://bbs.huaweicloud.com/forum/thread-55065-1-1.html
- * - 逻辑数据实体不能脱离业务对象独立存在，不能归属于多个业务对象，业务对象与逻辑数据实体的关系是1:1或1:N，不允许N:1的情况出现。
- * - 逻辑数据实体与物理表尽量要保持1:1的关系。（一对一模式）
- * - 部分特殊场景下，允许逻辑数据实体与物理表存在1:N的关系。(如数据量过大、分库、跨产品、分布式部署等)（主从模式、主扩模式）
- * - 关联之后就可以通过管理逻辑实体来管理物理表，对逻辑实体的修改都会反映到物理表上，
- *
- *
- * 简单地将，我们从Order实体表中并不能直接获取到我们需要的信息，比如店铺信息，商品信息等，因此我们创建一个对象OrderLogic基于Order将需要的信息存放在该对象中
- * 这样我们就可以直接通过该对象获取我们所需要的东西
- *
- * 业务实体(Order)是存在数据库中的表，它的数据类型只能是基本数据类型，而逻辑实体不需要存放在数据库中，类型随意
- */
-public class OrderLogic implements EntityLogic {
+import tmall.model.entity.Commodity;
 
+import java.util.List;
 
+public class OrderLogic {
 
+    private String orderId;  // 订单Id
 
+    private String shopId;    // 店铺Id
+
+    public String shopName;   // 店铺名称
+
+    public String shopAddress; // 店铺发货地址
+
+    public String buyerName; // 收获人姓名
+
+    public String buyerPhone; // 收货人联系方式
+
+    public String receiveAddress; // 收获地址
+
+    public String createTime;   // 下单时间
+
+    public String sendTime;      // 发货时间
+
+    public String receivedTim;   // 收获时间
+
+    public List<OrderCommodityLogic> commodityList; // 订单商品集
+
+    public String status;     // 订单状态
+
+    public String orderAmount; // 含有商品总数量
+
+    public OrderLogic() {
+    }
+
+    public OrderLogic(String orderId, String shopId, String shopName, String shopAddress, String buyerName, String buyerPhone, String receiveAddress, String createTime, String sendTime, String receivedTim, List<OrderCommodityLogic> commodityList, String status, String orderAmount) {
+        this.orderId = orderId;
+        this.shopId = shopId;
+        this.shopName = shopName;
+        this.shopAddress = shopAddress;
+        this.buyerName = buyerName;
+        this.buyerPhone = buyerPhone;
+        this.receiveAddress = receiveAddress;
+        this.createTime = createTime;
+        this.sendTime = sendTime;
+        this.receivedTim = receivedTim;
+        this.commodityList = commodityList;
+        this.status = status;
+        this.orderAmount = orderAmount;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public String getShopAddress() {
+        return shopAddress;
+    }
+
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerPhone() {
+        return buyerPhone;
+    }
+
+    public void setBuyerPhone(String buyerPhone) {
+        this.buyerPhone = buyerPhone;
+    }
+
+    public String getReceiveAddress() {
+        return receiveAddress;
+    }
+
+    public void setReceiveAddress(String receiveAddress) {
+        this.receiveAddress = receiveAddress;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(String sendTime) {
+        this.sendTime = sendTime;
+    }
+
+    public String getReceivedTim() {
+        return receivedTim;
+    }
+
+    public void setReceivedTim(String receivedTim) {
+        this.receivedTim = receivedTim;
+    }
+
+    public List<OrderCommodityLogic> getCommodityList() {
+        return commodityList;
+    }
+
+    public void setCommodityList(List<OrderCommodityLogic> commodityList) {
+        this.commodityList = commodityList;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(String orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderLogic{" +
+                "orderId='" + orderId + '\'' +
+                ", shopId='" + shopId + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", shopAddress='" + shopAddress + '\'' +
+                ", buyerName='" + buyerName + '\'' +
+                ", buyerPhone='" + buyerPhone + '\'' +
+                ", receiveAddress='" + receiveAddress + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", sendTime='" + sendTime + '\'' +
+                ", receivedTim='" + receivedTim + '\'' +
+                ", commodityList=" + commodityList +
+                ", status='" + status + '\'' +
+                ", orderAmount='" + orderAmount + '\'' +
+                '}';
+    }
 }

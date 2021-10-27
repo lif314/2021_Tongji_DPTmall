@@ -11,7 +11,7 @@ public class Buyer {
 
     private String idNumber;  // 身份证号
 
-    public String phone;      // 电话好妈妈
+    public String phone;      // 电话号码
 
     public String nickname;   // 昵称
 

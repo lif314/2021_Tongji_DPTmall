@@ -15,17 +15,20 @@ public class Shop {
 
     public String category;     // 店铺类别
 
+    public String shopAddress;  // 店铺发货地址
+
     public String description;   // 店铺描述
 
     public Shop() {
     }
 
-    public Shop(String shopId, String sellerId, String shopName, String creditScore, String category, String description) {
+    public Shop(String shopId, String sellerId, String shopName, String creditScore, String category, String shopAddress, String description) {
         this.shopId = shopId;
         this.sellerId = sellerId;
         this.shopName = shopName;
         this.creditScore = creditScore;
         this.category = category;
+        this.shopAddress = shopAddress;
         this.description = description;
     }
 
@@ -69,6 +72,14 @@ public class Shop {
         this.category = category;
     }
 
+    public String getShopAddress() {
+        return shopAddress;
+    }
+
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -85,6 +96,7 @@ public class Shop {
                 ", shopName='" + shopName + '\'' +
                 ", creditScore='" + creditScore + '\'' +
                 ", category='" + category + '\'' +
+                ", shopAddress='" + shopAddress + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
