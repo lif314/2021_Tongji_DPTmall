@@ -50,4 +50,8 @@ public interface XMLContext<T> {
      */
     T updateById(String oldValue, String newValue);
 
+    /**
+     * 清除所有数据
+     */
+    void deleteAll();
 }

@@ -72,4 +72,48 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         return shoppingCartLogicList;
 
     }
+
+    /**
+     * 清除购物车
+     */
+    @Override
+    public void deleteAll() {
+        shoppingCartXMLContext.deleteAll();
+    }
+
+    /**
+     * 清除购物车中一件商品
+     *
+     * @param commodityId id
+     */
+    @Override
+    public void deleteOne(String commodityId) {
+        List<ShoppingCart> init = shoppingCartXMLContext.init();
+        shoppingCartXMLContext.deleteAll();
+        for (ShoppingCart cart : init) {
+            if(!cart.getCommodityId().equals(commodityId)){
+                shoppingCartXMLContext.add(cart);
+            }
+        }
+
+    }
+
+    /**
+     * 更改购物车中商品数量
+     *
+     * @param commodityId 商品id
+     * @param newAmount   商品数量
+     */
+    @Override
+    public void updateCommodityAmount(String commodityId, String newAmount) {
+        List<ShoppingCart> init = shoppingCartXMLContext.init();
+        for (ShoppingCart cart : init) {
+            if(cart.getCommodityId().equals(commodityId)){
+                cart.setAmount(newAmount);
+                shoppingCartXMLContext.add(cart);
+                return;
+            }
+        }
+    }
+
 }

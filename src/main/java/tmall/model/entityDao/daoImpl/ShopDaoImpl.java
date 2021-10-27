@@ -80,4 +80,29 @@ public class ShopDaoImpl implements ShopDao {
         }
         return res;
     }
+
+    /**
+     * 删除店铺
+     *
+     * @param shopId id
+     */
+    @Override
+    public void deleteById(String shopId) {
+        shopXMLContext.deleteById(shopId);
+    }
+
+    /**
+     * 注销卖家所有店铺
+     *
+     * @param sellerId id
+     */
+    @Override
+    public void deleteAllSellerShops(String sellerId) {
+        List<Shop> init = shopXMLContext.init();
+        for (Shop s : init) {
+            if(s.getSellerId().equals(sellerId)){
+                shopXMLContext.deleteById(s.getShopId());
+            }
+        }
+    }
 }

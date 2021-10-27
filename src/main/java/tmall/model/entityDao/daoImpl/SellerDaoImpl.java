@@ -63,4 +63,24 @@ public class SellerDaoImpl implements SellerDao {
 
         return false;
     }
+
+    /**
+     * 获取所有卖家
+     *
+     * @return list sellers
+     */
+    @Override
+    public List<Seller> getAll() {
+        return sellerXMLContext.init();
+    }
+
+    /**
+     * 注销卖家
+     *
+     * @param sellerId id
+     */
+    @Override
+    public void deleteById(String sellerId) {
+        sellerXMLContext.deleteById(sellerId);
+    }
 }

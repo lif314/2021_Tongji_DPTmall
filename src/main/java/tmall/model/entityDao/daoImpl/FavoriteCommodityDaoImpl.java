@@ -68,4 +68,28 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
         }
         return followCommodityLogicList;
     }
+
+    /**
+     * 从收藏夹中移除
+     *
+     * @param commodityId id
+     */
+    @Override
+    public void cancelFollow(String commodityId) {
+        List<FollowCommodity> init = followCommodityXMLContext.init();
+        followCommodityXMLContext.deleteAll();
+        for (FollowCommodity fc : init) {
+            if(! fc.getCommodityId().equals(commodityId)){
+                followCommodityXMLContext.add(fc);
+            }
+        }
+    }
+
+    /**
+     * 清除收藏夹
+     */
+    @Override
+    public void deleteAll() {
+        followCommodityXMLContext.deleteAll();
+    }
 }

@@ -2,6 +2,8 @@ package tmall.model.entityDao.daoInterface;
 
 import tmall.model.entity.Seller;
 
+import java.util.List;
+
 public interface SellerDao {
 
     /**
@@ -27,4 +29,16 @@ public interface SellerDao {
      * @return 账号信息是否正确
      */
     Boolean login(String name, String password);
+
+    /**
+     * 获取所有卖家
+     * @return list sellers
+     */
+    List<Seller> getAll();
+
+    /**
+     * 注销卖家
+     * @param sellerId id
+     */
+    void deleteById(String sellerId);
 }

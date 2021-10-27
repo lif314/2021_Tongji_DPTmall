@@ -2,6 +2,8 @@ package tmall.model.entityDao.daoInterface;
 
 import tmall.model.entity.Buyer;
 
+import java.util.List;
+
 public interface BuyerDao {
 
 
@@ -29,4 +31,23 @@ public interface BuyerDao {
      * @return 登录成功与否
      */
     boolean login(String phone, String password);
+
+    /**
+     * 获取所有买家
+     * @return list buyers
+     */
+    List<Buyer> getAll();
+
+    /**
+     * 修改买家密码
+     * @param buyerId 买家id
+     * @param newPasswd 新密码
+     */
+    void updatePassword(String buyerId, String newPasswd);
+
+    /**
+     * 通过id删除用户
+     * @param buyerId id
+     */
+    void deleteByBuyerId(String buyerId);
 }

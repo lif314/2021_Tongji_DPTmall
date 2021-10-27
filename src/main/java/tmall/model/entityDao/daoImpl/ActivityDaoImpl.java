@@ -50,6 +50,16 @@ public class ActivityDaoImpl implements ActivityDao {
     }
 
     /**
+     * 通过id删除活动
+     *
+     * @param activityId id
+     */
+    @Override
+    public void deleteByActivityId(String activityId) {
+        activityXMLContext.deleteById(activityId);
+    }
+
+    /**
      * 获取所有活动
      *
      * @return list activity

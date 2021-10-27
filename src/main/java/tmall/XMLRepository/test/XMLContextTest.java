@@ -50,6 +50,9 @@ public class XMLContextTest {
 
         // sava test
         xmlContext.save(order1, order2);
+
+        // deleteAll test
+//        xmlContext.deleteAll();
     }
 
 }

@@ -33,4 +33,10 @@ public interface CouponDao {
      * @return list coupon
      */
     List<Coupon> getAll();
+
+    /**
+     * 删除优惠券
+     * @param couponId id
+     */
+    void deleteById(String couponId);
 }

@@ -29,4 +29,15 @@ public interface FavoriteShopDao {
      * @return list shop details
      */
     List<FollowShopLogic> getByBuyerId(String buyerId);
+
+    /**
+     * 清空店铺关注
+     */
+    void deleteAll();
+
+    /**
+     * 取消关注
+     * @param shopId id
+     */
+    void cancelShopFollow(String shopId);
 }

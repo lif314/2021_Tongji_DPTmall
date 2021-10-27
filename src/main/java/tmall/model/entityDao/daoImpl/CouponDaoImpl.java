@@ -58,4 +58,14 @@ public class CouponDaoImpl implements CouponDao {
     public List<Coupon> getAll() {
         return couponXMLContext.init();
     }
+
+    /**
+     * 删除优惠券
+     *
+     * @param couponId id
+     */
+    @Override
+    public void deleteById(String couponId) {
+        couponXMLContext.deleteById(couponId);
+    }
 }

@@ -29,6 +29,12 @@ public interface ActivityDao {
     Activity getById(String activityId);
 
     /**
+     * 通过id删除活动
+     * @param activityId id
+     */
+    void deleteByActivityId(String activityId);
+
+    /**
      * 获取所有活动
      * @return list activity
      */

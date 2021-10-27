@@ -29,4 +29,23 @@ public interface ShoppingCartDao {
      * @return list ShoppingCartLogic
      */
     List<ShoppingCartLogic> getCartByBuyerId(String buyerId);
+
+    /**
+     * 清空购物车
+     */
+    void deleteAll();
+
+    /**
+     * 清除购物车中一件商品
+     * @param commodityId id
+     */
+    void deleteOne(String commodityId);
+
+    /**
+     * 更改购物车中商品数量
+     * @param commodityId 商品id
+     * @param newAmount 商品数量
+     */
+    void updateCommodityAmount(String commodityId ,String newAmount);
+
 }

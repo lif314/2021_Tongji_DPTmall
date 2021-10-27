@@ -70,4 +70,12 @@ public class ProxyXmlContext<T> implements XMLContext<T>{
     public T updateById(String oldValue, String newValue) {
         return (T) realXmlContext.updateById(oldValue, newValue);
     }
+
+    /**
+     * 清除所有数据
+     */
+    @Override
+    public void deleteAll() {
+        realXmlContext.deleteAll();
+    }
 }

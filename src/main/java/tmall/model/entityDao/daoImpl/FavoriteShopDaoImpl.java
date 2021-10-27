@@ -69,4 +69,28 @@ public class FavoriteShopDaoImpl implements FavoriteShopDao {
         }
         return followShopLogicList;
     }
+
+    /**
+     * 清空店铺关注
+     */
+    @Override
+    public void deleteAll() {
+        followShopXMLContext.deleteAll();
+    }
+
+    /**
+     * 取消关注
+     *
+     * @param shopId id
+     */
+    @Override
+    public void cancelShopFollow(String shopId) {
+        List<FollowShop> init = followShopXMLContext.init();
+        followShopXMLContext.deleteAll();
+        for (FollowShop shop : init) {
+            if(! shop.getShopId().equals(shopId)){
+                followShopXMLContext.add(shop);
+            }
+        }
+    }
 }

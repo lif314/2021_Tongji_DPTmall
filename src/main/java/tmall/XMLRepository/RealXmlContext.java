@@ -541,4 +541,12 @@ public class RealXmlContext<T> implements XMLContext<T>{
         return null;
     }
 
+    /**
+     * 清除所有数据
+     */
+    @Override
+    public void deleteAll() {
+        File file = new File(InstancePath);
+        file.delete();
+    }
 }

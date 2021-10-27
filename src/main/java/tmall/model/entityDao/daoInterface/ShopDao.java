@@ -42,4 +42,17 @@ public interface ShopDao {
      * @return list shop
      */
     List<Shop> getAllBySellerId(String sellerId);
+
+    /**
+     * 删除店铺
+     * @param shopId id
+     */
+    void deleteById(String shopId);
+
+    /**
+     * 注销卖家所有店铺
+     * @param sellerId id
+     */
+    void deleteAllSellerShops(String sellerId);
+
 }

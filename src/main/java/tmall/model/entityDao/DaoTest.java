@@ -14,7 +14,6 @@ public class DaoTest {
         Commodity commodity = commodityDao.create("1212", "11231", "1212", "12132", "2321", "12123");
         commodityDao.addToDb();
 
-
         List<Commodity> all = commodityDao.getAll();
         for (Commodity commodity1 : all) {
             System.out.println(commodity1);

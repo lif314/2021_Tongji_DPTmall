@@ -60,4 +60,38 @@ public class BuyerDaoImpl implements BuyerDao {
         }
         return false;
     }
+
+    /**
+     * 获取所有买家
+     *
+     * @return list buyers
+     */
+    @Override
+    public List<Buyer> getAll() {
+        return buyerXMLContext.init();
+    }
+
+    /**
+     * 修改买家密码
+     *
+     * @param buyerId   买家id
+     * @param newPasswd 新密码
+     */
+    @Override
+    public void updatePassword(String buyerId, String newPasswd) {
+        Buyer old = buyerXMLContext.findById(buyerId);
+        buyerXMLContext.deleteById(buyerId);
+        old.setPasswd(newPasswd);
+        buyerXMLContext.add(old);
+    }
+
+    /**
+     * 通过id删除用户
+     *
+     * @param buyerId id
+     */
+    @Override
+    public void deleteByBuyerId(String buyerId) {
+        buyerXMLContext.deleteById(buyerId);
+    }
 }

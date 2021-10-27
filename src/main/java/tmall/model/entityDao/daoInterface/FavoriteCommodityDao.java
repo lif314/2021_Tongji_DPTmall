@@ -31,4 +31,15 @@ public interface FavoriteCommodityDao {
      * @return list commodity details
      */
     List<FollowCommodityLogic> getByBuyerId(String buyerId);
+
+    /**
+     * 从收藏夹中移除
+     * @param commodityId id
+     */
+    void cancelFollow(String commodityId);
+
+    /**
+     * 清除收藏夹
+     */
+    void deleteAll();
 }
