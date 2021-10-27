@@ -20,6 +20,6 @@ public class DaoTest {
             System.out.println(commodity1);
         }
 
-        commodityDao.deleteById(commodity.getCommodityId());
+//        commodityDao.deleteById(commodity.getCommodityId());
     }
 }

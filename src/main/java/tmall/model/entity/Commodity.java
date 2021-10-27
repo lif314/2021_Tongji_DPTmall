@@ -1,5 +1,10 @@
 package tmall.model.entity;
 
+import tmall.controller.impl.CommodityVisitor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 商品实体表
  */
@@ -100,5 +105,37 @@ public class Commodity {
                 ", cname='" + cname + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    /**
+     * @author Strange
+     * @date: 2021/10/25 8:35
+     * @description: visitor pattern related
+     * @param: commodityVisitor
+     * @return:
+     */
+    public List<String> acceptGeneralProperty(CommodityVisitor commodityVisitor) {
+        return null;
+    }
+
+    public List<String> acceptSpecialProperty(CommodityVisitor commodityVisitor) {
+        return null;
+    }
+
+    public List<String> getGeneralProperty() {
+        List<String> info = new ArrayList<>();
+        info.add(commodityId);
+        info.add(shopId);
+        info.add(price);
+        info.add(category);
+        info.add(storeNum);
+        info.add(cname);
+        info.add(description);
+
+        return info;
+    }
+
+    public List<String> getSpecialProperty() {
+        return new ArrayList<>();
     }
 }

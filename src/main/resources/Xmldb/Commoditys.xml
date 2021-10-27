@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Commoditys>
+  <Commodity>
+    <commodityId>c5de433c-aaee-4d30-8ede-70729875ed1e</commodityId>
+    <shopId>1212</shopId>
+    <price>11231</price>
+    <category>1212</category>
+    <storeNum>12132</storeNum>
+    <cname>2321</cname>
+    <description>12123</description>
+  </Commodity>
+</Commoditys>

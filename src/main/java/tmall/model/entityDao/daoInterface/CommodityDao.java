@@ -24,6 +24,12 @@ public interface CommodityDao {
     void addToDb();
 
     /**
+     * 根据Id回去商品信息
+     * @param commodityId id
+     */
+    Commodity getByCommodityId(String commodityId);
+
+    /**
      * 根据商品Id删除商品
      * @param commodityId 商品Id
      */

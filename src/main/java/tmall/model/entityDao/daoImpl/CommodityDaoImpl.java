@@ -43,6 +43,11 @@ public class CommodityDaoImpl  implements CommodityDao {
         commodityXMLContext.add(commodity);
     }
 
+    @Override
+    public Commodity getByCommodityId(String commodityId) {
+        return commodityXMLContext.findById(commodityId);
+    }
+
     /**
      * 根据商品Id删除商品
      *
