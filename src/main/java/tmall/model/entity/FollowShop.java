@@ -1,12 +1,15 @@
 package tmall.model.entity;
 
+/**
+ * 店铺关注实体表
+ */
 public class FollowShop {
 
-    private String shopId;
+    private String shopId;  // 店铺Id
 
-    private String buyerId;
+    private String buyerId;  // 买家Id
 
-    public String followDate;
+    public String followDate;  // 关注时间
 
     public FollowShop() {
     }

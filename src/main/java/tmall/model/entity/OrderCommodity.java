@@ -1,14 +1,20 @@
 package tmall.model.entity;
 
+/**
+ * 订单商品实体表
+ *
+ * 说明：通过该联系集可以实现一个订单多件商品
+ */
+
 public class OrderCommodity {
 
     private String orderId;
 
     private String commodityId;
 
-    public String status;
+    public String status;   // 商品状态
 
-    public String amount;
+    public String amount;   // 同一商品的数量
 
     public OrderCommodity() {
     }

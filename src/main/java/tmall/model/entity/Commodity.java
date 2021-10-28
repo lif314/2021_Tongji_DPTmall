@@ -1,21 +1,29 @@
 package tmall.model.entity;
 
+import tmall.controller.impl.CommodityVisitor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 商品实体表
+ */
 public class Commodity {
 
-    private String commodityId;
+    private String commodityId;  // 商品Id
 
     // 店铺应该具有添加商品的功能，添加时将自动为商品的shipId进行初始化
-    private String shopId;
+    private String shopId;      // 店铺Id
 
-    public String price;
+    public String price;        // 价格
 
-    public String category;
+    public String category;     // 类别
 
-    public String storeNum;
+    public String storeNum;     // 店铺存货量
 
-    public String cname;
+    public String cname;        // 商品名称
 
-    public String description;
+    public String description;   // 商品描述
 
     public Commodity() {
     }
@@ -97,5 +105,37 @@ public class Commodity {
                 ", cname='" + cname + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    /**
+     * @author Strange
+     * @date: 2021/10/25 8:35
+     * @description: visitor pattern related
+     * @param: commodityVisitor
+     * @return:
+     */
+    public List<String> acceptGeneralProperty(CommodityVisitor commodityVisitor) {
+        return null;
+    }
+
+    public List<String> acceptSpecialProperty(CommodityVisitor commodityVisitor) {
+        return null;
+    }
+
+    public List<String> getGeneralProperty() {
+        List<String> info = new ArrayList<>();
+        info.add(commodityId);
+        info.add(shopId);
+        info.add(price);
+        info.add(category);
+        info.add(storeNum);
+        info.add(cname);
+        info.add(description);
+
+        return info;
+    }
+
+    public List<String> getSpecialProperty() {
+        return new ArrayList<>();
     }
 }

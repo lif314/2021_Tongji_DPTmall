@@ -3,9 +3,6 @@ package tmall;
 import tmall.display.FrontController;
 import tmall.display.command.Command;
 import tmall.display.command.CommandFactory;
-import tmall.display.dispatcher.Dispatcher;
-import tmall.display.view.impl.InstructionView;
-import tmall.display.view.impl.LoginView;
 import tmall.model.entity.User;
 
 import java.util.Scanner;
@@ -17,13 +14,13 @@ public class ApplicationStart {
         //添加需要用到的页面
         FrontController frontController = FrontController.getFrontController();
         //显示登录界面
-//        Command loginView = CommandFactory.getCommand("LoginCommand");
-//        frontController.dispatchSingleCommand(loginView);
+        Command loginView = CommandFactory.getCommand("LoginCommand");
+        frontController.dispatchSingleCommand(loginView);
         //根据用户输入初始化为对应的用户对象
 //        User user = getUser();
         //显示命令大全界面
-//        Command orderView = CommandFactory.getCommand("InstructionCommand");
-//        frontController.dispatchSingleCommand(orderView);
+        Command orderView = CommandFactory.getCommand("InstructionCommand");
+        frontController.dispatchSingleCommand(orderView);
         // 项目主体
 //        while(true){
 //            Command command = CommandFactory.getCommand();

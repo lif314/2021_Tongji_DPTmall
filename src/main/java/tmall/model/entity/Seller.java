@@ -1,20 +1,32 @@
 package tmall.model.entity;
 
-public class Seller extends User{
+/**
+ * 卖家实体表
+ */
+public class Seller {
 
-    private String sellerId;
+    private String sellerId;  // 卖家Id
 
-    public String sname;
+    private String password;  // 密码
 
-    public String creditScore;
+    private String name;      // 真实姓名
+
+    private String idNumber;  // 身份证号
+
+    public String nickname;   // 昵称
+
+    public String phone;      // 电话号码
 
     public Seller() {
     }
 
-    public Seller(String sellerId, String sname, String creditScore) {
+    public Seller(String sellerId, String password, String name, String idNumber, String nickname, String phone) {
         this.sellerId = sellerId;
-        this.sname = sname;
-        this.creditScore = creditScore;
+        this.password = password;
+        this.name = name;
+        this.idNumber = idNumber;
+        this.nickname = nickname;
+        this.phone = phone;
     }
 
     public String getSellerId() {
@@ -25,28 +37,55 @@ public class Seller extends User{
         this.sellerId = sellerId;
     }
 
-    public String getSname() {
-        return sname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getCreditScore() {
-        return creditScore;
+    public String getName() {
+        return name;
     }
 
-    public void setCreditScore(String creditScore) {
-        this.creditScore = creditScore;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
         return "Seller{" +
                 "sellerId='" + sellerId + '\'' +
-                ", sname='" + sname + '\'' +
-                ", creditScore='" + creditScore + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

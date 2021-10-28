@@ -2,8 +2,11 @@
 
 <Sellers>
   <Seller>
-    <sellerId>e21b1996-57e7-474e-bc8b-7ec489b973ee</sellerId>
-    <sname>123456</sname>
-    <creditScore>798</creditScore>
+    <sellerId>b92bce8f-6d04-44c3-a943-a2f09277e8e3</sellerId>
+    <password>llf</password>
+    <name>123456</name>
+    <idNumber>53032219919111121</idNumber>
+    <nickname>FlyWeight</nickname>
+    <phone>1323232422423</phone>
   </Seller>
 </Sellers>

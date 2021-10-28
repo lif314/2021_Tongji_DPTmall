@@ -8,8 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TMall" />
         <module name="DPTmall" />
+        <module name="TongjiDesignPattern2021Fall" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
   </component>
 </project>

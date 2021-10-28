@@ -1,7 +1,9 @@
 package tmall.tmallSystem;
 
+import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.Buyer;
+import tmall.model.entity.Seller;
 
 import java.util.UUID;
 
@@ -13,7 +15,7 @@ import java.util.UUID;
 public class TMallSystem {
 
     /**
-     * 创建用户
+     * 创建买家
      * @return 一个用户的信息，用于显示
      */
     public static Buyer createBuyer(String nickname, String passwd, String idNumber, String phone, String gender, String birthday){
@@ -22,14 +24,10 @@ public class TMallSystem {
 
         Buyer buyer = new Buyer(buyerId.toString(), passwd, idNumber, phone, nickname, gender, birthday);
 
-        XMLContext<Buyer> buyerXMLContext = new XMLContext<>(Buyer.class);
+        XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
         buyerXMLContext.save(buyer);
 
         return buyer;
     }
-
-
-
-
 
 }
