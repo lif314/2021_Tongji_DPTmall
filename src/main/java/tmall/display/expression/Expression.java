@@ -1,5 +1,5 @@
 package tmall.display.expression;
 
 public abstract class Expression {
-    public abstract String interpret(Object...args);
+    public abstract String[] interpret(Object...args) throws Exception;
 }

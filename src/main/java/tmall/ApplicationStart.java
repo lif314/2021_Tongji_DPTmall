@@ -12,20 +12,21 @@ public class ApplicationStart {
 
     public static void main(String[] args) {
         //添加需要用到的页面
+        Scanner scanner = new Scanner(System.in);
         FrontController frontController = FrontController.getFrontController();
-        //显示登录界面
-        Command loginView = CommandFactory.getCommand("LoginCommand");
-        frontController.dispatchSingleCommand(loginView);
+//        //显示登录界面
+//        Command loginView = CommandFactory.getCommand("LoginCommand");
+//        frontController.dispatchSingleCommand(loginView);
         //根据用户输入初始化为对应的用户对象
 //        User user = getUser();
         //显示命令大全界面
-        Command orderView = CommandFactory.getCommand("InstructionCommand");
-        frontController.dispatchSingleCommand(orderView);
+//        Command orderView = CommandFactory.getCommand("InstructionCommand");
+//        frontController.dispatchSingleCommand(orderView);
         // 项目主体
-//        while(true){
-//            Command command = CommandFactory.getCommand();
-//            frontController.dispatchSingleCommand(command);
-//        }
+        while(true){
+            String command = scanner.next();
+            frontController.dispatchSingleCommand(command);
+        }
     }
 
 

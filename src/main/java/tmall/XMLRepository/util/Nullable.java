@@ -12,6 +12,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Nonnull(when = When.MAYBE)
 @TypeQualifierNickname
-
 public @interface Nullable {
 }

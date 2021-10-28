@@ -36,24 +36,21 @@ public class FrontController {
      */
     public void dispatchSingleCommand(String command){
         if (command !=null){
-//            Object[] arg = command.execute();
-//            String orderType = command.getCommandName();
-//            dispatcher.dispatch(orderType,arg);
-//            // 解释命令，返回值为需要调用的页面和需要展示的参数，args[0]为页面名称
-//            Object[] args = context.interpret(command);
-//            String viewName =(String) args[0];
-//            // 若数组为空，则不需要进行展示，只是做操作
-//            if (args != null){
-//                dispatcher.dispatch(viewName,args);
-//            }
             // 交给解释器解释传入的命令，返回需要调用的命令类名和可能用到的页面名
-            String[] commandAndView = context.interpret(command);
-            String commandName = commandAndView[0];
-            String viewName = commandAndView[1];
+            Object[] commandAndView = new String[0];
+            try {
+                commandAndView = context.interpret(command);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+            String commandName = (String) commandAndView[0];
+            String viewName =(String) commandAndView[1];
+            Object commandArgs = commandAndView[2];
             // 生成对应的命令类，并执行该命令，需要的参数由具体的命令类负责传入，降低耦合度
             Command concreteCommand = CommandFactory.getCommand(commandName);
             // 执行结果可能为空，可能是待展示的数据，当页面名不为空且数据也不为空时就进行展示
-            Object[] args = concreteCommand.execute();
+            Object[] args = concreteCommand.execute(commandArgs);
             if(viewName!=null && args !=null){
                 dispatcher.dispatch(viewName,args);
             } else if(viewName!=null){

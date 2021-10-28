@@ -2,8 +2,11 @@
 
 <Sellers>
   <Seller>
-    <sellerId>0c0e5c86-6bc2-4b08-8955-fa9c72777b5e</sellerId>
-    <sname>123</sname>
-    <creditScore>456</creditScore>
+    <sellerId>193774ce-dc0f-4805-832a-61ec2bd8a8a8</sellerId>
+    <password>456</password>
+    <name>456</name>
+    <idNumber>789</idNumber>
+    <nickname>12'</nickname>
+    <phone>789</phone>
   </Seller>
 </Sellers>

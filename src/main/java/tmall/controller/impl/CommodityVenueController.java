@@ -29,7 +29,7 @@ public class CommodityVenueController extends CommodityController {
      * @param: args
      * @return: 字符串数组
      */ 
-    public Object[] commodityVenueDisplay(Object...args) {
+    public Object[] commodityVenueDisplay() {
         //在xml文件中读取所有会场，把名字添加进list中
         List<String> commodityVenueList = new ArrayList<>();
 

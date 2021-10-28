@@ -20,4 +20,6 @@ public class InstructionCommand extends Command {
         }
         return instructionOrder;
     }
+
+
 }
