@@ -2,6 +2,7 @@ package tmall.display.dispatcher;
 
 
 import tmall.display.view.View;
+import tmall.display.view.impl.CommodityView;
 import tmall.display.view.impl.InstructionView;
 import tmall.display.view.impl.LoginView;
 
@@ -26,6 +27,8 @@ public class Dispatcher {
     public void addViews(){
         InstructionView instructionView = new InstructionView();
         LoginView loginView = new LoginView();
+        CommodityView commodityView = new CommodityView();
+        this.addView("CommodityView",commodityView);
         this.addView("LoginView",loginView);
         this.addView("InstructionView", instructionView);
     }

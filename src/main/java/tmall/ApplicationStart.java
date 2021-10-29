@@ -24,7 +24,7 @@ public class ApplicationStart {
 //        frontController.dispatchSingleCommand(orderView);
         // 项目主体
         while(true){
-            String command = scanner.next();
+            String command = scanner.nextLine();
             frontController.dispatchSingleCommand(command);
         }
     }
