@@ -4,6 +4,10 @@ import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.Buyer;
 import tmall.model.entity.Seller;
+import tmall.model.entityDao.daoImpl.BuyerDaoImpl;
+import tmall.model.entityDao.daoImpl.SellerDaoImpl;
+import tmall.model.entityDao.daoInterface.BuyerDao;
+import tmall.model.entityDao.daoInterface.SellerDao;
 
 import java.util.UUID;
 
@@ -15,19 +19,47 @@ import java.util.UUID;
 public class TMallSystem {
 
     /**
-     * 创建买家
-     * @return 一个用户的信息，用于显示
+     * 当买家请求注册时创建买家
+     *
+     * @param nickname 昵称
+     * @param passwd 密码
+     * @param idNumber 身份证
+     * @param phone 电话号码
+     * @param gender 性别
+     * @param birthday 生日
+     * @return buyer
      */
     public static Buyer createBuyer(String nickname, String passwd, String idNumber, String phone, String gender, String birthday){
 
-        UUID buyerId = UUID.randomUUID();
+        String buyerId = UUID.randomUUID().toString();
 
-        Buyer buyer = new Buyer(buyerId.toString(), passwd, idNumber, phone, nickname, gender, birthday);
+        BuyerDao buyerDao = new BuyerDaoImpl();
 
-        XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
-        buyerXMLContext.save(buyer);
+        Buyer buyer = buyerDao.create(passwd, idNumber, phone, nickname, gender, birthday);
+
+        buyerDao.addToDb();
 
         return buyer;
     }
 
+    /**
+     * 当买家请求注册时使用
+     * @param password 密码
+     * @param name 姓名
+     * @param idNumber 身份证
+     * @param nickname 昵称
+     * @param phone 密码
+     * @return seller
+     */
+    public static Seller createSeller(String password, String name, String idNumber, String nickname, String phone){
+        String sellerId = UUID.randomUUID().toString();
+
+        SellerDao sellerDao = new SellerDaoImpl();
+
+        Seller seller = sellerDao.create(password, name, idNumber, nickname, phone);
+
+        sellerDao.addToDb();
+
+        return seller;
+    }
 }

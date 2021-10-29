@@ -1,54 +1,75 @@
 package tmall.model.logicalEntity;
 
-import tmall.model.entity.Commodity;
-
 import java.util.List;
 
 public class OrderLogic {
 
-    private String orderId;  // 订单Id
+    /**
+     * 订单自身性质
+     */
+    private String orderId;     // 订单Id
 
+    public String createTime;   // 下单时间
+
+    public String status;       // 订单状态
+
+
+    /**
+     * 店铺提供信息
+     */
     private String shopId;    // 店铺Id
 
     public String shopName;   // 店铺名称
 
-    public String shopAddress; // 店铺发货地址
+    public String shopAddress; // 发货地址
 
-    public String buyerName; // 收获人姓名
+    /**
+     * 买家提供信息
+     */
+    private String buyerId;  // 买家id
 
-    public String buyerPhone; // 收货人联系方式
+    /**
+     * 买家收获信息
+     */
+    public String buyerAddressId;
+
+    public String receiveName;  // 收获人姓名
+
+    public String receivePhone; // 收货人联系方式
 
     public String receiveAddress; // 收获地址
 
-    public String createTime;   // 下单时间
+    /**
+     * 优惠信息
+     */
+    public String activityId;   // 活动券id
 
-    public String sendTime;      // 发货时间
+    public String couponId;     // 优惠券id
 
-    public String receivedTim;   // 收获时间
+    public String promotionMoney; // 优惠金额
 
+    /**
+     * 支付信息
+     */
+    private String orderPaymentId;   // 支付信息id
+
+    public String payMethod;   // 支付方式
+
+    public String payStatus;   // 支付状态
+
+    public String totalMoney;   // 不使用优惠券后应支付费用
+
+    public String paidMoney;    // 买家实际支付费用
+
+    public String paidTime;     // 支付时间
+
+    /**
+     * 订单商品集
+     */
     public List<OrderCommodityLogic> commodityList; // 订单商品集
 
-    public String status;     // 订单状态
-
-    public String orderAmount; // 含有商品总数量
 
     public OrderLogic() {
-    }
-
-    public OrderLogic(String orderId, String shopId, String shopName, String shopAddress, String buyerName, String buyerPhone, String receiveAddress, String createTime, String sendTime, String receivedTim, List<OrderCommodityLogic> commodityList, String status, String orderAmount) {
-        this.orderId = orderId;
-        this.shopId = shopId;
-        this.shopName = shopName;
-        this.shopAddress = shopAddress;
-        this.buyerName = buyerName;
-        this.buyerPhone = buyerPhone;
-        this.receiveAddress = receiveAddress;
-        this.createTime = createTime;
-        this.sendTime = sendTime;
-        this.receivedTim = receivedTim;
-        this.commodityList = commodityList;
-        this.status = status;
-        this.orderAmount = orderAmount;
     }
 
     public String getOrderId() {
@@ -57,6 +78,22 @@ public class OrderLogic {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getShopId() {
@@ -83,20 +120,36 @@ public class OrderLogic {
         this.shopAddress = shopAddress;
     }
 
-    public String getBuyerName() {
-        return buyerName;
+    public String getBuyerId() {
+        return buyerId;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
     }
 
-    public String getBuyerPhone() {
-        return buyerPhone;
+    public String getBuyerAddressId() {
+        return buyerAddressId;
     }
 
-    public void setBuyerPhone(String buyerPhone) {
-        this.buyerPhone = buyerPhone;
+    public void setBuyerAddressId(String buyerAddressId) {
+        this.buyerAddressId = buyerAddressId;
+    }
+
+    public String getReceiveName() {
+        return receiveName;
+    }
+
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName;
+    }
+
+    public String getReceivePhone() {
+        return receivePhone;
+    }
+
+    public void setReceivePhone(String receivePhone) {
+        this.receivePhone = receivePhone;
     }
 
     public String getReceiveAddress() {
@@ -107,28 +160,76 @@ public class OrderLogic {
         this.receiveAddress = receiveAddress;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getActivityId() {
+        return activityId;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setActivityId(String activityId) {
+        this.activityId = activityId;
     }
 
-    public String getSendTime() {
-        return sendTime;
+    public String getCouponId() {
+        return couponId;
     }
 
-    public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
+    public void setCouponId(String couponId) {
+        this.couponId = couponId;
     }
 
-    public String getReceivedTim() {
-        return receivedTim;
+    public String getPromotionMoney() {
+        return promotionMoney;
     }
 
-    public void setReceivedTim(String receivedTim) {
-        this.receivedTim = receivedTim;
+    public void setPromotionMoney(String promotionMoney) {
+        this.promotionMoney = promotionMoney;
+    }
+
+    public String getOrderPaymentId() {
+        return orderPaymentId;
+    }
+
+    public void setOrderPaymentId(String orderPaymentId) {
+        this.orderPaymentId = orderPaymentId;
+    }
+
+    public String getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(String payMethod) {
+        this.payMethod = payMethod;
+    }
+
+    public String getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(String payStatus) {
+        this.payStatus = payStatus;
+    }
+
+    public String getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(String totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+
+    public String getPaidMoney() {
+        return paidMoney;
+    }
+
+    public void setPaidMoney(String paidMoney) {
+        this.paidMoney = paidMoney;
+    }
+
+    public String getPaidTime() {
+        return paidTime;
+    }
+
+    public void setPaidTime(String paidTime) {
+        this.paidTime = paidTime;
     }
 
     public List<OrderCommodityLogic> getCommodityList() {
@@ -139,38 +240,30 @@ public class OrderLogic {
         this.commodityList = commodityList;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(String orderAmount) {
-        this.orderAmount = orderAmount;
-    }
-
     @Override
     public String toString() {
         return "OrderLogic{" +
                 "orderId='" + orderId + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", status='" + status + '\'' +
                 ", shopId='" + shopId + '\'' +
                 ", shopName='" + shopName + '\'' +
                 ", shopAddress='" + shopAddress + '\'' +
-                ", buyerName='" + buyerName + '\'' +
-                ", buyerPhone='" + buyerPhone + '\'' +
+                ", buyerId='" + buyerId + '\'' +
+                ", buyerAddressId='" + buyerAddressId + '\'' +
+                ", receiveName='" + receiveName + '\'' +
+                ", receivePhone='" + receivePhone + '\'' +
                 ", receiveAddress='" + receiveAddress + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", sendTime='" + sendTime + '\'' +
-                ", receivedTim='" + receivedTim + '\'' +
+                ", activityId='" + activityId + '\'' +
+                ", couponId='" + couponId + '\'' +
+                ", promotionMoney='" + promotionMoney + '\'' +
+                ", orderPaymentId='" + orderPaymentId + '\'' +
+                ", payMethod='" + payMethod + '\'' +
+                ", payStatus='" + payStatus + '\'' +
+                ", totalMoney='" + totalMoney + '\'' +
+                ", paidMoney='" + paidMoney + '\'' +
+                ", paidTime='" + paidTime + '\'' +
                 ", commodityList=" + commodityList +
-                ", status='" + status + '\'' +
-                ", orderAmount='" + orderAmount + '\'' +
                 '}';
     }
 }

@@ -2,7 +2,6 @@ package tmall.model.entityDao.daoImpl;
 
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
-import tmall.model.entity.ReceiveInfo;
 import tmall.model.entityDao.daoInterface.ReceiveInfoDao;
 
 import java.util.ArrayList;

@@ -1,8 +1,5 @@
 package tmall.model.entityDao.daoInterface;
 
-import org.dom4j.io.SAXReader;
-import tmall.model.entity.ReceiveInfo;
-
 import java.util.List;
 
 public interface ReceiveInfoDao {

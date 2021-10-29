@@ -87,11 +87,11 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
      * @param commodityId id
      */
     @Override
-    public void deleteOne(String commodityId) {
+    public void deleteOne(String buyerId, String commodityId) {
         List<ShoppingCart> init = shoppingCartXMLContext.init();
         shoppingCartXMLContext.deleteAll();
         for (ShoppingCart cart : init) {
-            if(!cart.getCommodityId().equals(commodityId)){
+            if(!(cart.getCommodityId().equals(commodityId) && cart.getBuyerId().equals(buyerId))){
                 shoppingCartXMLContext.add(cart);
             }
         }
@@ -105,10 +105,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
      * @param newAmount   商品数量
      */
     @Override
-    public void updateCommodityAmount(String commodityId, String newAmount) {
+    public void updateCommodityAmount(String buyerId, String commodityId, String newAmount) {
         List<ShoppingCart> init = shoppingCartXMLContext.init();
         for (ShoppingCart cart : init) {
-            if(cart.getCommodityId().equals(commodityId)){
+            if(cart.getCommodityId().equals(commodityId) && cart.getBuyerId().equals(buyerId)){
                 cart.setAmount(newAmount);
                 shoppingCartXMLContext.add(cart);
                 return;
