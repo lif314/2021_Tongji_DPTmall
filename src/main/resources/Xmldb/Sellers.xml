@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Sellers>
+<Sellers> 
+  <Seller> 
+    <sellerId>b92bce8f-6d04-44c3-a943-a2f09277e8e3</sellerId>  
+    <password>llf</password>  
+    <name>123456</name>  
+    <idNumber>53032219919111121</idNumber>  
+    <nickname>FlyWeight</nickname>  
+    <phone>1323232422423</phone> 
+  </Seller>  
   <Seller>
-    <sellerId>193774ce-dc0f-4805-832a-61ec2bd8a8a8</sellerId>
-    <password>456</password>
-    <name>456</name>
-    <idNumber>789</idNumber>
-    <nickname>12'</nickname>
-    <phone>789</phone>
+    <sellerId>83540ad1-c858-48e2-8717-0b9c5789bc27</sellerId>
+    <password>123456</password>
+    <name>lza</name>
+    <idNumber>12131433232</idNumber>
+    <nickname>Strange</nickname>
+    <phone>15678900876</phone>
   </Seller>
 </Sellers>
