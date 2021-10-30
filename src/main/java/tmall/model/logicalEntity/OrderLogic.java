@@ -70,6 +70,8 @@ public class OrderLogic {
 
 
     public OrderLogic() {
+        this.activityId = "";
+        this.couponId = "";
     }
 
     public String getOrderId() {

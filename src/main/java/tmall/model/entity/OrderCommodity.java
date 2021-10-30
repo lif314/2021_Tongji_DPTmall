@@ -17,7 +17,7 @@ public class OrderCommodity {
     public OrderCommodity() {
     }
 
-    public OrderCommodity(String orderId, String commodityId, String status, String amount) {
+    public OrderCommodity(String orderId, String commodityId, String amount) {
         this.orderId = orderId;
         this.commodityId = commodityId;
         this.amount = amount;
