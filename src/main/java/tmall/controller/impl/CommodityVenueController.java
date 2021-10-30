@@ -20,7 +20,6 @@ import java.util.List;
  * @description: 商品会场控制器。由此进入不同商店（按商店分）
  */
 public class CommodityVenueController extends CommodityController {
-    private final XMLContext<Commodity> context = new ProxyXmlContext<>(Commodity.class);
     
     /** 
      * @author Strange
