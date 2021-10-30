@@ -1,5 +1,6 @@
 package tmall.controller;
 
-public abstract class Controller {
-    public abstract Object[] execute(Object...args);
+public  class Controller {
+    public Object[] execute(Object...args){return null;};
+
 }

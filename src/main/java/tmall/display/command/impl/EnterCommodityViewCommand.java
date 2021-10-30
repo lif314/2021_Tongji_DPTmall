@@ -1,5 +1,7 @@
 package tmall.display.command.impl;
 
+import tmall.controller.impl.CommodityDisplayController;
+import tmall.controller.impl.CommodityVenueController;
 import tmall.display.command.Command;
 
 public class EnterCommodityViewCommand extends Command {
@@ -7,6 +9,7 @@ public class EnterCommodityViewCommand extends Command {
 
     private EnterCommodityViewCommand() {
         super.setCommandName("EnterCommodityViewCommand");
+        super.addController(new CommodityDisplayController());
     }
 
     /**
@@ -22,7 +25,9 @@ public class EnterCommodityViewCommand extends Command {
 
     @Override
     public Object[] execute(Object... args) {
-        System.out.println("EnterCommodityViewCommand被调用了");
+        if (super.getConcreteController() instanceof CommodityDisplayController){
+            return ((CommodityDisplayController)super.getConcreteController()).commodityDetailDisplay((String) args[0]);
+        }
         return null;
     }
 }

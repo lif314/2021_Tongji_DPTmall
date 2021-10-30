@@ -5,7 +5,10 @@ import tmall.display.view.View;
 public class CommodityView extends View {
     @Override
     public Object show(Object... args) {
-        System.out.println("CommodityView被调用！");
+        for (Object o:args
+        ) {
+            System.out.println(o);
+        }
         return null;
     }
 }

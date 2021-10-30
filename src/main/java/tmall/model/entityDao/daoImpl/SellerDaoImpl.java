@@ -74,6 +74,11 @@ public class SellerDaoImpl implements SellerDao {
         return sellerXMLContext.init();
     }
 
+    @Override
+    public Seller getBySellerId(String sellerId) {
+        return sellerXMLContext.findById(sellerId);
+    }
+
     /**
      * 注销卖家
      *

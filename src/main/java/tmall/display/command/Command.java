@@ -42,4 +42,12 @@ public abstract class Command {
             return null;
         }
     }
+
+    public Controller getConcreteController() {
+        return concreteController;
+    }
+
+    public void setConcreteController(Controller concreteController) {
+        this.concreteController = concreteController;
+    }
 }

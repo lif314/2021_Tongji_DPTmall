@@ -25,7 +25,7 @@ public class CommodityVenueController extends CommodityController {
     /** 
      * @author Strange
      * @date: 2021/10/27 8:39
-     * @description: 商品会场展示
+     * @description: 商品会场展示 √
      * @param: args
      * @return: 字符串数组
      */ 
@@ -43,7 +43,7 @@ public class CommodityVenueController extends CommodityController {
     /**
      * @author Strange
      * @date: 2021/10/27 8:45
-     * @description: 在一个卖家展示所有店铺
+     * @description: 在一个卖家展示所有店铺 √
      * @param:
      * @return:
      */
@@ -57,7 +57,7 @@ public class CommodityVenueController extends CommodityController {
     /**
      * @author Strange
      * @date: 2021/10/27 0:05
-     * @description: 商品详情展示
+     * @description: 商品详情展示 √
      * @param: args
      * @return: 一个商品对象（数组仅有一个元素）
      */

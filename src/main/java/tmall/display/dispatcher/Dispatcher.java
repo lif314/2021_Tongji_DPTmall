@@ -2,9 +2,7 @@ package tmall.display.dispatcher;
 
 
 import tmall.display.view.View;
-import tmall.display.view.impl.CommodityView;
-import tmall.display.view.impl.InstructionView;
-import tmall.display.view.impl.LoginView;
+import tmall.display.view.impl.*;
 
 import java.util.HashMap;
 
@@ -28,9 +26,15 @@ public class Dispatcher {
         InstructionView instructionView = new InstructionView();
         LoginView loginView = new LoginView();
         CommodityView commodityView = new CommodityView();
+        ShopView shopView = new ShopView();
+        CommodityDivisionView commodityDivisionView = new CommodityDivisionView();
+        DivisionView divisionView = new DivisionView();
         this.addView("CommodityView",commodityView);
+        this.addView("CommodityDivisionView",commodityDivisionView);
         this.addView("LoginView",loginView);
         this.addView("InstructionView", instructionView);
+        this.addView("ShopView",shopView);
+        this.addView("DivisionView",divisionView);
     }
 
     /**

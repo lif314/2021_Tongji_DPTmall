@@ -37,6 +37,13 @@ public interface SellerDao {
     List<Seller> getAll();
 
     /**
+     * 获取卖家信息
+     * @param sellerId id
+     * @return
+     */
+    Seller getBySellerId(String sellerId);
+
+    /**
      * 注销卖家
      * @param sellerId id
      */

@@ -23,7 +23,7 @@ public class CommodityDisplayController extends CommodityController{
     /**
      * @author Strange
      * @date: 2021/10/26 23:42
-     * @description: 商品分区展示
+     * @description: 商品分区展示 √
      * @param: args
      * @return: 字符串数组
      */
@@ -50,11 +50,12 @@ public class CommodityDisplayController extends CommodityController{
      * @param: args
      * @return: 数组
      */
-    public Object[] commodityDisplayInDivision(String divisionId) {
+    public Object[] commodityDisplayInDivision(String divisionName) {
         List<Object> commodityDisplayList = new ArrayList<>();
 
         CommodityDao commodityDao = new CommodityDaoImpl();
-        List<Commodity> commodityList = commodityDao.getAllByCategory(divisionId);
+        List<Commodity> commodityList = commodityDao.getAllByCategory(divisionName);
+        System.out.println(commodityList);
 
 //        List<Commodity> commodityList = context.findByDivisionId(divisionId);
         //使用访问者模式，商品接受买家访问（意味着买家具有访问权限）
@@ -70,7 +71,7 @@ public class CommodityDisplayController extends CommodityController{
     /**
      * @author Strange
      * @date: 2021/10/27 0:05
-     * @description: 商品详情展示
+     * @description: 商品详情展示 √
      * @param: args
      * @return: 一个商品对象（数组仅有一个元素）
      */
