@@ -1,12 +1,14 @@
 package tmall.controller.orderController;
 
 import tmall.XMLRepository.util.Nullable;
+import tmall.controller.Controller;
 import tmall.model.entity.*;
 import tmall.model.entityDao.daoImpl.*;
 import tmall.model.entityDao.daoInterface.*;
 import tmall.model.logicalEntity.OrderCommodityLogic;
 import tmall.model.logicalEntity.OrderLogic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +16,7 @@ import java.util.UUID;
 /**
  * 购物中心：购物流程
  */
-public class ShoppingCenter {
+public class ShoppingCenter extends Controller {
 
     /**
      * 购物流程
@@ -25,79 +27,71 @@ public class ShoppingCenter {
      *      [5] 选择支付信息
      *      [6] 查看订单详情
      */
+    private static final List<OrderCommodityLogic> orderCommodityLogics = new ArrayList<>();
 
-    // 商品数据访问对象
-    private final CommodityDao commodityDao = new CommodityDaoImpl();
-    // 店铺数据访问对象
-    private final ShopDao shopDao = new ShopDaoImpl();
-    // 活动数据访问对象
-    private final ActivityDao activityDao = new ActivityDaoImpl();
-    // 优惠券数据访问对象
-    private final CouponDao couponDao = new CouponDaoImpl();
+    private static Activity activity;
 
-    private final BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
+    private static String shopId;
 
-    private List<OrderCommodityLogic> orderCommodityLogics;
+    private static String buyerId;
 
-    private Activity activity;
+    private static double totalMoney = 0.0;
 
+    private static double paidMoney = 0.0;
 
-    private String shopId;
-
-    private String buyerId;
-
-    private double totalMoney = 0.0;
-
-    private double paidMoney = 0.0;
-
-    private Coupon coupon;
+    private  Coupon coupon;
 
     private BuyerAddress buyerAddress;
 
     private OrderPayment orderPayment;
 
     /**
-     * 首页展示所有商品
+     * 首页展示所有商品 √
      * @return list commodity
      */
     public List<Commodity> displayCommodities(){
+        CommodityDao commodityDao = new CommodityDaoImpl();
         return commodityDao.getAll();
     }
 
     /**
      * 展示商品详情
-     * @param commodityId id
+     * @param commodityId id √
      * @return commodity
      */
     public Commodity displayCommodityDetail(String commodityId){
+        CommodityDao commodityDao = new CommodityDaoImpl();
         return commodityDao.getByCommodityId(commodityId);
     }
 
     /**
      * 根据商品详情，进入店铺中所有商品
-     * @param commodityId id
+     * @param commodityId id √
      * @return shop commodities
      */
     public List<Commodity> displayShopCommodities(String commodityId){
+        CommodityDao commodityDao = new CommodityDaoImpl();
         Commodity commodity = commodityDao.getByCommodityId(commodityId);
         this.shopId = commodity.getShopId();
-        return commodityDao.getAllByShopId(commodity.getShopId());
+        return  commodityDao.getAllByShopId(commodity.getShopId());
     }
 
     /**
      * 选择商品，需多次调用
-     * @param commodityId id
+     * @param commodityId id √
      * @param amount 数量
      */
     public void selectCommodity(String commodityId, String amount){
+        CommodityDao commodityDao = new CommodityDaoImpl();
         Commodity commodity = commodityDao.getByCommodityId(commodityId);
         OrderCommodityLogic orderCommodityLogic = new OrderCommodityLogic(commodity.getCommodityId(), commodity.getCname(), commodity.getPrice(), amount);
         orderCommodityLogics.add(orderCommodityLogic);
+        System.out.println(orderCommodityLogics);
     }
 
     /**
      * 计算总价
-     * @return totalMoney
+     * @return totalMoney √
      */
     public String calTotalMoney(){
         for (OrderCommodityLogic c : orderCommodityLogics) {
@@ -108,21 +102,29 @@ public class ShoppingCenter {
 
     /**
      * 返回所有活动
-     * @return list activities
+     * @return list activities √
      */
     public List<Activity> displayActivities(){
+        ActivityDao activityDao = new ActivityDaoImpl();
         return activityDao.getAll();
     }
 
+    /**
+     * 返回当前店铺的所有优惠券
+     * @return List<Coupon> √
+     */
     public List<Coupon> displayShopCoupon(){
+        CouponDao couponDao = new CouponDaoImpl();
         return couponDao.getAllByShopId(this.shopId);
     }
 
     public void selectPromotions(@Nullable String activityId,@Nullable String couponId){
         if(activityId != null){
+            ActivityDao activityDao = new ActivityDaoImpl();
             this.activity = activityDao.getById(activityId);
         }
         if(couponId != null){
+            CouponDao couponDao = new CouponDaoImpl();
             this.coupon = couponDao.getById(couponId);
         }
     }
@@ -151,6 +153,7 @@ public class ShoppingCenter {
      * @return list buyerAddress
      */
     public List<BuyerAddress> displayBuyerAddress(String buyerId){
+        BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
         this.buyerId = buyerId;
         return buyerAddressDao.getBuyerAddresses(buyerId);
     }
@@ -160,6 +163,7 @@ public class ShoppingCenter {
      * @param buyerAddressId id
      */
     public void selectBuyerAddress(String buyerAddressId){
+        BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
         this.buyerAddress = buyerAddressDao.getById(buyerAddressId);
     }
 

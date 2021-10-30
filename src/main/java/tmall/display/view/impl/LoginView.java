@@ -4,8 +4,6 @@ package tmall.display.view.impl;
 
 import tmall.display.view.View;
 
-import java.util.Scanner;
-
 public class LoginView extends View {
 
     @Override

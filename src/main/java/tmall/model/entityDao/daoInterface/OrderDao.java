@@ -36,4 +36,6 @@ public interface OrderDao {
      * @return 订单详情
      */
     OrderLogic getOrderDetail(String orderId);
+
+    List<Order> getAllByShopId(String shopId);
 }

@@ -7,7 +7,7 @@ public class LoginCommand extends Command {
     private static LoginCommand loginOrder;
 
     private LoginCommand() {
-        addController(new SellerController());
+//        addController(new SellerController());
         super.setCommandName("LoginView");
     }
 

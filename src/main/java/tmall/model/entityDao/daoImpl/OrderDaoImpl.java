@@ -95,4 +95,9 @@ public class OrderDaoImpl implements OrderDao {
                 .setOrderPayment()            // 支付方式
                 .display();                   // 集成
     }
+
+    @Override
+    public List<Order> getAllByShopId(String shopId) {
+        return null;
+    }
 }

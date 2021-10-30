@@ -2,7 +2,6 @@ package tmall.controller.impl;
 
 import tmall.XMLRepository.util.Nullable;
 import tmall.controller.CommodityController;
-import tmall.controller.orderController.OrderBuilder;
 import tmall.model.entity.*;
 import tmall.model.entityDao.daoImpl.*;
 import tmall.model.entityDao.daoInterface.*;
@@ -22,16 +21,15 @@ import java.util.UUID;
 public class PurchaseController extends CommodityController {
 
     // 商品数据访问对象
-    CommodityDao commodityDao = new CommodityDaoImpl();
+    private final CommodityDao commodityDao = new CommodityDaoImpl();
     // 店铺数据访问对象
-    ShopDao shopDao = new ShopDaoImpl();
+    private final ShopDao shopDao = new ShopDaoImpl();
     // 活动数据访问对象
-    ActivityDao activityDao = new ActivityDaoImpl();
+    private final ActivityDao activityDao = new ActivityDaoImpl();
     // 优惠券数据访问对象
-    CouponDao couponDao = new CouponDaoImpl();
+    private final CouponDao couponDao = new CouponDaoImpl();
 
-    BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
-
+    private final BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
 
     private List<OrderCommodityLogic> orderCommodityLogics;
 
@@ -56,12 +54,14 @@ public class PurchaseController extends CommodityController {
     }
 
 
+
     public String searchCommodity(String name) {
 
         Commodity commodity = CommodityFactory.getCommodity(name);
 
         return commodity.getCname();
     }
+
 
     @Override
     public Object[] commodityDetailDisplay(String name) {
@@ -73,6 +73,7 @@ public class PurchaseController extends CommodityController {
 
         return commodityDetailList.toArray();
     }
+
 
     public OrderLogic purchase(String name) {
 

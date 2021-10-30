@@ -10,7 +10,7 @@ public abstract class VerbExpression extends Expression {
             String viewOrFieldName = (String) args[0];
             return new String[]{getCommandName(viewOrFieldName)};
         } else {
-            throw new Exception("解释动词出错，请输入相关的页面名或属性名！");
+            return new String[]{getCommandName("")};
         }
     }
 

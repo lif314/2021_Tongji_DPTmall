@@ -10,6 +10,7 @@ public class NounExpression extends Expression {
 
     public NounExpression() {
         variables = new HashMap<>();
+        variables.put("A","Activity");
         variables.put("C", "Commodity");
         variables.put("D", "Division");
         variables.put("S", "Shop");
@@ -19,17 +20,18 @@ public class NounExpression extends Expression {
 
     @Override
     public String[] interpret(Object... args) throws Exception {
-        if (args[0] != null && args[0] instanceof String && (((String) args[0]).endsWith("Page") || ((String) args[0]).endsWith("Field"))) {
+        if (args[0] != null && args[0] instanceof String) {
             String viewOrFieldName = (String) args[0];
             String viewName = null;
             String returnArgs = null;
-            if (viewOrFieldName.endsWith("Page"))
-                viewName = viewOrFieldName.substring(0, viewOrFieldName.length() - 4) + "View";
-            else if (viewName.endsWith("Field"))
-                viewName = viewOrFieldName.substring(0, viewOrFieldName.length() - 5) + "View";
-            if (viewOrFieldName.startsWith("V")) {
-                returnArgs = viewOrFieldName.substring(2, viewOrFieldName.length() - 4);
-                viewName = variables.get(viewOrFieldName.substring(1, 2)) + "View";
+            if (viewOrFieldName.endsWith("Page")){
+                if (viewOrFieldName.startsWith("V")){
+                    returnArgs=viewOrFieldName.substring(2,viewOrFieldName.length()-4);
+                    viewName = variables.get(viewOrFieldName.substring(1,2)) +"View";
+                } else
+                    viewName=viewOrFieldName.substring(0,viewOrFieldName.length()-4)+"View";
+            } else {
+                returnArgs = viewOrFieldName;
             }
             return new String[]{viewName, returnArgs};
         } else {

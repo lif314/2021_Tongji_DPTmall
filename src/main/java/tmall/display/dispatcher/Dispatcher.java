@@ -29,12 +29,16 @@ public class Dispatcher {
         ShopView shopView = new ShopView();
         CommodityDivisionView commodityDivisionView = new CommodityDivisionView();
         DivisionView divisionView = new DivisionView();
+        HomeView homeView = new HomeView();
+        ActivityView activityView = new ActivityView();
         this.addView("CommodityView",commodityView);
         this.addView("CommodityDivisionView",commodityDivisionView);
         this.addView("LoginView",loginView);
         this.addView("InstructionView", instructionView);
         this.addView("ShopView",shopView);
         this.addView("DivisionView",divisionView);
+        this.addView("HomeView",homeView);
+        this.addView("ActivityView",activityView);
     }
 
     /**
