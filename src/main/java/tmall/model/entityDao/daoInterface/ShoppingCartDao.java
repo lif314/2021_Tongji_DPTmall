@@ -39,13 +39,13 @@ public interface ShoppingCartDao {
      * 清除购物车中一件商品
      * @param commodityId id
      */
-    void deleteOne(String commodityId);
+    void deleteOne(String buyerId ,String commodityId);
 
     /**
      * 更改购物车中商品数量
      * @param commodityId 商品id
      * @param newAmount 商品数量
      */
-    void updateCommodityAmount(String commodityId ,String newAmount);
+    void updateCommodityAmount(String buyerId, String commodityId ,String newAmount);
 
 }

@@ -6,31 +6,28 @@ package tmall.model.entity;
 
 public class Order {
 
-    private String orderId;  // 订单Id
+    private String orderId;          // 订单Id
 
-    private String buyerId;  // 买家Id
+    private String buyerId;          // 买家Id --- 订单用户信息
 
-    private String receiveInfoId; // 收获信息Id
+    private String orderPaymentId;     // 订单支付信息
 
-    private String shopId;    // 店铺Id
+    private String buyerAddressId;     // 订单收获信息
 
-    public String createDate;  // 创建时间
+    public String createTime;          // 创建时间
 
-    public String status;     // 订单状态
-
-    public String orderAmount; // 含有商品数量
+    public String status;              // 订单状态d
 
     public Order() {
     }
 
-    public Order(String orderId, String buyerId, String receiveInfoId, String shopId, String createDate, String status, String orderAmount) {
+    public Order(String orderId, String buyerId, String orderDeliveryId, String orderPaymentId, String buyerAddressId, String createDate, String status) {
         this.orderId = orderId;
         this.buyerId = buyerId;
-        this.receiveInfoId = receiveInfoId;
-        this.shopId = shopId;
-        this.createDate = createDate;
+        this.orderPaymentId = orderPaymentId;
+        this.buyerAddressId = buyerAddressId;
+        this.createTime = createDate;
         this.status = status;
-        this.orderAmount = orderAmount;
     }
 
     public String getOrderId() {
@@ -49,28 +46,28 @@ public class Order {
         this.buyerId = buyerId;
     }
 
-    public String getReceiveInfoId() {
-        return receiveInfoId;
+    public String getOrderPaymentId() {
+        return orderPaymentId;
     }
 
-    public void setReceiveInfoId(String receiveInfoId) {
-        this.receiveInfoId = receiveInfoId;
+    public void setOrderPaymentId(String orderPaymentId) {
+        this.orderPaymentId = orderPaymentId;
     }
 
-    public String getShopId() {
-        return shopId;
+    public String getBuyerAddressId() {
+        return buyerAddressId;
     }
 
-    public void setShopId(String shopId) {
-        this.shopId = shopId;
+    public void setBuyerAddressId(String buyerAddressId) {
+        this.buyerAddressId = buyerAddressId;
     }
 
-    public String getCreateDate() {
-        return createDate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getStatus() {
@@ -79,14 +76,6 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(String orderAmount) {
-        this.orderAmount = orderAmount;
     }
 }
 

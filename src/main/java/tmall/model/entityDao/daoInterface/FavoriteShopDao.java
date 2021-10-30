@@ -39,5 +39,5 @@ public interface FavoriteShopDao {
      * 取消关注
      * @param shopId id
      */
-    void cancelShopFollow(String shopId);
+    void cancelShopFollow(String shopId, String buyerId);
 }

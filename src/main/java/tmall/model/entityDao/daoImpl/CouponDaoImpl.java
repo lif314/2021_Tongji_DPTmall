@@ -5,6 +5,7 @@ import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.Coupon;
 import tmall.model.entityDao.daoInterface.CouponDao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,9 +25,9 @@ public class CouponDaoImpl implements CouponDao {
      * @return a coupon
      */
     @Override
-    public Coupon create(String startTime, String endTime, String full, String minus) {
-        String activityId = UUID.randomUUID().toString();
-        coupon = new Coupon(activityId, startTime, endTime, full, minus);
+    public Coupon create(String shopId , String startTime, String endTime, String full, String minus) {
+        String couponId = UUID.randomUUID().toString();
+        coupon = new Coupon(couponId, shopId, startTime, endTime, full, minus);
         return coupon;
     }
 
@@ -67,5 +68,37 @@ public class CouponDaoImpl implements CouponDao {
     @Override
     public void deleteById(String couponId) {
         couponXMLContext.deleteById(couponId);
+    }
+
+    /**
+     * 获取店铺所有优惠券
+     *
+     * @param shopId id
+     */
+    @Override
+    public List<Coupon> getAllByShopId(String shopId) {
+        List<Coupon> init = couponXMLContext.init();
+        List<Coupon> couponList = new ArrayList<>();
+        for (Coupon c : init) {
+            if(c.getShopId().equals(shopId))
+                couponList.add(c);
+        }
+        return couponList;
+    }
+
+    /**
+     * 删除店铺所有优惠券
+     *
+     * @param shopId id
+     */
+    @Override
+    public void deleteByShopId(String shopId) {
+        List<Coupon> init = couponXMLContext.init();
+        couponXMLContext.deleteAll();
+        for (Coupon c : init) {
+            if(! c.getShopId().equals(shopId)){
+                couponXMLContext.add(c);
+            }
+        }
     }
 }

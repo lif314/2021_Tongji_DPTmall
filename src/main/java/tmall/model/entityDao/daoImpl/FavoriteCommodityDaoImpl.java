@@ -75,11 +75,11 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
      * @param commodityId id
      */
     @Override
-    public void cancelFollow(String commodityId) {
+    public void cancelFollow(String buyerId , String commodityId) {
         List<FollowCommodity> init = followCommodityXMLContext.init();
         followCommodityXMLContext.deleteAll();
         for (FollowCommodity fc : init) {
-            if(! fc.getCommodityId().equals(commodityId)){
+            if(!(fc.getCommodityId().equals(commodityId) && fc.getBuyerId().equals(buyerId)) ){
                 followCommodityXMLContext.add(fc);
             }
         }
@@ -89,7 +89,13 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
      * 清除收藏夹
      */
     @Override
-    public void deleteAll() {
+    public void deleteByBuyerId(String buyerId) {
+        List<FollowCommodity> init = followCommodityXMLContext.init();
         followCommodityXMLContext.deleteAll();
+        for (FollowCommodity c : init) {
+            if(!c.getBuyerId().equals(buyerId)){
+                followCommodityXMLContext.add(c);
+            }
+        }
     }
 }

@@ -33,6 +33,16 @@ public class DaoTest {
             System.out.println(commodity1);
         }
 
-//        commodityDao.deleteById(commodity.getCommodityId());
+        commodityDao.deleteById(commodity.getCommodityId());
+
+//        Order order = OrderBuilder.newOrderBuilder()
+//                .initOrder("buyerId")
+//                .setOrderAddress("receiveId")
+//                .setPromotion()
+//                .setPromotion()
+//                .setOrderCommodities()
+//                .setOrderPayment()
+//                .build();
+
     }
 }

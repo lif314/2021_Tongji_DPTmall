@@ -115,11 +115,11 @@ public class Commodity {
      * @return:
      */
     public List<String> acceptGeneralProperty(CommodityVisitor commodityVisitor) {
-        return null;
+        return commodityVisitor.visitGeneralProperty(this);
     }
 
     public List<String> acceptSpecialProperty(CommodityVisitor commodityVisitor) {
-        return null;
+        return commodityVisitor.visitSpecialProperty(this);
     }
 
     public List<String> getGeneralProperty() {

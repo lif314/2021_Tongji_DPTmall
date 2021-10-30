@@ -8,7 +8,9 @@ package tmall.model.entity;
 
 public class Coupon {
 
-    public String couponId;  // 优惠券Id
+    private String couponId;  // 优惠券Id
+
+    private String shopId;  // 店铺id
 
     public String startTime; // 起始时间
 
@@ -21,8 +23,9 @@ public class Coupon {
     public Coupon() {
     }
 
-    public Coupon(String couponId, String startTime, String endTime, String full, String minus) {
+    public Coupon(String couponId, String shopId, String startTime, String endTime, String full, String minus) {
         this.couponId = couponId;
+        this.shopId = shopId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.full = full;
@@ -35,6 +38,14 @@ public class Coupon {
 
     public void setCouponId(String couponId) {
         this.couponId = couponId;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 
     public String getStartTime() {
@@ -73,6 +84,7 @@ public class Coupon {
     public String toString() {
         return "Coupon{" +
                 "couponId='" + couponId + '\'' +
+                ", shopId='" + shopId + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", full='" + full + '\'' +

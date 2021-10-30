@@ -1,7 +1,5 @@
 package tmall.controller.impl;
 
-import tmall.XMLRepository.ProxyXmlContext;
-import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.*;
 import tmall.controller.*;
 import tmall.model.entityDao.daoImpl.CommodityDaoImpl;
@@ -18,12 +16,12 @@ import java.util.List;
  */
 public class CommodityDisplayController extends CommodityController{
 
-    private final XMLContext<Commodity> context = new ProxyXmlContext<>(Commodity.class);
+    CommodityDao commodityDao = new CommodityDaoImpl();
 
     /**
      * @author Strange
      * @date: 2021/10/26 23:42
-     * @description: 商品分区展示 √
+     * @description: 商品分区展示
      * @param: args
      * @return: 字符串数组
      */
@@ -53,9 +51,7 @@ public class CommodityDisplayController extends CommodityController{
     public Object[] commodityDisplayInDivision(String divisionName) {
         List<Object> commodityDisplayList = new ArrayList<>();
 
-        CommodityDao commodityDao = new CommodityDaoImpl();
         List<Commodity> commodityList = commodityDao.getAllByCategory(divisionName);
-        System.out.println(commodityList);
 
 //        List<Commodity> commodityList = context.findByDivisionId(divisionId);
         //使用访问者模式，商品接受买家访问（意味着买家具有访问权限）
@@ -71,14 +67,13 @@ public class CommodityDisplayController extends CommodityController{
     /**
      * @author Strange
      * @date: 2021/10/27 0:05
-     * @description: 商品详情展示 √
+     * @description: 商品详情展示
      * @param: args
      * @return: 一个商品对象（数组仅有一个元素）
      */
     @Override
     public Object[] commodityDetailDisplay(String commodityId) {
 
-        CommodityDao commodityDao = new CommodityDaoImpl();
         Commodity c = commodityDao.getByCommodityId(commodityId);
 
         //此列表只有一个商品对象（因为每次只能看一个商品详情）

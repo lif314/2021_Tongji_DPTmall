@@ -12,17 +12,14 @@ public class OrderCommodity {
 
     private String commodityId;
 
-    public String status;   // 商品状态
-
     public String amount;   // 同一商品的数量
 
     public OrderCommodity() {
     }
 
-    public OrderCommodity(String orderId, String commodityId, String status, String amount) {
+    public OrderCommodity(String orderId, String commodityId, String amount) {
         this.orderId = orderId;
         this.commodityId = commodityId;
-        this.status = status;
         this.amount = amount;
     }
 
@@ -42,14 +39,6 @@ public class OrderCommodity {
         this.commodityId = commodityId;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getAmount() {
         return amount;
     }
@@ -63,7 +52,6 @@ public class OrderCommodity {
         return "OrderCommodity{" +
                 "orderId='" + orderId + '\'' +
                 ", commodityId='" + commodityId + '\'' +
-                ", status='" + status + '\'' +
                 ", amount='" + amount + '\'' +
                 '}';
     }

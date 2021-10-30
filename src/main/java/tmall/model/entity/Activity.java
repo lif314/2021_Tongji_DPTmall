@@ -1,5 +1,7 @@
 package tmall.model.entity;
 
+import tmall.controller.impl.ShopController;
+
 /**
  * 活动实体表：全场打折
  * 说明：活动以打折的形式出现，优惠券以满多少减多少的形式出现
@@ -11,11 +13,11 @@ public class Activity {
 
     public String startTime;   // 起始时间
 
-    public String endTime;     // 中终止时间
+    public String endTime;     // 终止时间
 
-    public String activityName; // 活动名称
+    public String activityName;      // 活动名称
 
-    public String discount;    // 打折
+    public String discount;   // 打折
 
     public Activity() {
     }
@@ -68,6 +70,9 @@ public class Activity {
         this.discount = discount;
     }
 
+    /**
+     * @Author Sir Lancelot
+     */
     @Override
     public String toString() {
         return "Activity{" +
@@ -78,4 +83,5 @@ public class Activity {
                 ", discount='" + discount + '\'' +
                 '}';
     }
+
 }
