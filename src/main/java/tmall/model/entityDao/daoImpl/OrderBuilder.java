@@ -1,4 +1,4 @@
-package tmall.controller.orderController;
+package tmall.model.entityDao.daoImpl;
 
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
@@ -70,6 +70,14 @@ public class OrderBuilder {
         orderBuilder.order = new Order();
         orderBuilder.orderLogic = new OrderLogic();
         return orderBuilder;
+    }
+
+    public OrderBuilder initOrderLogic(Order order){
+        this.orderLogic.setOrderId(order.getOrderId());
+        this.orderLogic.setBuyerId(order.getBuyerId());
+        this.orderLogic.setCreateTime(order.getCreateTime());
+        this.orderLogic.setStatus(order.getStatus());
+        return this;
     }
 
     /**
@@ -145,14 +153,14 @@ public class OrderBuilder {
 
         if(activity != null){
             this.orderLogic.setActivityId(activity.getActivityId());
-            OrderPromotion orderPromotion = new OrderPromotion(this.order.getOrderId(), activity.getActivityId());
+            OrderPromotion orderPromotion = new OrderPromotion(this.order.getOrderId(), activity.getActivityId(), "activity");
             // 暂存
             orderPromotionList.add(orderPromotion);
         }
 
         if(coupon != null){
             this.orderLogic.setCouponId(coupon.getCouponId());
-            OrderPromotion orderPromotion = new OrderPromotion(this.order.getOrderId(),coupon.getCouponId());
+            OrderPromotion orderPromotion = new OrderPromotion(this.order.getOrderId(),coupon.getCouponId(), "coupon");
             // 暂存
             orderPromotionList.add(orderPromotion);
         }

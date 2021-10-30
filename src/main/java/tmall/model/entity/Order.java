@@ -16,7 +16,7 @@ public class Order {
 
     public String createTime;          // 创建时间
 
-    public String status;              // 订单状态
+    public String status;              // 订单状态d
 
     public Order() {
     }

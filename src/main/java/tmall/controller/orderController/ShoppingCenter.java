@@ -27,16 +27,15 @@ public class ShoppingCenter {
      */
 
     // 商品数据访问对象
-    CommodityDao commodityDao = new CommodityDaoImpl();
+    private final CommodityDao commodityDao = new CommodityDaoImpl();
     // 店铺数据访问对象
-    ShopDao shopDao = new ShopDaoImpl();
+    private final ShopDao shopDao = new ShopDaoImpl();
     // 活动数据访问对象
-    ActivityDao activityDao = new ActivityDaoImpl();
+    private final ActivityDao activityDao = new ActivityDaoImpl();
     // 优惠券数据访问对象
-    CouponDao couponDao = new CouponDaoImpl();
+    private final CouponDao couponDao = new CouponDaoImpl();
 
-    BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
-
+    private final BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
 
     private List<OrderCommodityLogic> orderCommodityLogics;
 

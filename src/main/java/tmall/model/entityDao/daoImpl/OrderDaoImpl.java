@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
-    
+
     // 订单上下文
     private final XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
 
@@ -27,6 +27,9 @@ public class OrderDaoImpl implements OrderDao {
     private final XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
 
     private final XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
+
+    // 买家收获地址信息
+    private final XMLContext<BuyerAddress> buyerAddressXMLContext = new ProxyXmlContext<>(BuyerAddress.class);
 
     /**
      * 更改订单状态
@@ -83,12 +86,13 @@ public class OrderDaoImpl implements OrderDao {
      */
     @Override
     public OrderLogic getOrderDetail(String orderId) {
-        // 返回对象
-        OrderLogic orderLogic = new OrderLogic();
-        // 订单对象
-        Order order = orderXMLContext.findById(orderId);
-
-
-        return orderLogic;
+        return OrderLogicBuilder
+                .getOrderBuilderInstance()    // 单例模式，获取示例
+                .initOrderLogicBuilder(orderId)  // 初始订单
+                .setOrderCommodities()        // 添加商品
+                .setOrderPromotions()         // 促销信息
+                .setOrderAddress()            // 地址信息
+                .setOrderPayment()            // 支付方式
+                .display();                   // 集成
     }
 }

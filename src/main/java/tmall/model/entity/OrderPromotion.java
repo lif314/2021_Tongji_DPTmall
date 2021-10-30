@@ -9,12 +9,15 @@ public class OrderPromotion {
 
     private String promotionId;  // 促销券id
 
+    private String type;     // 类别：Activity/Coupon
+
     public OrderPromotion() {
     }
 
-    public OrderPromotion(String orderId, String promotionId) {
+    public OrderPromotion(String orderId, String promotionId, String type) {
         this.orderId = orderId;
         this.promotionId = promotionId;
+        this.type = type;
     }
 
     public String getOrderId() {
@@ -33,11 +36,20 @@ public class OrderPromotion {
         this.promotionId = promotionId;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "OrderPromotion{" +
                 "orderId='" + orderId + '\'' +
                 ", promotionId='" + promotionId + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

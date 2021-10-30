@@ -1,7 +1,6 @@
 package tmall.display.command.impl;
 
 
-import tmall.controller.impl.SellerController;
 import tmall.display.command.Command;
 
 public class LoginCommand extends Command {

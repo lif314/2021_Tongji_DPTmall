@@ -5,6 +5,7 @@ import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.BuyerAddress;
 import tmall.model.entityDao.daoInterface.BuyerAddressDao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -66,11 +67,18 @@ public class BuyerAddressDaoImpl implements BuyerAddressDao {
 
     @Override
     public List<BuyerAddress> getBuyerAddresses(String buyerId) {
-        return null;
+        List<BuyerAddress> init = buyerAddressXMLContext.init();
+        List<BuyerAddress> buyerAddresses = new ArrayList<>();
+        for (BuyerAddress address : init) {
+            if(address.getBuyerId().equals(buyerId)){
+                buyerAddresses.add(address);
+            }
+        }
+        return buyerAddresses;
     }
 
     @Override
     public BuyerAddress getById(String buyerAddressId) {
-        return null;
+        return buyerAddressXMLContext.findById(buyerAddressId);
     }
 }
