@@ -1,85 +1,50 @@
 package tmall.model.entityDao.daoImpl;
 
-import tmall.model.entity.Order;
-import tmall.model.entity.OrderStatus;
+import tmall.XMLRepository.ProxyXmlContext;
+import tmall.XMLRepository.XMLContext;
+import tmall.model.entity.*;
 import tmall.model.entityDao.daoInterface.OrderDao;
 import tmall.model.logicalEntity.OrderLogic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
-    /**
-     * 根据order id删除订单
-     *
-     * @param orderId id
-     */
-    @Override
-    public void deleteByOrderId(String orderId) {
+    
+    // 订单上下文
+    private final XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
 
-    }
+    // 商品订单联系集数据库上下文
+    private final XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
 
-    /**
-     * 删除买家所有订单
-     *
-     * @param buyerId id
-     */
-    @Override
-    public void deleteAllByBuyerId(String buyerId) {
+    // 商品数据库上下文
+    private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
 
-    }
+    // 店铺数据库上下文
+    private final XMLContext<Shop> shopXMLContext = new ProxyXmlContext<>(Shop.class);
+
+    // 订单优惠
+    private final XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
+
+    private final XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
 
     /**
-     * 删除卖家所有订单
-     *
-     * @param sellerId id
-     */
-    @Override
-    public void deleteAllBySellerId(String sellerId) {
-
-    }
-
-    /**
-     * 删除买家已完成的订单
-     *
-     * @param buyerId id
-     */
-    @Override
-    public void deleteFinishOrder(String buyerId) {
-
-    }
-
-    /**
-     * 更改订单状体
+     * 更改订单状态
      *
      * @param orderId   订单Id
      * @param newStatus 最新状态
      */
     @Override
-    public void updateOrderStatus(String orderId, OrderStatus newStatus) {
-
-    }
-
-    /**
-     * 更新点订单中商品的状态
-     *
-     * @param orderId     订单id
-     * @param commodityId 商品id
-     * @param newStatus   最新状态
-     */
-    @Override
-    public void updateOrderCommodityStatus(String orderId, String commodityId, OrderStatus newStatus) {
-
-    }
-
-    /**
-     * 更新订单物流状态
-     *
-     * @param orderId   订单id
-     * @param newStatus 物流最新状态
-     */
-    @Override
-    public void updateOrderDeliveryStatus(String orderId, OrderStatus newStatus) {
-
+    public void updateOrderStatus(String orderId, String newStatus) {
+        List<Order> init = orderXMLContext.init();
+        orderXMLContext.deleteAll();
+        for (Order order : init) {
+            if(order.getOrderId().equals(orderId)){
+                order.setStatus(newStatus);
+                orderXMLContext.add(order);
+            }
+            orderXMLContext.add(order);
+        }
     }
 
     /**
@@ -90,18 +55,13 @@ public class OrderDaoImpl implements OrderDao {
      */
     @Override
     public List<Order> getAllByBuyerId(String buyerId) {
-        return null;
-    }
-
-    /**
-     * 获取店铺所有订单
-     *
-     * @param shopId id
-     * @return shop's orders
-     */
-    @Override
-    public List<Order> getAllByShopId(String shopId) {
-        return null;
+        List<Order> orderList = new ArrayList<>();
+        List<Order> init = orderXMLContext.init();
+        for (Order order : init) {
+            if(order.getBuyerId().equals(buyerId))
+                orderList.add(order);
+        }
+        return orderList;
     }
 
     /**
@@ -112,7 +72,7 @@ public class OrderDaoImpl implements OrderDao {
      */
     @Override
     public Order getOrderConcise(String orderId) {
-        return null;
+        return orderXMLContext.findById(orderId);
     }
 
     /**
@@ -123,6 +83,12 @@ public class OrderDaoImpl implements OrderDao {
      */
     @Override
     public OrderLogic getOrderDetail(String orderId) {
-        return null;
+        // 返回对象
+        OrderLogic orderLogic = new OrderLogic();
+        // 订单对象
+        Order order = orderXMLContext.findById(orderId);
+
+
+        return orderLogic;
     }
 }

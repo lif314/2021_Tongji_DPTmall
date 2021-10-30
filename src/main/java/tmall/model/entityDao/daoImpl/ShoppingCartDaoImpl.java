@@ -107,12 +107,12 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public void updateCommodityAmount(String buyerId, String commodityId, String newAmount) {
         List<ShoppingCart> init = shoppingCartXMLContext.init();
+        shoppingCartXMLContext.deleteAll();
         for (ShoppingCart cart : init) {
             if(cart.getCommodityId().equals(commodityId) && cart.getBuyerId().equals(buyerId)){
                 cart.setAmount(newAmount);
-                shoppingCartXMLContext.add(cart);
-                return;
             }
+            shoppingCartXMLContext.add(cart);
         }
     }
 

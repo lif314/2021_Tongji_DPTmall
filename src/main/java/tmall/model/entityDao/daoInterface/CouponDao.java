@@ -46,4 +46,10 @@ public interface CouponDao {
      * @param shopId id
      */
     List<Coupon> getAllByShopId(String shopId);
+
+    /**
+     * 删除店铺所有优惠券
+     * @param shopId id
+     */
+    void deleteByShopId(String shopId);
 }

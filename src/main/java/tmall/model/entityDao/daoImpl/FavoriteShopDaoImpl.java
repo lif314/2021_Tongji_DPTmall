@@ -84,11 +84,11 @@ public class FavoriteShopDaoImpl implements FavoriteShopDao {
      * @param shopId id
      */
     @Override
-    public void cancelShopFollow(String shopId) {
+    public void cancelShopFollow(String shopId, String buyerId) {
         List<FollowShop> init = followShopXMLContext.init();
         followShopXMLContext.deleteAll();
         for (FollowShop shop : init) {
-            if(! shop.getShopId().equals(shopId)){
+            if(!(shop.getShopId().equals(shopId) && shop.getBuyerId().equals(buyerId))){
                 followShopXMLContext.add(shop);
             }
         }

@@ -83,7 +83,22 @@ public class CouponDaoImpl implements CouponDao {
             if(c.getShopId().equals(shopId))
                 couponList.add(c);
         }
-
         return couponList;
+    }
+
+    /**
+     * 删除店铺所有优惠券
+     *
+     * @param shopId id
+     */
+    @Override
+    public void deleteByShopId(String shopId) {
+        List<Coupon> init = couponXMLContext.init();
+        couponXMLContext.deleteAll();
+        for (Coupon c : init) {
+            if(! c.getShopId().equals(shopId)){
+                couponXMLContext.add(c);
+            }
+        }
     }
 }

@@ -36,10 +36,10 @@ public interface FavoriteCommodityDao {
      * 从收藏夹中移除
      * @param commodityId id
      */
-    void cancelFollow(String commodityId);
+    void cancelFollow(String buyerId, String commodityId);
 
     /**
      * 清除收藏夹
      */
-    void deleteAll();
+    void deleteByBuyerId(String buyerId);
 }
