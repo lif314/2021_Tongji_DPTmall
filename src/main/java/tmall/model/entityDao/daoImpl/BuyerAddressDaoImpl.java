@@ -63,4 +63,14 @@ public class BuyerAddressDaoImpl implements BuyerAddressDao {
             }
         }
     }
+
+    @Override
+    public List<BuyerAddress> getBuyerAddresses(String buyerId) {
+        return null;
+    }
+
+    @Override
+    public BuyerAddress getById(String buyerAddressId) {
+        return null;
+    }
 }

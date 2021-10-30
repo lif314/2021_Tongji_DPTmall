@@ -32,4 +32,8 @@ public interface BuyerAddressDao {
      * @param buyerId id
      */
     void deleteByBuyerId(String buyerId);
+
+    List<BuyerAddress> getBuyerAddresses(String buyerId);
+
+    BuyerAddress getById(String buyerAddressId);
 }
