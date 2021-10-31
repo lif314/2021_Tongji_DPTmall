@@ -28,6 +28,8 @@ public class OrderBuilder {
 
     private static OrderPayment orderPayment;
 
+    private static String orderId;
+
     /**
      * 订单商品联系集
      */
@@ -51,7 +53,7 @@ public class OrderBuilder {
      * @return orderBuilder, 提供链式调用
      */
     public static OrderBuilder getOrderBuilderInstance(){
-        //        order = new Order();
+//        order = new Order();
 //        orderLogic = new OrderLogic();
         return new OrderBuilder();
     }
@@ -72,22 +74,25 @@ public class OrderBuilder {
      */
     public OrderBuilder initOrder(String buyerId){
         // 订单id
-        String orderId = UUID.randomUUID().toString();
+        String oId = UUID.randomUUID().toString();
+        orderId = oId;
         // 订单创建时间
         String createTime = LocalDateTime.now().toString();
         // 订单初始状态：待支付
         String initStatus = OrderStatus.WAIT_DELIVER.toString();
 
-        order = new Order("1", "2", "1", "1", "2", "1", "1");
         // 订单绑定买家
-        order.setOrderId(orderId);
+        order = new Order();
+        order.setOrderId(oId);
+        System.out.println(buyerId);
         order.setBuyerId(buyerId);
         order.setCreateTime(createTime);
         order.setStatus(initStatus);
 
-        orderLogic = new OrderLogic("1");
+
         // 展示order详情初始化
-        orderLogic.setOrderId(orderId);
+        orderLogic = new OrderLogic();
+        orderLogic.setOrderId(oId);
         orderLogic.setBuyerId(buyerId);
         orderLogic.setCreateTime(createTime);
         orderLogic.setStatus(initStatus);
@@ -117,9 +122,6 @@ public class OrderBuilder {
         orderLogic.setShopName(shop.getShopName());
         orderLogic.setShopAddress(shop.getShopAddress());
 
-        // 订单id
-        String orderId = order.getOrderId();
-
         // 添加到逻辑实体中
         orderLogic.setCommodityList(commodities);
 
@@ -142,14 +144,14 @@ public class OrderBuilder {
 
         if(activity != null){
             orderLogic.setActivityId(activity.getActivityId());
-            OrderPromotion orderPromotion = new OrderPromotion(order.getOrderId(), activity.getActivityId(), "activity");
+            OrderPromotion orderPromotion = new OrderPromotion(orderId, activity.getActivityId(), "activity");
             // 暂存
             orderPromotionList.add(orderPromotion);
         }
 
         if(coupon != null){
             orderLogic.setCouponId(coupon.getCouponId());
-            OrderPromotion orderPromotion = new OrderPromotion(order.getOrderId(),coupon.getCouponId(), "coupon");
+            OrderPromotion orderPromotion = new OrderPromotion(orderId,coupon.getCouponId(), "coupon");
             // 暂存
             orderPromotionList.add(orderPromotion);
         }
@@ -185,7 +187,6 @@ public class OrderBuilder {
 
         orderPayment = op;
 
-        String id = orderPayment.getOrderPaymentId();
         order.setOrderPaymentId(orderPayment.getOrderPaymentId());
 
         orderLogic.setOrderPaymentId(orderPayment.getOrderPaymentId());
@@ -209,27 +210,26 @@ public class OrderBuilder {
      */
     public OrderLogic build(){
 
-        XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
-        XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
-        XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
-        XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
-
+        System.out.println("=============== order builder ==================");
         // 存储到数据库
         for (OrderCommodity orderCommodity : orderCommodityList) {
+            XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
             orderCommodityXMLContext.add(orderCommodity);
         }
 
-        System.out.println(orderPromotionList);
+
         for (OrderPromotion orderPromotion : orderPromotionList) {
+            XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
             orderPromotionXMLContext.add(orderPromotion);
         }
 
-        System.out.println(orderPayment);
+        XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
         orderPaymentXMLContext.add(orderPayment);
 
         System.out.println(order);
+        System.out.println(orderLogic);
+        XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
         orderXMLContext.add(order);
-
         // 返回订单逻辑实体
         return orderLogic;
     }

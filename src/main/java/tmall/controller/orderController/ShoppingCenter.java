@@ -97,7 +97,7 @@ public class ShoppingCenter extends Controller {
      */
     public String calTotalMoney(){
         for (OrderCommodityLogic c : orderCommodityLogics) {
-            totalMoney += Double.parseDouble(c.getPrice());
+            totalMoney += Double.parseDouble(c.getPrice()) * Double.parseDouble(c.getAmount());
         }
         return totalMoney + "";
     }
@@ -144,7 +144,7 @@ public class ShoppingCenter extends Controller {
         paidMoney = totalMoney;
         if(coupon != null){
             double full = Double.parseDouble(coupon.getFull());
-            if(full >= paidMoney){
+            if(paidMoney >= full){
                 paidMoney -= Double.parseDouble(coupon.getMinus());
             }
         }
@@ -212,9 +212,16 @@ public class ShoppingCenter extends Controller {
      * @return 订单详情
      */
     public OrderLogic displayOrderDetail(String buyerId){
+        System.out.println("============shopping center =================");
+        System.out.println(buyerId);
+        System.out.println(orderCommodityLogics);
+        System.out.println(coupon);
+        System.out.println(buyerAddress);
+        System.out.println(orderPayment);
+        System.out.println("====================================");
         OrderLogic order = OrderBuilder
                     .getOrderBuilderInstance()
-                    .initOrder(ShoppingCenter.buyerId)
+                    .initOrder(buyerId)
                     .setOrderCommodities(orderCommodityLogics)
                     .setOrderPromotions(activity, coupon)
                     .setOrderAddress(buyerAddress)

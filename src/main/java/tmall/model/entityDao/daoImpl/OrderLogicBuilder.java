@@ -1,5 +1,7 @@
 package tmall.model.entityDao.daoImpl;
 
+import com.sun.xml.internal.ws.util.xml.XMLStreamReaderToXMLStreamWriter;
+import sun.security.provider.SHA;
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.XMLRepository.util.Nullable;
@@ -14,42 +16,23 @@ import java.util.UUID;
 
 public class OrderLogicBuilder {
 
-    // 订单数据库上下文
-    private final XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
-
-    // 商品订单联系集数据库上下文
-    private final XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
-
-    // 商品数据库上下文
-    private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
-
-    // 订单优惠
-    private final XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
-
-    private final XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
-
-    private final XMLContext<BuyerAddress> buyerAddressXMLContext = new ProxyXmlContext<>(BuyerAddress.class);
-
-    private final XMLContext<Activity> activityXMLContext = new ProxyXmlContext<>(Activity.class);
-
-    private final XMLContext<Coupon> couponXMLContext = new ProxyXmlContext<>(Coupon.class);
-
-
     /**
      * 展示order详情
      */
-    private OrderLogic orderLogic;
+    private static OrderLogic orderLogic;
 
-    private String orderId;
+    private static String orderId;
+
+    private static String shopId;
 
     /**
      * 订单商品联系集
      */
-    private List<OrderCommodity> orderCommodityList;
+    private  static final List<OrderCommodity> orderCommodityList = new ArrayList<>();
 
-    private List<OrderPromotion> orderPromotionList;
+    private static final List<OrderPromotion> orderPromotionList = new ArrayList<>();
 
-    private OrderPayment orderPayment;
+    private static OrderPayment orderPayment;
 
     /**
      * 单例模式：
@@ -63,25 +46,25 @@ public class OrderLogicBuilder {
      * @return orderBuilder, 提供链式调用
      */
     public static OrderLogicBuilder getOrderBuilderInstance(){
-        OrderLogicBuilder orderLogicBuilder = new OrderLogicBuilder();
-        orderLogicBuilder.orderLogic = new OrderLogic("1");
-        return orderLogicBuilder;
+        return new OrderLogicBuilder();
     }
 
     /**
      * 初始订单信息
-     * @param orderId 订单id
+     * @param oId 订单id
      * @return this
      */
-    public OrderLogicBuilder initOrderLogicBuilder(String orderId){
-        this.orderId = orderId;
-        Order order = orderXMLContext.findById(orderId);
-        this.orderLogic.setOrderId(order.getOrderId());
-        this.orderLogic.setBuyerId(order.getBuyerId());
-        this.orderLogic.setOrderPaymentId(order.getOrderPaymentId());
-        this.orderLogic.setBuyerAddressId(order.getBuyerAddressId());
-        this.orderLogic.setCreateTime(order.getCreateTime());
-        this.orderLogic.setStatus(order.getStatus());
+    public OrderLogicBuilder initOrderLogicBuilder(String oId){
+        XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
+        orderId = oId;
+        orderLogic = new OrderLogic();
+        Order order = orderXMLContext.findById(oId);
+        orderLogic.setOrderId(order.getOrderId());
+        orderLogic.setBuyerId(order.getBuyerId());
+        orderLogic.setOrderPaymentId(order.getOrderPaymentId());
+        orderLogic.setBuyerAddressId(order.getBuyerAddressId());
+        orderLogic.setCreateTime(order.getCreateTime());
+        orderLogic.setStatus(order.getStatus());
         return this;
     }
 
@@ -91,21 +74,35 @@ public class OrderLogicBuilder {
      */
     public OrderLogicBuilder setOrderCommodities(){
 
+
+        XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
         List<OrderCommodity> init = orderCommodityXMLContext.init();
+        // 获取店铺信息
+        XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
+        shopId = commodityXMLContext.findById(init.get(0).getCommodityId()).getShopId();
+
         List<OrderCommodityLogic> orderCommodityLogics = new ArrayList<>();
         for (OrderCommodity oc : init) {
-
-
-
-
-
-            if(oc.getOrderId().equals(this.orderId)){
+            if(oc.getOrderId().equals(orderId)){
                 Commodity c = commodityXMLContext.findById(oc.getCommodityId());
                 OrderCommodityLogic orderCommodityLogic = new OrderCommodityLogic(oc.getCommodityId(),c.getCname(), c.getPrice(), oc.getAmount());
                 orderCommodityLogics.add(orderCommodityLogic);
             }
         }
-        this.orderLogic.setCommodityList(orderCommodityLogics);
+        orderLogic.setCommodityList(orderCommodityLogics);
+        return this;
+    }
+
+    /**
+     * 查询订单店铺信息
+     * @return this
+     */
+    public OrderLogicBuilder setShopInfo(){
+        XMLContext<Shop> shopXMLContext = new ProxyXmlContext<>(Shop.class);
+        Shop shop = shopXMLContext.findById(shopId);
+        orderLogic.setShopId(shopId);
+        orderLogic.setShopName(shop.getShopName());
+        orderLogic.setShopAddress(shop.getShopAddress());
         return this;
     }
 
@@ -114,14 +111,15 @@ public class OrderLogicBuilder {
      * @return this
      */
     public OrderLogicBuilder setOrderPromotions(){
+        XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
         List<OrderPromotion> init = orderPromotionXMLContext.init();
         for (OrderPromotion promotion : init) {
-            if(promotion.getOrderId().equals(this.orderId)){
+            if(promotion.getOrderId().equals(orderId)){
                 if(promotion.getType().equals("activity")){
-                    this.orderLogic.setActivityId(promotion.getPromotionId());
+                    orderLogic.setActivityId(promotion.getPromotionId());
                 }
                 if(promotion.getType().equals("coupon")){
-                    this.orderLogic.setCouponId(promotion.getPromotionId());
+                    orderLogic.setCouponId(promotion.getPromotionId());
                 }
             }
         }
@@ -134,10 +132,11 @@ public class OrderLogicBuilder {
      * @return this
      */
     public OrderLogicBuilder setOrderAddress(){
-        BuyerAddress buyerAddress = buyerAddressXMLContext.findById(this.orderLogic.getBuyerAddressId());
-        this.orderLogic.setReceiveName(buyerAddress.getReceiveName());
-        this.orderLogic.setReceivePhone(buyerAddress.getReceivePhone());
-        this.orderLogic.setReceiveAddress(buyerAddress.getReceiveAddress());
+        XMLContext<BuyerAddress> buyerAddressXMLContext = new ProxyXmlContext<>(BuyerAddress.class);
+        BuyerAddress buyerAddress = buyerAddressXMLContext.findById(orderLogic.getBuyerAddressId());
+        orderLogic.setReceiveName(buyerAddress.getReceiveName());
+        orderLogic.setReceivePhone(buyerAddress.getReceivePhone());
+        orderLogic.setReceiveAddress(buyerAddress.getReceiveAddress());
         return this;
     }
 
@@ -146,16 +145,17 @@ public class OrderLogicBuilder {
      * @return orderLogicBuilder 链式调用
      */
     public OrderLogicBuilder setOrderPayment(){
-        OrderPayment orderPayment = orderPaymentXMLContext.findById(this.orderLogic.getOrderPaymentId());
+        XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
+        OrderPayment orderPayment = orderPaymentXMLContext.findById(orderLogic.getOrderPaymentId());
 
-        this.orderLogic.setPayMethod(orderPayment.getPayMethod());
+        orderLogic.setPayMethod(orderPayment.getPayMethod());
 
-        this.orderLogic.setPayStatus(orderPayment.getPayStatus());
-        this.orderLogic.setTotalMoney(orderPayment.getTotalMoney());
-        this.orderLogic.setPaidMoney(orderPayment.getPaidMoney());
-        this.orderLogic.setPaidTime(orderPayment.getPaidTime());
+        orderLogic.setPayStatus(orderPayment.getPayStatus());
+        orderLogic.setTotalMoney(orderPayment.getTotalMoney());
+        orderLogic.setPaidMoney(orderPayment.getPaidMoney());
+        orderLogic.setPaidTime(orderPayment.getPaidTime());
         double promotionMoney = Double.parseDouble(orderPayment.getTotalMoney()) - Double.parseDouble(orderPayment.getPaidMoney());
-        this.orderLogic.setPromotionMoney(promotionMoney + "");
+        orderLogic.setPromotionMoney(promotionMoney + "");
         return this;
     }
 
@@ -165,6 +165,6 @@ public class OrderLogicBuilder {
      */
     public OrderLogic display(){
         // 返回订单逻辑实体
-        return this.orderLogic;
+        return orderLogic;
     }
 }

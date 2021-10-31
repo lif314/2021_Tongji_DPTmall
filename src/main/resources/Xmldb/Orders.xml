@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Orders>
+<Orders> 
+  <Order> 
+    <orderId>5d55c3d5-c399-4165-90a0-cd0fa9834fb2</orderId>  
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <orderPaymentId>f63c8d4a-3131-4513-b15e-8564f68b550c</orderPaymentId>  
+    <buyerAddressId>bb30e991-0bde-4eb7-9ee6-00a266f4120f</buyerAddressId>  
+    <createTime>2021-11-01T02:11:15.072</createTime>  
+    <status>WAIT_DELIVER</status> 
+  </Order>  
   <Order>
-    <orderId>00001</orderId>
-    <buyerId>00001</buyerId>
-    <addressId>00001</addressId>
-    <shopId>00001</shopId>
-    <createDate>2021-10-21</createDate>
-    <status>已签收</status>
-    <orderAmount>3</orderAmount>
-  </Order>
-  <Order>
-    <orderId>00002</orderId>
-    <buyerId>00002</buyerId>
-    <addressId>00002</addressId>
-    <shopId>00002</shopId>
-    <createDate>2021-10-22</createDate>
-    <status>已发送</status>
-    <orderAmount>2</orderAmount>
+    <orderId>a67ecab5-01e1-43d6-8fb7-65c6cbc4647c</orderId>
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>
+    <orderPaymentId>55ad6430-48af-49ef-be56-bf62ceea497f</orderPaymentId>
+    <buyerAddressId>bb30e991-0bde-4eb7-9ee6-00a266f4120f</buyerAddressId>
+    <createTime>2021-11-01T02:13:35.864</createTime>
+    <status>WAIT_DELIVER</status>
   </Order>
 </Orders>

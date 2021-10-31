@@ -19,15 +19,7 @@ public class Order {
     public String status;              // 订单状态d
 
     public Order() {
-    }
-
-    public Order(String orderId, String buyerId, String orderDeliveryId, String orderPaymentId, String buyerAddressId, String createDate, String status) {
-        this.orderId = orderId;
-        this.buyerId = buyerId;
-        this.orderPaymentId = orderPaymentId;
-        this.buyerAddressId = buyerAddressId;
-        this.createTime = createDate;
-        this.status = status;
+        this.status = OrderStatus.WAIT_PAYMENT.toString();
     }
 
     public String getOrderId() {
@@ -76,6 +68,18 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", buyerId='" + buyerId + '\'' +
+                ", orderPaymentId='" + orderPaymentId + '\'' +
+                ", buyerAddressId='" + buyerAddressId + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
 

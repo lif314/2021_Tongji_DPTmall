@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<OrderPayments>
+<OrderPayments> 
+  <OrderPayment> 
+    <orderPaymentId>f63c8d4a-3131-4513-b15e-8564f68b550c</orderPaymentId>  
+    <payMethod>1</payMethod>  
+    <payStatus>Paid</payStatus>  
+    <totalMoney>300.0</totalMoney>  
+    <paidMoney>290.0</paidMoney>  
+    <paidTime>2021-11-01T02:11:15.071</paidTime> 
+  </OrderPayment>  
   <OrderPayment>
-    <orderPaymentId>3e153bf9-87a6-4d5a-b388-0e0f9e46f35d</orderPaymentId>
-    <payMethod>WeChat</payMethod>
+    <orderPaymentId>55ad6430-48af-49ef-be56-bf62ceea497f</orderPaymentId>
+    <payMethod>1</payMethod>
     <payStatus>Paid</payStatus>
-    <totalMoney>100.0</totalMoney>
-    <paidMoney>90.0</paidMoney>
-    <paidTime>2021-11-01T00:28:04.585</paidTime>
+    <totalMoney>300.0</totalMoney>
+    <paidMoney>290.0</paidMoney>
+    <paidTime>2021-11-01T02:13:35.864</paidTime>
   </OrderPayment>
 </OrderPayments>
