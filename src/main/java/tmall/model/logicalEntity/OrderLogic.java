@@ -69,9 +69,13 @@ public class OrderLogic {
     public List<OrderCommodityLogic> commodityList; // 订单商品集
 
 
-    public OrderLogic() {
-        this.activityId = "";
-        this.couponId = "";
+//    public OrderLogic() {
+//        this.activityId = "";
+//        this.couponId = "";
+//    }
+
+    public OrderLogic(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getOrderId() {

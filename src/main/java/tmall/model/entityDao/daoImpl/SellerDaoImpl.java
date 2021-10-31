@@ -53,15 +53,15 @@ public class SellerDaoImpl implements SellerDao {
      * @return 账号信息是否正确
      */
     @Override
-    public Boolean login(String name, String password) {
+    public Seller login(String name, String password) {
 
         List<Seller> all = sellerXMLContext.init();
         for (Seller seller1 : all) {
             if(seller1.getName().equals(name) && seller1.getPassword().equals(password))
-                return true;
+                return seller1;
         }
 
-        return false;
+        return null;
     }
 
     /**

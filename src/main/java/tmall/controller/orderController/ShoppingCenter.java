@@ -7,7 +7,9 @@ import tmall.model.entityDao.daoImpl.*;
 import tmall.model.entityDao.daoInterface.*;
 import tmall.model.logicalEntity.OrderCommodityLogic;
 import tmall.model.logicalEntity.OrderLogic;
+import tmall.tmallSystem.TMallSystem;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +31,6 @@ public class ShoppingCenter extends Controller {
      */
     private static final List<OrderCommodityLogic> orderCommodityLogics = new ArrayList<>();
 
-    private static Activity activity;
-
     private static String shopId;
 
     private static String buyerId;
@@ -39,11 +39,13 @@ public class ShoppingCenter extends Controller {
 
     private static double paidMoney = 0.0;
 
-    private  Coupon coupon;
+    private static Activity activity;
 
-    private BuyerAddress buyerAddress;
+    private static Coupon coupon;
 
-    private OrderPayment orderPayment;
+    private static BuyerAddress buyerAddress;
+
+    private static OrderPayment orderPayment;
 
     /**
      * 首页展示所有商品 √
@@ -118,6 +120,11 @@ public class ShoppingCenter extends Controller {
         return couponDao.getAllByShopId(this.shopId);
     }
 
+    /**
+     * 选择优惠方式 √
+     * @param activityId 活动Id
+     * @param couponId 优惠券Id
+     */
     public void selectPromotions(@Nullable String activityId,@Nullable String couponId){
         if(activityId != null){
             ActivityDao activityDao = new ActivityDaoImpl();
@@ -130,7 +137,7 @@ public class ShoppingCenter extends Controller {
     }
 
     /**
-     * 计算优惠后的价格：先满减，再打折
+     * 计算优惠后的价格：先满减，再打折 √
      * @return paidMoney
      */
     public String calPaidMoney(){
@@ -149,26 +156,26 @@ public class ShoppingCenter extends Controller {
 
     /**
      * 展示买家所有收获地址
-     * @param buyerId id
+     * @param buyerId id √
      * @return list buyerAddress
      */
     public List<BuyerAddress> displayBuyerAddress(String buyerId){
         BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
-        this.buyerId = buyerId;
+        ShoppingCenter.buyerId = buyerId;
         return buyerAddressDao.getBuyerAddresses(buyerId);
     }
 
     /**
-     * 选择买家收获地址
+     * 选择买家收获地址  √
      * @param buyerAddressId id
      */
     public void selectBuyerAddress(String buyerAddressId){
         BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
-        this.buyerAddress = buyerAddressDao.getById(buyerAddressId);
+        buyerAddress = buyerAddressDao.getById(buyerAddressId);
     }
 
     /**
-     * 展示购买方式
+     * 展示购买方式 √
      * @return method
      */
     public String displayPayMethod(){
@@ -177,39 +184,44 @@ public class ShoppingCenter extends Controller {
 
     /**
      * 选择支付方式
-     * @param index 下标
-     *              0 UnionPay
-     *              1 WeChat
-     *              2 AliPay
+     * @param method 下标
+     *               UnionPay
+     *               WeChat
+     *               AliPay
      */
-    public void selectPayMethod(String index){
+    public void selectPayMethod(String method){
         String id = UUID.randomUUID().toString();
+        orderPayment = new OrderPayment();
         orderPayment.setOrderPaymentId(id);
-
-        String method = "";
-        switch (index){
-            case "0": method = OrderPaymentMethod.UnionPay.name(); break;
-            case "1": method = OrderPaymentMethod.WeChat.name(); break;
-            case "2": method = OrderPaymentMethod.AliPay.name(); break;
-        }
         orderPayment.setPayMethod(method);
     }
 
+    /**
+     * 立即购买
+     */
     public void payImmediately(){
         orderPayment.setTotalMoney(totalMoney + "");
         orderPayment.setPayStatus(PayStatus.Paid.toString());
+        orderPayment.setPaidTime(LocalDateTime.now().toString());
         orderPayment.setPaidMoney(paidMoney + "");
     }
 
+    /**
+     * 展示订单
+     * @param buyerId 买家Id
+     * @return 订单详情
+     */
     public OrderLogic displayOrderDetail(String buyerId){
-        return OrderBuilder
+        OrderLogic order = OrderBuilder
                     .getOrderBuilderInstance()
-                    .initOrder(this.buyerId)
-                    .setOrderCommodities(this.orderCommodityLogics)
-                    .setOrderPromotions(this.activity, this.coupon)
-                    .setOrderAddress(this.buyerAddress)
-                    .setOrderPayment(this.orderPayment)
+                    .initOrder(ShoppingCenter.buyerId)
+                    .setOrderCommodities(orderCommodityLogics)
+                    .setOrderPromotions(activity, coupon)
+                    .setOrderAddress(buyerAddress)
+                    .setOrderPayment(orderPayment)
                     .build();
+        System.out.println(order);
+        return order;
     }
 
 }

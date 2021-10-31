@@ -28,7 +28,7 @@ public interface SellerDao {
      * @param password 密码
      * @return 账号信息是否正确
      */
-    Boolean login(String name, String password);
+    Seller login(String name, String password);
 
     /**
      * 获取所有卖家

@@ -52,13 +52,13 @@ public class BuyerDaoImpl implements BuyerDao {
      * @return 登录成功与否
      */
     @Override
-    public boolean login(String phone, String password) {
+    public Buyer login(String phone, String password) {
         List<Buyer> init = buyerXMLContext.init();
         for (Buyer buyer1 : init) {
             if(buyer1.getPhone().equals(phone) && buyer1.getPasswd().equals(password))
-                return true;
+                return buyer1;
         }
-        return false;
+        return null;
     }
 
     /**

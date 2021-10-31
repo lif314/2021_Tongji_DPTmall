@@ -33,9 +33,7 @@ public class TMallSystemTest {
         System.out.println("birthday:");
         String birthday = scanner.next();
 
-        System.out.println("==================");
-        Buyer buyer = TMallSystem.createBuyer(nickname, password, idNumber, phone, gender, birthday);
-        System.out.println(buyer);
+
 
     }
 

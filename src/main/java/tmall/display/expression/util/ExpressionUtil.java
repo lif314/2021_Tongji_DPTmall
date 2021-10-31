@@ -4,7 +4,7 @@ import tmall.display.expression.Expression;
 
 public class ExpressionUtil {
     public static boolean isVerb(String word) {
-        return "Display".equals(word) || "Select".equals(word) || "Login".equals(word) || "Enter".equals(word) || "Edit".equals(word) || "Buy".equals(word) || "Follow".equals(word) || "Increase".equals(word) || "Reduce".equals(word) || "Add".equals(word) || "Delete".equals(word);
+        return "Create".equals(word) || "Display".equals(word) || "Select".equals(word) || "Login".equals(word) || "Enter".equals(word) || "Edit".equals(word) || "Buy".equals(word) || "Follow".equals(word) || "Increase".equals(word) || "Reduce".equals(word) || "Add".equals(word) || "Delete".equals(word);
     }
 
     public static Expression getInterpreterVerb(String word) {

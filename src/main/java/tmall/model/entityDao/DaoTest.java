@@ -35,9 +35,12 @@ public class DaoTest {
 //        activityDao.create("2021-10-30", "2021-11-11", "双十一", "0.90");
 //        activityDao.addToDb();
 
-        CouponDao couponDao = new CouponDaoImpl();
-        couponDao.create("b3388015-b394-4cae-ab2c-154edd8ab8ea", "2021-10-30","2021-11-11", "100", "10");
-        couponDao.addToDb();
+//        CouponDao couponDao = new CouponDaoImpl();
+//        couponDao.create("b3388015-b394-4cae-ab2c-154edd8ab8ea", "2021-10-30","2021-11-11", "100", "10");
+//        couponDao.addToDb();
+//         SellerDao sellerDao = new SellerDaoImpl();
+//         sellerDao.create("123456", "llf", "123234454365645", "XiaoJi", "12345678909");
+//         sellerDao.addToDb();
 
 //        Order order = OrderBuilder.newOrderBuilder()
 //                .initOrder("buyerId")

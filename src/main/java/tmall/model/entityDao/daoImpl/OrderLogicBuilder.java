@@ -64,7 +64,7 @@ public class OrderLogicBuilder {
      */
     public static OrderLogicBuilder getOrderBuilderInstance(){
         OrderLogicBuilder orderLogicBuilder = new OrderLogicBuilder();
-        orderLogicBuilder.orderLogic = new OrderLogic();
+        orderLogicBuilder.orderLogic = new OrderLogic("1");
         return orderLogicBuilder;
     }
 

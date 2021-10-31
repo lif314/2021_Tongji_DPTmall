@@ -30,7 +30,7 @@ public interface BuyerDao {
      * @param password 密码
      * @return 登录成功与否
      */
-    boolean login(String phone, String password);
+    Buyer login(String phone, String password);
 
     /**
      * 获取所有买家

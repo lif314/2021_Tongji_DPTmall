@@ -3,6 +3,7 @@ package tmall.XMLRepository.test;
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
 import tmall.model.entity.BuyerAddress;
+import tmall.model.entity.Commodity;
 
 import java.util.List;
 import java.util.UUID;
@@ -60,6 +61,11 @@ public class XMLContextTest {
 //        String id = UUID.randomUUID().toString();
 //        BuyerAddress buyerAddress = new BuyerAddress(id, "c481e837-3461-4e11-b68e-361e40b7233a", "李林飞", "1343554231212", "同济大学 嘉定校区");
 //        buyerAddressXMLContext.add(buyerAddress);
+
+
+        XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
+        Commodity byId = commodityXMLContext.findById("1f7c3228-0daf-45fd-ab8b-777583c3a8b7");
+        System.out.println(byId);
     }
 
 }
