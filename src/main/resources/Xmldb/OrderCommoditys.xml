@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<OrderCommoditys> 
-  <OrderCommodity> 
-    <orderId>5d55c3d5-c399-4165-90a0-cd0fa9834fb2</orderId>  
-    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
-    <amount>3</amount> 
-  </OrderCommodity>  
+<OrderCommoditys>
   <OrderCommodity>
-    <orderId>a67ecab5-01e1-43d6-8fb7-65c6cbc4647c</orderId>
+    <orderId>d89f07df-a8c8-4922-956d-8b7df16c5a94</orderId>
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>
     <amount>3</amount>
   </OrderCommodity>

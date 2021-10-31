@@ -38,9 +38,6 @@ public class OrderBuilder {
     private static final List<OrderPromotion> orderPromotionList = new ArrayList<>();
 
 
-
-
-
     /**
      * 单例模式：
      * 不让使用者使用new创建构造器
@@ -84,7 +81,7 @@ public class OrderBuilder {
         // 订单绑定买家
         order = new Order();
         order.setOrderId(oId);
-        System.out.println(buyerId);
+//        System.out.println(buyerId);
         order.setBuyerId(buyerId);
         order.setCreateTime(createTime);
         order.setStatus(initStatus);
@@ -210,7 +207,7 @@ public class OrderBuilder {
      */
     public OrderLogic build(){
 
-        System.out.println("=============== order builder ==================");
+//        System.out.println("=============== order builder ==================");
         // 存储到数据库
         for (OrderCommodity orderCommodity : orderCommodityList) {
             XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
@@ -226,8 +223,8 @@ public class OrderBuilder {
         XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
         orderPaymentXMLContext.add(orderPayment);
 
-        System.out.println(order);
-        System.out.println(orderLogic);
+//        System.out.println(order);
+//        System.out.println(orderLogic);
         XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
         orderXMLContext.add(order);
         // 返回订单逻辑实体

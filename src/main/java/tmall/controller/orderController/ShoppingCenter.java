@@ -212,14 +212,15 @@ public class ShoppingCenter extends Controller {
      * @return 订单详情
      */
     public OrderLogic displayOrderDetail(String buyerId){
-        System.out.println("============shopping center =================");
-        System.out.println(buyerId);
-        System.out.println(orderCommodityLogics);
-        System.out.println(coupon);
-        System.out.println(buyerAddress);
-        System.out.println(orderPayment);
-        System.out.println("====================================");
-        OrderLogic order = OrderBuilder
+//        System.out.println("============shopping center =================");
+//        System.out.println(buyerId);
+//        System.out.println(orderCommodityLogics);
+//        System.out.println(coupon);
+//        System.out.println(buyerAddress);
+//        System.out.println(orderPayment);
+//        System.out.println("====================================");
+
+        return OrderBuilder
                     .getOrderBuilderInstance()
                     .initOrder(buyerId)
                     .setOrderCommodities(orderCommodityLogics)
@@ -227,8 +228,6 @@ public class ShoppingCenter extends Controller {
                     .setOrderAddress(buyerAddress)
                     .setOrderPayment(orderPayment)
                     .build();
-        System.out.println(order);
-        return order;
     }
 
 }
