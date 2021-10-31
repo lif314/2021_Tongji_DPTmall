@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OrderPromotions>
+  <OrderPromotion>
+    <orderId>e993addc-a078-4753-9257-fef2fc47246e</orderId>
+    <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>
+    <type>coupon</type>
+  </OrderPromotion>
+</OrderPromotions>

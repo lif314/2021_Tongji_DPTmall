@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OrderPayments>
+  <OrderPayment>
+    <orderPaymentId>3e153bf9-87a6-4d5a-b388-0e0f9e46f35d</orderPaymentId>
+    <payMethod>WeChat</payMethod>
+    <payStatus>Paid</payStatus>
+    <totalMoney>100.0</totalMoney>
+    <paidMoney>90.0</paidMoney>
+    <paidTime>2021-11-01T00:28:04.585</paidTime>
+  </OrderPayment>
+</OrderPayments>
