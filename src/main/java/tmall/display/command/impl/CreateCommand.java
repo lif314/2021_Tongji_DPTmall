@@ -1,10 +1,14 @@
 package tmall.display.command.impl;
 
+import tmall.controller.Controller;
+import tmall.controller.DCH_impl.ComponentShopCreDisController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
-import tmall.model.entity.Order;
 import tmall.model.logicalEntity.OrderLogic;
 import tmall.tmallSystem.TMallSystem;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
@@ -14,10 +18,12 @@ import tmall.tmallSystem.TMallSystem;
  */
 public class CreateCommand extends Command {
     private static CreateCommand createCommand;
+    private static HashMap<String,Controller> controllerHashMap=new HashMap<>();
 
     private CreateCommand() {
         super.setCommandName("CreateCommand");
         super.addController(new ShoppingCenter());
+        controllerHashMap.put("ComponentShopCreDisController",new ComponentShopCreDisController());
     }
 
     /**
@@ -43,6 +49,8 @@ public class CreateCommand extends Command {
         if ("Order".equals(params)){
             OrderLogic orderLogic = ((ShoppingCenter) super.getConcreteController()).displayOrderDetail(TMallSystem.getBuyer().getBuyerId());
             System.out.println(orderLogic);
+        } else if("Shop".equals(params)&& TMallSystem.getSeller()!=null){
+            ((ComponentShopCreDisController)controllerHashMap.get("ComponentShopCreDisController")).createComponentShop_Process();
         }
         return null;
     }

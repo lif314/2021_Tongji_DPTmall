@@ -38,11 +38,15 @@ public class EnterShopViewCommand extends Command {
         if (super.getConcreteController() instanceof CommodityVenueController){
             // 先尝试根据卖家Id展示卖家的所有店铺
             returnArgs = ((CommodityVenueController)super.getConcreteController()).shopDisplayInVenue((String) args[0]);
+            if (returnArgs.length == 0)
             // 如果返回值为空，则根据商品Id展示与之关联的店铺
+                try {
+                    returnArgs = new ShoppingCenter().displayShopCommodities((String) args[0]).toArray();
+                } catch (Exception e) {
+                    System.out.println("");
+                }
             if (returnArgs.length == 0)
                 returnArgs = new ShopController().execute((String) args[0]);
-            if (returnArgs.length == 0)
-                returnArgs = new ShoppingCenter().displayShopCommodities((String) args[0]).toArray();
             return returnArgs;
         }
         return null;

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<OrderCommoditys>
+<OrderCommoditys> 
+  <OrderCommodity> 
+    <orderId>d89f07df-a8c8-4922-956d-8b7df16c5a94</orderId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <amount>3</amount> 
+  </OrderCommodity>  
   <OrderCommodity>
-    <orderId>d89f07df-a8c8-4922-956d-8b7df16c5a94</orderId>
+    <orderId>c4b079aa-626e-49e2-913e-51d2e1a831c3</orderId>
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>
-    <amount>3</amount>
+    <amount>1</amount>
   </OrderCommodity>
 </OrderCommoditys>

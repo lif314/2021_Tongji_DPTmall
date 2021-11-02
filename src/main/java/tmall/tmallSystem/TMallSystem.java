@@ -19,7 +19,7 @@ import java.util.UUID;
 public class TMallSystem {
 
     private static Buyer buyer = null;
-    private static Seller seller;
+    private static Seller seller=null;
 
     /**
      * 当买家请求注册时创建买家
@@ -76,6 +76,9 @@ public class TMallSystem {
         return buyer;
     }
 
+    public static Seller getSeller() {
+        return seller;
+    }
 
     /**
      * 买家登录

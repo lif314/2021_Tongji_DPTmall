@@ -56,7 +56,11 @@ public class Context {
                 commandName = verb.interpret(e)[0];
             }
         }
-        if (viewOrFieldName == null && commandArgs == null && !("PayCommand".equals(commandName)||"LoginCommand".equals(commandName) || "InstructionCommand".equals(commandName)))
+        if(!stack.isEmpty()){
+            verb = stack.pop();
+            commandName = verb.interpret()[0];
+        }
+        if (viewOrFieldName == null && commandArgs == null && !("ComplaintCommand".equals(commandName)||"PayCommand".equals(commandName)||"LoginCommand".equals(commandName) || "InstructionCommand".equals(commandName)))
             throw new Exception("命令有误！不能单独输入动词！");
         return new String[]{commandName, viewOrFieldName, commandArgs};
     }

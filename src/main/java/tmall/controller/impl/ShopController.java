@@ -20,13 +20,6 @@ import java.util.*;
  * 增加会场级活动的 管理员操作也在本类中，路径为 ShopController.ActivityBuilder.addVenueActivity
  */
 public class ShopController extends Controller {
-    /**
-     * 声明数据库访问对象
-     */
-    CommodityDao commodityDao = new CommodityDaoImpl();
-    CouponDao couponDao = new CouponDaoImpl();
-    ActivityDao activityDao = new ActivityDaoImpl();
-    OrderDao orderDao = new OrderDaoImpl();
 
     /**
      * 本函数在seller选择店铺时使用，返回店铺的商品、活动、订单等信息。返回值结构是根据流程图定义的
@@ -43,7 +36,7 @@ public class ShopController extends Controller {
 
         Object[] obj = new Object[5];
         obj[0] = commodityFactory;
-        obj[1] = commodityFactory.commodityList;
+        obj[1] = CommodityFactory.commodityList;
         obj[2] = getCouponList(id);
         obj[3] = getOrderList(id);
         obj[4] = activityBuilder;
@@ -54,21 +47,24 @@ public class ShopController extends Controller {
      * @param commodityId id
      */
     public void deleteCommodity(String commodityId) {
+        CommodityDao commodityDao = new CommodityDaoImpl();
         commodityDao.deleteById(commodityId);
     }
 
     /**
      * 应用享元和工厂模式添加商品
      */
-    public class CommodityFactory{
-        List<Commodity> commodityList = new ArrayList<>();
-        final HashMap<String, Commodity> commodityHashMap = new HashMap<>();
-        String current_shopId;
+    public static class CommodityFactory{
+
+        public static List<Commodity> commodityList = new ArrayList<>();
+        public static HashMap<String, Commodity> commodityHashMap = new HashMap<>();
+        public static String current_shopId;
 
         /**
          * 构造方法，从数据库读取商品数据，并生成一个 {商品名:商品} 的HashMap
          */
-        CommodityFactory(String shopId){
+       public CommodityFactory(String shopId){
+            CommodityDao commodityDao = new CommodityDaoImpl();
             commodityList = commodityDao.getAllByShopId(shopId);
             current_shopId = shopId;
             for (Commodity commodity : commodityList) {
@@ -87,6 +83,7 @@ public class ShopController extends Controller {
          * 可考虑在tips为“0”时输出重名商品信息
          */
         public Object[] add(String cname, String category, String price,  String storeNum,  String description){
+            CommodityDao commodityDao = new CommodityDaoImpl();
             Object[] obj = new Object[2];
             Commodity commodity = commodityHashMap.get(cname);
             String tips = "0";  // "该商品名已存在！";
@@ -104,7 +101,8 @@ public class ShopController extends Controller {
     /**
      * 应用策略和建造者模式添加活动
      */
-    public class ActivityBuilder{
+    public static class ActivityBuilder{
+        CouponDao couponDao = new CouponDaoImpl();
         String current_shopId;
         List<Order> observers = new ArrayList<Order>();
         ActivityBuilder(String ShopId){
@@ -133,6 +131,7 @@ public class ShopController extends Controller {
          * @param discount 打折
          */
         public Activity addActivity(String activityName, String startTime, String endTime, String discount){
+            ActivityDao activityDao = new ActivityDaoImpl();
             return activityDao.create(activityName, startTime, endTime, discount);
         }
     }
@@ -168,6 +167,7 @@ public class ShopController extends Controller {
      * @param couponId id
      */
     public void deleteCoupon(String couponId){
+        CouponDao couponDao = new CouponDaoImpl();
         couponDao.deleteById(couponId);
     }
 
@@ -177,6 +177,7 @@ public class ShopController extends Controller {
      * @return 详见 Coupon.toString()方法
      */
     public String activityDetailDisplay(String couponId) {
+        CouponDao couponDao = new CouponDaoImpl();
         Coupon coupon = couponDao.getById(couponId);
 
         return coupon.toString();
@@ -186,6 +187,7 @@ public class ShopController extends Controller {
      * 查看店铺订单列表
      */
     public List<Order> getOrderList(String shopId){
+        OrderDao orderDao = new OrderDaoImpl();
         return orderDao.getAllByShopId(shopId);
     }
 
@@ -193,6 +195,7 @@ public class ShopController extends Controller {
      * 查看店铺优惠券
      */
     public List<Coupon> getCouponList(String shopId){
+        CouponDao couponDao = new CouponDaoImpl();
         return couponDao.getAllByShopId(shopId);
     }
 
@@ -201,6 +204,8 @@ public class ShopController extends Controller {
      * @param orderId id
      */
     public void shipOrder(String orderId){
+        OrderDao orderDao = new OrderDaoImpl();
+
         orderDao.updateOrderStatus(orderId, "WAIT_RECEIVE");
     }
 }
