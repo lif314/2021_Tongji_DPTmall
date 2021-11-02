@@ -14,6 +14,12 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
+ * @author 王文炯
+ * @version 1.0.0
+ * @Description 本命令类对应命令Select CXXX（参数为商品Id）/PAXXX（参数为活动Id，可选）&PCXXX（参数为优惠券Id，可选）/BuyerAddress/PayMethodX(参数为支付方式索引)，作用为选择商品，活动，优惠券，支付方式、买家地址等
+ */
 public class SelectCommand extends Command {
     private static SelectCommand selectCommand;
 
@@ -24,7 +30,6 @@ public class SelectCommand extends Command {
 
     /**
      * 这里采用单例模式
-     *
      * @return InstructionOrder对象
      */
     public static SelectCommand getSelectCommand() {
@@ -34,6 +39,12 @@ public class SelectCommand extends Command {
         return selectCommand;
     }
 
+    /**
+     * @Description 本方法被FrontController调用，采用适配器模式，对于FrontController都是调用execute方法，而该方法封装了不同Controller的不同方法
+     * @Description 此方法的功能为选择商品，活动，优惠券，支付方式、买家地址等
+     * @param args 命令行输入的参数：CXXX（参数为商品Id）/PAXXX（参数为活动Id，可选）&PCXXX（参数为优惠券Id，可选）/BuyerAddress/PayMethodX(参数为支付方式索引)
+     * @return 本方法无返回值
+     */
     @Override
     public Object[] execute(Object... args) {
         // params为输入的变量参数
@@ -57,6 +68,7 @@ public class SelectCommand extends Command {
                 String[] activityAndCoupon = params.substring(1,params.length()).split("\\&");
                 String activity = null;
                 String coupon = null;
+//                判断用户输入的是优惠券Id还是活动Id，或者两者都有
                 if (activityAndCoupon.length >1){
                     if (activityAndCoupon[0].startsWith("A")){
                         activity = activityAndCoupon[0].substring(1, activityAndCoupon[0].length());
@@ -79,7 +91,9 @@ public class SelectCommand extends Command {
                     for(BuyerAddress b : buyerAddresses){
                         System.out.println(b);
                     }
+//                    获取对应的方法
                     Method method = concreteControllerClass.getMethod("select" + params, buyerId.getClass());
+//                    用户输入买家地址Id
                     System.out.println("请您输入买家地址Id");
                     Scanner scanner = new Scanner(System.in);
                     String buyerAddressId = scanner.next();

@@ -1,7 +1,5 @@
 package tmall.model.entity;
 
-import tmall.controller.impl.ShopController;
-
 /**
  * 活动实体表：全场打折
  * 说明：活动以打折的形式出现，优惠券以满多少减多少的形式出现

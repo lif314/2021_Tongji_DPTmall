@@ -6,6 +6,12 @@ import tmall.model.entity.Order;
 import tmall.model.logicalEntity.OrderLogic;
 import tmall.tmallSystem.TMallSystem;
 
+/**
+ * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
+ * @author 王文炯
+ * @version 1.0.0
+ * @Description 本命令类对应买家生成订单命令，Create OrderDetail
+ */
 public class CreateCommand extends Command {
     private static CreateCommand createCommand;
 
@@ -25,6 +31,12 @@ public class CreateCommand extends Command {
         return createCommand;
     }
 
+    /**
+     * @Description 本方法被FrontController调用，采用适配器模式，对于FrontController都是调用execute方法，而该方法封装了不同Controller的不同方法
+     * @Description 此方法的功能为创建订单
+     * @param args 命令行输入的参数
+     * @return 本方法无返回值
+     */
     @Override
     public Object[] execute(Object... args) {
         String params =(String) args[0];

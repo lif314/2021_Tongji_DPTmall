@@ -31,8 +31,8 @@ public class ShopController extends Controller {
     /**
      * 本函数在seller选择店铺时使用，返回店铺的商品、活动、订单等信息。返回值结构是根据流程图定义的
      * @param args shopId
-     * @return obj[0]: 商品工厂，供后续上架商品用  obj[1]: 商品列表，供页面直接展示用  obj[2]: 活动列表，供页面直接展示用
-     *         obj[3]: 订单列表，供页面直接展示用
+     * @return obj[0]: 商品工厂，供后续上架商品用  obj[1]: 商品列表，供页面直接展示用  obj[2]: 优惠券列表，供页面直接展示用
+     *         obj[3]: 订单列表，供页面直接展示用  obj[4]: 活动建造者对象
      * 商品工厂对象在初始化时已经传入shopId（seller选择店铺时传入），前端后续不需要再提供shopId
      */
     @Override
@@ -41,10 +41,12 @@ public class ShopController extends Controller {
         CommodityFactory commodityFactory = new CommodityFactory(id);
         ActivityBuilder activityBuilder = new ActivityBuilder(id);
 
-        Object[] obj = new Object[4];
+        Object[] obj = new Object[5];
         obj[0] = commodityFactory;
-        obj[1] = commodityFactory.commodityList.toArray();
-        obj[2] = getOrderList(id);
+        obj[1] = commodityFactory.commodityList;
+        obj[2] = getCouponList(id);
+        obj[3] = getOrderList(id);
+        obj[4] = activityBuilder;
         return obj;
     }
     /**
@@ -104,10 +106,11 @@ public class ShopController extends Controller {
      */
     public class ActivityBuilder{
         String current_shopId;
-
+        List<Order> observers = new ArrayList<Order>();
         ActivityBuilder(String ShopId){
             current_shopId = ShopId;
             List<Coupon> shopCoupons = couponDao.getAllByShopId(current_shopId);
+//            observers = order
         }
 
         /**
@@ -118,7 +121,8 @@ public class ShopController extends Controller {
          * @param minus 减多少元
          */
         public Coupon addCoupon(String startTime, String endTime, String full, String minus) {
-            return couponDao.create(current_shopId, startTime, endTime, full, minus);
+            Coupon newCoupon = couponDao.create(current_shopId, startTime, endTime, full, minus);
+            return newCoupon;
         }
 
         /**
@@ -163,7 +167,7 @@ public class ShopController extends Controller {
      * 店铺后台删除优惠券
      * @param couponId id
      */
-    public void deleteActivity(String couponId){
+    public void deleteCoupon(String couponId){
         couponDao.deleteById(couponId);
     }
 
@@ -181,8 +185,22 @@ public class ShopController extends Controller {
     /**
      * 查看店铺订单列表
      */
-    public Object[] getOrderList(String shopId){
-        List<Order> orderList = orderDao.getAllByShopId(shopId);
-        return orderList.toArray();
+    public List<Order> getOrderList(String shopId){
+        return orderDao.getAllByShopId(shopId);
+    }
+
+    /**
+     * 查看店铺优惠券
+     */
+    public List<Coupon> getCouponList(String shopId){
+        return couponDao.getAllByShopId(shopId);
+    }
+
+    /**
+     * 订单发货
+     * @param orderId id
+     */
+    public void shipOrder(String orderId){
+        orderDao.updateOrderStatus(orderId, "WAIT_RECEIVE");
     }
 }

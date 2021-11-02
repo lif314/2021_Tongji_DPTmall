@@ -8,6 +8,12 @@ import tmall.display.expression.util.Context;
 
 import java.util.ArrayList;
 
+/**
+ * @Description 本类配合Dispatcher类实现前端控制器模式，以及集合Controller层的所用功能实现外观模式，方便主客户端调用
+ * @author 王文炯
+ * @version 1.0.0
+ * @Description 本类的功能为解释用户输入的字符串，调用对应的命令类执行该命令，然后通知Dispatcher类调用相关页面进行对应数据展示
+ */
 public class FrontController {
     private final Dispatcher dispatcher;
     private final Context context;
@@ -59,14 +65,14 @@ public class FrontController {
         }
     }
 
-//    /**
-//     * 本方法用于派发orders数组中记录的所用命令
-//     */
-//    public void dispatchAllCommands(){
-//        for (Command o:orders){
-//            dispatchSingleCommand(o);
-//        }
-//    }
+    /**
+     * 本方法用于派发orders数组中记录的所用命令
+     */
+    public void dispatchAllCommands(){
+        for (Command o:orders){
+            dispatchSingleCommand(o.getCommandName());
+        }
+    }
 
     /**
      * 本方法用于保存命令
