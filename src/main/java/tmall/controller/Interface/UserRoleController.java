@@ -1,7 +1,6 @@
 package tmall.controller.Interface;
 
 import tmall.model.entity.Buyer;
-import tmall.model.entity.NullBuyer;
 import tmall.model.entityDao.daoImpl.BuyerDaoImpl;
 import tmall.model.entityDao.daoImpl.SellerDaoImpl;
 

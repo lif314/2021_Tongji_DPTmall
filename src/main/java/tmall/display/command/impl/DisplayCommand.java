@@ -1,8 +1,12 @@
 package tmall.display.command.impl;
 
+import tmall.controller.factory.UserManageAbstractFactory;
+import tmall.controller.factory.UserManageProducer;
+import tmall.controller.impl.BuyerInfoController;
 import tmall.controller.impl.FavoriteController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
+import tmall.model.entity.User;
 import tmall.tmallSystem.TMallSystem;
 
 import java.lang.reflect.InvocationTargetException;
@@ -73,7 +77,11 @@ public class DisplayCommand extends Command {
                 FavoriteController favoriteController = new FavoriteController();
                 return favoriteController.displayFavoriteCommodities(TMallSystem.getBuyer().getBuyerId());
 
-            } else {
+            }else if("BuyerInfo".equals(params)){
+                UserManageAbstractFactory userManageAbstractFactory = new UserManageProducer().getUserManageController("info");
+                BuyerInfoController buyerInfoController = (BuyerInfoController) userManageAbstractFactory.getUserInfoController("buyer");
+                User buyer = (User) buyerInfoController.getInfo(TMallSystem.getBuyer().getBuyerId());
+            }else {
                 try {
                     Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();
                     Method method = aClass.getMethod("display" + params);

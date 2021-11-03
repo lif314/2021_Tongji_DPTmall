@@ -1,4 +1,5 @@
 package tmall.model.entity;
 
-public class User {
+public interface User {
+    public boolean isNull();
 }

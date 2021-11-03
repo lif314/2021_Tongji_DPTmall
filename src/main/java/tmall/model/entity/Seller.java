@@ -3,7 +3,7 @@ package tmall.model.entity;
 /**
  * 卖家实体表
  */
-public class Seller {
+public class Seller implements User{
 
     private String sellerId;  // 卖家Id
 
@@ -87,5 +87,10 @@ public class Seller {
                 ", nickname='" + nickname + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean isNull() {
+        return false;
     }
 }

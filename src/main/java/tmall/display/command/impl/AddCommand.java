@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
  * @author 王文炯
  * @version 1.0.0
- * @Description 本命令类对应添加命令，Add XXX
+ * @Description 本命令类对应添加命令，Add XXX，参数为商品Id
  */
 public class AddCommand extends Command {
     private static AddCommand addCommand;
@@ -36,7 +36,7 @@ public class AddCommand extends Command {
 
     /**
      * @Description 本方法被FrontController调用，采用适配器模式，对于FrontController都是调用execute方法，而该方法封装了不同Controller的不同方法
-     * @Description 此方法的功能为创建订单
+     * @Description 此方法的功能为添加商品到购物车或收藏夹
      * @param args 命令行输入的参数
      * @return 本方法无返回值
      */
