@@ -6,8 +6,13 @@
     <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
     <type>coupon</type> 
   </OrderPromotion>  
+  <OrderPromotion> 
+    <orderId>c4b079aa-626e-49e2-913e-51d2e1a831c3</orderId>  
+    <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
+    <type>coupon</type> 
+  </OrderPromotion>  
   <OrderPromotion>
-    <orderId>c4b079aa-626e-49e2-913e-51d2e1a831c3</orderId>
+    <orderId>a0e2eb94-4777-4dc2-9f9b-339d7f807d1b</orderId>
     <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>
     <type>coupon</type>
   </OrderPromotion>

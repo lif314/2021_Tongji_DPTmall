@@ -5,6 +5,8 @@ import tmall.display.command.Command;
 import tmall.display.command.CommandFactory;
 import tmall.display.dispatcher.Dispatcher;
 import tmall.display.expression.util.Context;
+import tmall.tmallSystem.TMallSystem;
+import tmall.tmallSystem.TMallSystemTest;
 
 import java.util.ArrayList;
 
@@ -55,6 +57,7 @@ public class FrontController {
             Object commandArgs = commandAndView[2];
             // 生成对应的命令类，并执行该命令，需要的参数由具体的命令类负责传入，降低耦合度
             Command concreteCommand = CommandFactory.getCommand(commandName);
+            TMallSystem.getAttribute().put("attribute",commandArgs);
             // 执行结果可能为空，可能是待展示的数据，当页面名不为空且数据也不为空时就进行展示
             Object[] args = concreteCommand.execute(commandArgs);
             if(viewName!=null && args !=null){

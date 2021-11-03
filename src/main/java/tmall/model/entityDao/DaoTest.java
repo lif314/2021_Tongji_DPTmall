@@ -51,5 +51,10 @@ public class DaoTest {
 //                .setOrderPayment()
 //                .build();
 
+
+        FavoriteCommodityDao favoriteCommodityDao = new FavoriteCommodityDaoImpl();
+        favoriteCommodityDao.create("11212", "121212");
+        favoriteCommodityDao.addToDb();
+
     }
 }

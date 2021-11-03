@@ -20,9 +20,8 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
 
     private final XMLContext<FollowCommodity> followCommodityXMLContext = new ProxyXmlContext<>(FollowCommodity.class);
 
-    private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
 
-    private FollowCommodity followCommodity;
+    private  FollowCommodity followCommodity;
 
     /**
      * 关注商品
@@ -61,6 +60,7 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
         List<FollowCommodity> init = followCommodityXMLContext.init();
         for (FollowCommodity fc : init) {
             if(fc.getBuyerId().equals(buyerId)){
+                XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
                 Commodity c = commodityXMLContext.findById(fc.getCommodityId());
                 FollowCommodityLogic followCommodityLogic = new FollowCommodityLogic(c.getCommodityId(), c.getCname(), c.getPrice(), c.getCategory(), c.getDescription(), fc.getFollowDate());
                 followCommodityLogicList.add(followCommodityLogic);

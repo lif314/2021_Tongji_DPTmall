@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Commoditys>
+<Commoditys> 
+  <Commodity> 
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>100</price>  
+    <category>SHIRT</category>  
+    <storeNum>56</storeNum>  
+    <cname>七匹狼</cname>  
+    <description>爱你所爱！</description> 
+  </Commodity>  
+  <Commodity> 
+    <commodityId>5bd19950-f97b-43a0-94af-721301367215</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>36</price>  
+    <category>书籍</category>  
+    <storeNum>20</storeNum>  
+    <cname>设计模式</cname>  
+    <description>好，很有精神</description> 
+  </Commodity>  
+  <Commodity> 
+    <commodityId>5608ff1b-33bf-40e9-a223-dd5893ba8991</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>99999</price>  
+    <category>人</category>  
+    <storeNum>1</storeNum>  
+    <cname>李林飞</cname>  
+    <description>yyds</description> 
+  </Commodity>  
+  <Commodity> 
+    <commodityId>025e4239-b879-43ff-a405-52e73e973aba</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>999</price>  
+    <category>大佬</category>  
+    <storeNum>1</storeNum>  
+    <cname>wwj</cname>  
+    <description>yyds</description> 
+  </Commodity>  
   <Commodity>
-    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>
+    <commodityId>7adde8d2-cf89-4072-abdd-9110f1accae3</commodityId>
     <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>
-    <price>100</price>
-    <category>SHIRT</category>
-    <storeNum>56</storeNum>
-    <cname>七匹狼</cname>
-    <description>爱你所爱！</description>
+    <price>27</price>
+    <category>生活用品</category>
+    <storeNum>87</storeNum>
+    <cname>富士保温杯</cname>
+    <description>守护你的温暖</description>
   </Commodity>
 </Commoditys>

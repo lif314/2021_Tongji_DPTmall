@@ -95,7 +95,7 @@ public class CommodityDaoImpl  implements CommodityDao {
      */
     @Override
     public List<Commodity> getAllByShopId(String shopId) {
-        List<Commodity> all = getAll();
+        List<Commodity> all = commodityXMLContext.init();
         List<Commodity> commodityListResult = new ArrayList<>();
         for (Commodity c : all) {
             if(c.getShopId().equals(shopId)){

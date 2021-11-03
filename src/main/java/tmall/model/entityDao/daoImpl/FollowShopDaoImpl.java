@@ -2,20 +2,17 @@ package tmall.model.entityDao.daoImpl;
 
 import tmall.XMLRepository.ProxyXmlContext;
 import tmall.XMLRepository.XMLContext;
-import tmall.model.entity.Commodity;
 import tmall.model.entity.FollowShop;
 import tmall.model.entity.Shop;
-import tmall.model.entity.ShoppingCart;
-import tmall.model.entityDao.daoInterface.FavoriteShopDao;
+import tmall.model.entityDao.daoInterface.FollowShopDao;
 import tmall.model.logicalEntity.FollowShopLogic;
-import tmall.model.logicalEntity.ShoppingCartLogic;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteShopDaoImpl implements FavoriteShopDao {
+public class FollowShopDaoImpl implements FollowShopDao {
 
     // 店铺关注上下文
     private final XMLContext<FollowShop> followShopXMLContext = new ProxyXmlContext<>(FollowShop.class);
@@ -92,5 +89,18 @@ public class FavoriteShopDaoImpl implements FavoriteShopDao {
                 followShopXMLContext.add(shop);
             }
         }
+    }
+
+
+    @Override
+    public List<FollowShop> getAllByShopId(String shopId) {
+        List<FollowShop> followShopList = new ArrayList<>();
+        List<FollowShop> init = followShopXMLContext.init();
+        System.out.println("init:"+init);
+        for (FollowShop fs : init) {
+            if(fs.getShopId().equals(shopId))
+                followShopList.add(fs);
+        }
+        return followShopList;
     }
 }

@@ -9,6 +9,7 @@ import tmall.model.entityDao.daoImpl.SellerDaoImpl;
 import tmall.model.entityDao.daoInterface.BuyerDao;
 import tmall.model.entityDao.daoInterface.SellerDao;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -20,6 +21,7 @@ public class TMallSystem {
 
     private static Buyer buyer = null;
     private static Seller seller=null;
+    private static HashMap<String,Object> attribute=new HashMap<>();
 
     /**
      * 当买家请求注册时创建买家
@@ -104,5 +106,9 @@ public class TMallSystem {
         SellerDao sellerDao = new SellerDaoImpl();
         seller = sellerDao.login(name, password);
         return seller != null;
+    }
+
+    public static HashMap<String, Object> getAttribute() {
+        return attribute;
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 关注店铺
  */
-public interface FavoriteShopDao {
+public interface FollowShopDao {
 
     /**
      * 关注店铺
@@ -40,4 +40,11 @@ public interface FavoriteShopDao {
      * @param shopId id
      */
     void cancelShopFollow(String shopId, String buyerId);
+
+    /**
+     * 获取店铺的关注数据
+     * @param shopId id
+     * @return list
+     */
+    List<FollowShop> getAllByShopId(String shopId);
 }

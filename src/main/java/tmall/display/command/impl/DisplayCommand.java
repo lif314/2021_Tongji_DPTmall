@@ -1,5 +1,6 @@
 package tmall.display.command.impl;
 
+import tmall.controller.impl.FavoriteController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
 import tmall.tmallSystem.TMallSystem;
@@ -9,9 +10,9 @@ import java.lang.reflect.Method;
 import java.sql.Array;
 
 /**
- * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
  * @author 王文炯
  * @version 1.0.0
+ * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类
  * @Description 本命令类对应买家命令Display XXX，可显示商品总价，打折后总价，订单详情，优惠方式，支付方式等，可选参数为（TotalMoney、PaidMoney、OrderDetail、ShopCoupon、PaidMoney）
  */
 public class DisplayCommand extends Command {
@@ -23,9 +24,9 @@ public class DisplayCommand extends Command {
     }
 
     /**
+     * @return DisplayCommand对象
      * @Description 获取DisplayCommand对象
      * 这里采用单例模式
-     * @return DisplayCommand对象
      */
     public static DisplayCommand getDisplayCommand() {
         if (displayCommand == null) {
@@ -36,10 +37,10 @@ public class DisplayCommand extends Command {
 
 
     /**
-     * @Description 本方法被FrontController调用，采用适配器模式，对于FrontController都是调用execute方法，而该方法封装了不同Controller的不同方法
-     * @Description 本命令的此方法的功能为显示数据
      * @param args 命令行输入的参数
      * @return 本方法无返回值
+     * @Description 本方法被FrontController调用，采用适配器模式，对于FrontController都是调用execute方法，而该方法封装了不同Controller的不同方法
+     * @Description 本命令的此方法的功能为显示数据
      */
     @Override
     public Object[] execute(Object... args) {
@@ -60,12 +61,18 @@ public class DisplayCommand extends Command {
             } else if ("OrderDetail".equals(params)) {
                 try {
                     Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();
-                    Method method = aClass.getMethod("display" + params,String.class);
+                    Method method = aClass.getMethod("display" + params, String.class);
                     System.out.println(method.invoke(super.getConcreteController(), TMallSystem.getBuyer().getBuyerId()));
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
+//                展示收藏夹里的商品
+            } else if ("FavoriteCommodities".equals(params)) {
 //                其他数据的显示，因为不需要参数，所以直接反射动态调用即可，如支付方式，优惠券和活动等等
+
+                FavoriteController favoriteController = new FavoriteController();
+                return favoriteController.displayFavoriteCommodities(TMallSystem.getBuyer().getBuyerId());
+
             } else {
                 try {
                     Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();

@@ -11,7 +11,7 @@ import tmall.display.expression.Expression;
  */
 public class ExpressionUtil {
     public static boolean isVerb(String word) {
-        return "Complaint".equals(word) ||"Get".equals(word) ||"Create".equals(word) || "Display".equals(word) || "Select".equals(word) || "Login".equals(word) || "Enter".equals(word) || "Edit".equals(word) || "Buy".equals(word) || "Follow".equals(word) || "Increase".equals(word) || "Reduce".equals(word) || "Add".equals(word) || "Delete".equals(word);
+        return "Add".equals(word)||"Complaint".equals(word) ||"Get".equals(word) ||"Create".equals(word) || "Display".equals(word) || "Select".equals(word) || "Login".equals(word) || "Enter".equals(word) ||  "Buy".equals(word) ||  "Delete".equals(word);
     }
 
     /**

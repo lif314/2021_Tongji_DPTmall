@@ -2,6 +2,7 @@ package tmall.controller.orderController;
 
 import tmall.XMLRepository.util.Nullable;
 import tmall.controller.Controller;
+import tmall.controller.calculation.Calculator;
 import tmall.model.entity.*;
 import tmall.model.entityDao.daoImpl.*;
 import tmall.model.entityDao.daoInterface.*;
@@ -141,17 +142,8 @@ public class ShoppingCenter extends Controller {
      * @return paidMoney
      */
     public String calPaidMoney(){
-        paidMoney = totalMoney;
-        if(coupon != null){
-            double full = Double.parseDouble(coupon.getFull());
-            if(paidMoney >= full){
-                paidMoney -= Double.parseDouble(coupon.getMinus());
-            }
-        }
-        if(activity != null){
-            paidMoney *= Double.parseDouble(activity.getDiscount());
-        }
-        return  paidMoney + "";
+        Calculator calculator = new Calculator(totalMoney,coupon,activity);
+        return Double.toString(calculator.doCalculation());
     }
 
     /**
@@ -212,13 +204,6 @@ public class ShoppingCenter extends Controller {
      * @return 订单详情
      */
     public OrderLogic displayOrderDetail(String buyerId){
-//        System.out.println("============shopping center =================");
-//        System.out.println(buyerId);
-//        System.out.println(orderCommodityLogics);
-//        System.out.println(coupon);
-//        System.out.println(buyerAddress);
-//        System.out.println(orderPayment);
-//        System.out.println("====================================");
 
         return OrderBuilder
                     .getOrderBuilderInstance()

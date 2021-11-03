@@ -1,5 +1,9 @@
 package tmall.model.entity;
 
+//import tmall.controller.DCH_impl.ComplaintController.Chatroom;
+
+import tmall.controller.DCH_impl.ComplaintController.Chatroom;
+
 /**
  * 店铺关注实体表
  */
@@ -42,6 +46,13 @@ public class FollowShop {
 
     public void setFollowDate(String followDate) {
         this.followDate = followDate;
+    }
+
+    /**
+     * Observer: 店铺发布新活动（优惠券）后，买家做出响应（在消息列表中增加一条消息）
+     */
+    public void cheers(String type){
+        Chatroom.addMessage(buyerId, shopId, type);
     }
 
     @Override
