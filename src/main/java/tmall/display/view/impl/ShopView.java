@@ -49,15 +49,17 @@ public class ShopView extends View {
             }
             System.out.println("=========店铺订单列表========");
             // 注：llf尚未实现这里的DAO接口,实现后即可恢复下面几行代码
-//            List<Order> orderList = (List<Order>) args[2];
-//            Integer index2 = 1;
-//            for (Order order:orderList) {
-//                System.out.print(index2.toString() +'、');
-//                System.out.println("订单编号: "+order.getOrderId());
-//                System.out.println("订单状态: "+ order.getStatus());
-//                System.out.println("订单创建时间: "+order.getCreateTime());
-//                index2++;
-//            }
+            System.out.println(args);
+            List<Order> orderList = (List<Order>) args[2];
+            System.out.println(orderList);
+            Integer index2 = 1;
+            for (Order order:orderList) {
+                System.out.print(index2.toString() +'、');
+                System.out.println("订单编号: "+order.getOrderId());
+                System.out.println("订单状态: "+ order.getStatus());
+                System.out.println("订单创建时间: "+order.getCreateTime());
+                index2++;
+            }
             System.out.println("=========店铺优惠券列表========");
             List<Coupon> couponList = (List<Coupon>) args[1];
             Integer index3 = 1;

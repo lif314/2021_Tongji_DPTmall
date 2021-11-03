@@ -75,7 +75,7 @@ public class ShoppingCenter extends Controller {
     public List<Commodity> displayShopCommodities(String commodityId){
         CommodityDao commodityDao = new CommodityDaoImpl();
         Commodity commodity = commodityDao.getByCommodityId(commodityId);
-        this.shopId = commodity.getShopId();
+        shopId = commodity.getShopId();
         return  commodityDao.getAllByShopId(commodity.getShopId());
     }
 
@@ -118,7 +118,7 @@ public class ShoppingCenter extends Controller {
      */
     public List<Coupon> displayShopCoupon(){
         CouponDao couponDao = new CouponDaoImpl();
-        return couponDao.getAllByShopId(this.shopId);
+        return couponDao.getAllByShopId(shopId);
     }
 
     /**

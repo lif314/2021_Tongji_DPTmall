@@ -1,9 +1,5 @@
 package tmall.controller.Interface.UserInfoMemento;
 
-/**
- * Originator 创建并在 Memento 对象中存储状态
- * @param <T>
- */
 public class Originator<T>{
     private T state;
 

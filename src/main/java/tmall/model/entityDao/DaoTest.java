@@ -57,9 +57,12 @@ public class DaoTest {
 //        favoriteCommodityDao.create("11212", "121212");
 //        favoriteCommodityDao.addToDb();
 
-        OrderDao orderDao = new OrderDaoImpl();
-        List<Order> allByShopId = orderDao.getAllByShopId("b3388015-b394-4cae-ab2c-154edd8ab8ea");
-        System.out.println(allByShopId);
+//        OrderDao orderDao = new OrderDaoImpl();
+//        List<Order> allByShopId = orderDao.getAllByShopId("b3388015-b394-4cae-ab2c-154edd8ab8ea");
+//        System.out.println(allByShopId);
 
+        BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
+        buyerAddressDao.create("c481e837-3461-4e11-b68e-361e40b7233a", "llf", "18387400236", "同济大学 嘉定校区");
+        buyerAddressDao.addToDb();
     }
 }

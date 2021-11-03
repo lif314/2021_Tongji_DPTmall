@@ -52,8 +52,8 @@ public class ComFactory {
         }
 //            obj[0] = commodity;
 //            obj[1] = tips;
-//        ShopController.Notify N = new ShopController.notifyNewCommodity();
-//        N.notify(current_shopId);
+        ShopController.Notify N = new ShopController.notifyNewCommodity();
+        N.notify(current_shopId);
         return tips;
     }
 }

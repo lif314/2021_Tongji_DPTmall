@@ -19,7 +19,8 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-//        ShopController shopController = new ShopController();
+        ShopController shopController = new ShopController();
+        shopController.getOrderList("b3388015-b394-4cae-ab2c-154edd8ab8ea");
 //        ComFactory comFactory = new ComFactory("b3388015-b394-4cae-ab2c-154edd8ab8ea");
 //        System.out.println(comFactory.add("设计模式","书籍","36","20","好，很有精神"));
 //        System.out.println(Arrays.toString(shopController.execute("b3388015-b394-4cae-ab2c-154edd8ab8ea")));

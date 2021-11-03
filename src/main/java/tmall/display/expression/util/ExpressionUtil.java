@@ -7,7 +7,7 @@ import tmall.display.expression.Expression;
  * @Description expression包为解释器模式的实现类，包含一个父类Expression，工具类Context、ExpressionUtil，以及其它具体的实现类：名词解释器、动词解释器父类及其实现类
  * @author 王文炯
  * @version 1.0.0
- * @Description ExpressionUtil类为工具类，作用为Context解释命令提供辅助
+ * @Description ExpressionUtil类为工具类，作用为Context解释命令提供辅助：作为具体解释器的工厂，以及判断输入的单词是否为动词
  */
 public class ExpressionUtil {
     public static boolean isVerb(String word) {

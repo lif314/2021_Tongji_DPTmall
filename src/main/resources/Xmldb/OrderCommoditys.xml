@@ -2,7 +2,7 @@
 
 <OrderCommoditys> 
   <OrderCommodity> 
-    <orderId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</orderId>
+    <orderId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</orderId>  
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
     <amount>3</amount> 
   </OrderCommodity>  
@@ -11,9 +11,24 @@
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
     <amount>1</amount> 
   </OrderCommodity>  
+  <OrderCommodity> 
+    <orderId>a0e2eb94-4777-4dc2-9f9b-339d7f807d1b</orderId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <amount>1</amount> 
+  </OrderCommodity>  
+  <OrderCommodity> 
+    <orderId>900d5849-64a0-4fde-9e06-173fd437ee31</orderId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <amount>3</amount> 
+  </OrderCommodity>  
+  <OrderCommodity> 
+    <orderId>d5f61858-10f7-496a-a736-1dd0140b70a2</orderId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <amount>1</amount> 
+  </OrderCommodity>  
   <OrderCommodity>
-    <orderId>a0e2eb94-4777-4dc2-9f9b-339d7f807d1b</orderId>
+    <orderId>69dbdc3c-e25b-4cb9-bb25-cc28fa631a39</orderId>
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>
-    <amount>1</amount>
+    <amount>3</amount>
   </OrderCommodity>
 </OrderCommoditys>

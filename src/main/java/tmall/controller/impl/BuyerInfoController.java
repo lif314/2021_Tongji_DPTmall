@@ -6,12 +6,13 @@ import tmall.controller.Interface.UserInfoController;
 import tmall.model.entity.Buyer;
 import tmall.model.entity.NullBuyer;
 import tmall.model.entityDao.daoImpl.BuyerDaoImpl;
+import tmall.model.entityDao.daoInterface.BuyerDao;
 
 import java.util.List;
 
 
 public class BuyerInfoController implements UserInfoController {
-    private final BuyerDaoImpl BuyerDI = new BuyerDaoImpl();
+    private final BuyerDao BuyerDI = new BuyerDaoImpl();
     List<Buyer> buyersInfo = BuyerDI.getAll();
 
     // 备忘录管理器 备忘录只在修改页面有效 一旦退出就无法回滚

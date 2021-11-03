@@ -52,9 +52,11 @@ public class SellerInfoController implements UserInfoController {
         for(Seller seller : sellersInfo){
             if(seller.getSellerId().equals(ID)) {
                 // 数据库修改
+                SellerDao sellerDao = new SellerDaoImpl();
                 sellerDao.deleteById(ID);
                 sellerDao.create(editedSeller.getPassword(),editedSeller.getName(),editedSeller.getSellerId(),
                         editedSeller.getNickname(),editedSeller.getPhone());
+                sellerDao.addToDb();
                 careTaker.add(originator.saveStateToMemento());
                 return true;
             }

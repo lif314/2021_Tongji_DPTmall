@@ -5,11 +5,11 @@ import tmall.controller.impl.NullUserInfoController;
 import tmall.controller.impl.SellerInfoController;
 
 /**
- * 创造卖家或买家用户信息Controller的工厂
+ * 创造卖家或买家的用户信息Controller
  */
-public class UserInfoControllerFactory implements AbstractFactory {
+public class UserInfoControllerFactory implements UserManageAbstractFactory {
     @Override
-    public Object getUserController() {
+    public Object getUserRoleController() {
         return null;
     }
 

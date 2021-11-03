@@ -19,7 +19,7 @@ public class EnterCommodityViewCommand extends Command {
 
     /**
      * 这里采用单例模式
-     * @return InstructionOrder对象
+     * @return EnterCommodityViewCommand对象
      */
     public static EnterCommodityViewCommand getEnterCommodityViewCommand() {
         if (enterCommodityViewCommand == null) {

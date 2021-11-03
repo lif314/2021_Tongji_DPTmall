@@ -3,10 +3,6 @@ package tmall.controller.Interface.UserInfoMemento;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * CareTaker 负责从 Memento 中恢复对象的状态
- * @param <T>
- */
 public class CareTaker<T> {
     private final List<Memento<T>> mementoList = new ArrayList<>();
 

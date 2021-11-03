@@ -11,8 +11,23 @@
     <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
     <type>coupon</type> 
   </OrderPromotion>  
+  <OrderPromotion> 
+    <orderId>a0e2eb94-4777-4dc2-9f9b-339d7f807d1b</orderId>  
+    <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
+    <type>coupon</type> 
+  </OrderPromotion>  
+  <OrderPromotion> 
+    <orderId>900d5849-64a0-4fde-9e06-173fd437ee31</orderId>  
+    <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
+    <type>coupon</type> 
+  </OrderPromotion>  
+  <OrderPromotion> 
+    <orderId>d5f61858-10f7-496a-a736-1dd0140b70a2</orderId>  
+    <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>  
+    <type>coupon</type> 
+  </OrderPromotion>  
   <OrderPromotion>
-    <orderId>a0e2eb94-4777-4dc2-9f9b-339d7f807d1b</orderId>
+    <orderId>69dbdc3c-e25b-4cb9-bb25-cc28fa631a39</orderId>
     <promotionId>5baa35b7-e61a-4783-85b4-0f826a5e7205</promotionId>
     <type>coupon</type>
   </OrderPromotion>
