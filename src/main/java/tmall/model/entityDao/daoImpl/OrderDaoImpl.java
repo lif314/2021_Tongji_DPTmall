@@ -14,23 +14,6 @@ public class OrderDaoImpl implements OrderDao {
     // 订单上下文
     private final XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
 
-    // 商品订单联系集数据库上下文
-    private final XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
-
-    // 商品数据库上下文
-    private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
-
-    // 店铺数据库上下文
-    private final XMLContext<Shop> shopXMLContext = new ProxyXmlContext<>(Shop.class);
-
-    // 订单优惠
-    private final XMLContext<OrderPromotion> orderPromotionXMLContext = new ProxyXmlContext<>(OrderPromotion.class);
-
-    private final XMLContext<OrderPayment> orderPaymentXMLContext = new ProxyXmlContext<>(OrderPayment.class);
-
-    // 买家收获地址信息
-    private final XMLContext<BuyerAddress> buyerAddressXMLContext = new ProxyXmlContext<>(BuyerAddress.class);
-
     /**
      * 更改订单状态
      *
@@ -96,8 +79,32 @@ public class OrderDaoImpl implements OrderDao {
                 .display();                   // 集成
     }
 
+    /**
+     * 获取店铺所有订单
+     * @param shopId id
+     * @return list order
+     */
     @Override
     public List<Order> getAllByShopId(String shopId) {
-        return null;
+        XMLContext<OrderCommodity> orderCommodityXMLContext = new ProxyXmlContext<>(OrderCommodity.class);
+        List<OrderCommodity> orderCommodityList = orderCommodityXMLContext.init();
+
+        List<OrderCommodity> newOrder = new ArrayList<>();
+        for (OrderCommodity orderCommodity : orderCommodityList) {
+            XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
+            Commodity comm = commodityXMLContext.findById(orderCommodity.getCommodityId());
+            if(comm.getShopId().equals(shopId)){
+                newOrder.add(orderCommodity);
+            }
+        }
+
+        List<Order> orderList = new ArrayList<>();
+        for (OrderCommodity o : newOrder) {
+            XMLContext<Order> orderXMLContext = new ProxyXmlContext<>(Order.class);
+            Order byId = orderXMLContext.findById(o.getOrderId());
+            orderList.add(byId);
+        }
+
+        return orderList;
     }
 }

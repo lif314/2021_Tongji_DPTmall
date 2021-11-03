@@ -20,8 +20,7 @@ public class FavoriteCommodityDaoImpl implements FavoriteCommodityDao {
 
     private final XMLContext<FollowCommodity> followCommodityXMLContext = new ProxyXmlContext<>(FollowCommodity.class);
 
-
-    private  FollowCommodity followCommodity;
+    private static FollowCommodity followCommodity;
 
     /**
      * 关注商品

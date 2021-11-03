@@ -18,9 +18,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     // 购物车数据库上下文
     private final XMLContext<ShoppingCart> shoppingCartXMLContext = new ProxyXmlContext<>(ShoppingCart.class);
 
-    // 商品数据库上下文
-    private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
-
     // 购物车联系集
     private ShoppingCart shoppingCart;
 
@@ -62,6 +59,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         for (ShoppingCart sc : init) {
             // 获取buyerId的联系集
             if (sc.getBuyerId().equals(buyerId)){
+                XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
                 // 根据联系集获取商品信息
                 Commodity c = commodityXMLContext.findById(sc.getCommodityId());
                 // 创建购物车详情

@@ -13,7 +13,7 @@ public class CouponDaoImpl implements CouponDao {
 
     private final XMLContext<Coupon> couponXMLContext = new ProxyXmlContext<>(Coupon.class);
 
-    private  Coupon coupon;
+    private static  Coupon coupon;
 
     /**
      * 发布优惠券

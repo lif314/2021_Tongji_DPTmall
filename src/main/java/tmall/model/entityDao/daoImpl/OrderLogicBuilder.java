@@ -26,15 +26,6 @@ public class OrderLogicBuilder {
     private static String shopId;
 
     /**
-     * 订单商品联系集
-     */
-    private  static final List<OrderCommodity> orderCommodityList = new ArrayList<>();
-
-    private static final List<OrderPromotion> orderPromotionList = new ArrayList<>();
-
-    private static OrderPayment orderPayment;
-
-    /**
      * 单例模式：
      * 不让使用者使用new创建构造器
      */

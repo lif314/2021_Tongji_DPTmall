@@ -17,9 +17,7 @@ public class FollowShopDaoImpl implements FollowShopDao {
     // 店铺关注上下文
     private final XMLContext<FollowShop> followShopXMLContext = new ProxyXmlContext<>(FollowShop.class);
 
-    private final XMLContext<Shop> shopXMLContext = new ProxyXmlContext<>(Shop.class);
-
-    private FollowShop followShop;
+    private static FollowShop followShop;
 
     /**
      * 关注店铺
@@ -59,6 +57,7 @@ public class FollowShopDaoImpl implements FollowShopDao {
         List<FollowShop> init = followShopXMLContext.init();
         for (FollowShop fs : init) {
             if(fs.getBuyerId().equals(buyerId)){
+                XMLContext<Shop> shopXMLContext = new ProxyXmlContext<>(Shop.class);
                 Shop shop = shopXMLContext.findById(fs.getShopId());
                 FollowShopLogic followShopLogic = new FollowShopLogic(shop.getShopId(), shop.getShopName(), shop.getCreditScore(), shop.getCategory(), shop.getDescription(), fs.getFollowDate());
                 followShopLogicList.add(followShopLogic);
@@ -96,7 +95,6 @@ public class FollowShopDaoImpl implements FollowShopDao {
     public List<FollowShop> getAllByShopId(String shopId) {
         List<FollowShop> followShopList = new ArrayList<>();
         List<FollowShop> init = followShopXMLContext.init();
-        System.out.println("init:"+init);
         for (FollowShop fs : init) {
             if(fs.getShopId().equals(shopId))
                 followShopList.add(fs);

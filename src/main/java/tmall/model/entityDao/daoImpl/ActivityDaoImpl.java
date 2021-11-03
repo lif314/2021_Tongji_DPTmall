@@ -12,7 +12,7 @@ public class ActivityDaoImpl implements ActivityDao {
 
     private final XMLContext<Activity> activityXMLContext = new ProxyXmlContext<>(Activity.class);
 
-    private Activity activity;
+    private static Activity activity;
 
     /**
      * 发布活动

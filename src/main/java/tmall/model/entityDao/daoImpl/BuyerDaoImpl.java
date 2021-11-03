@@ -15,7 +15,7 @@ public class BuyerDaoImpl implements BuyerDao {
      */
     private final XMLContext<Buyer> buyerXMLContext = new ProxyXmlContext<>(Buyer.class);
 
-    private Buyer buyer;
+    private static Buyer buyer;
 
 
     /**

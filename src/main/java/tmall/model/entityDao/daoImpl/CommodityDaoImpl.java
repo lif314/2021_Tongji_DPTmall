@@ -15,7 +15,7 @@ public class CommodityDaoImpl  implements CommodityDao {
     private final XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
 
     // 商品
-    private Commodity commodity;
+    private static Commodity commodity;
 
     /**
      * 创建商品
