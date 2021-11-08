@@ -1,6 +1,7 @@
 package tmall.display.view.impl;
 
 import tmall.display.view.View;
+import tmall.model.entity.Commodity;
 
 public class DivisionView extends View {
     @Override

@@ -23,17 +23,19 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ShopView extends View {
+    /**
+     * @Author Sir Lancelot
+     * @Description 店铺后台界面
+     */
     @Override
     public Object show(Object... args) {
-
+//        System.out.println(args);
         ShopController shopController = new ShopController();
         if (TMallSystem.getSeller() !=null) {
             String shopId = (String) TMallSystem.getAttribute().get("attribute");
             Shop currentShop = shopController.getShop(shopId);
             System.out.println("==========欢迎来到店铺 "+currentShop.getShopName()+" ==========");
             System.out.println("店铺简介: "+currentShop.getDescription());
-//            System.out.println("return: "+ Arrays.toString(args));
-//            System.out.println("已获得"+shopId);
             System.out.println();
             System.out.println("=========店铺商品列表========");
             List<Commodity> commodityList = (List<Commodity>) args[0];
@@ -48,10 +50,7 @@ public class ShopView extends View {
                 index1++;
             }
             System.out.println("=========店铺订单列表========");
-            // 注：llf尚未实现这里的DAO接口,实现后即可恢复下面几行代码
-            System.out.println(args);
             List<Order> orderList = (List<Order>) args[2];
-            System.out.println(orderList);
             Integer index2 = 1;
             for (Order order:orderList) {
                 System.out.print(index2.toString() +'、');
@@ -72,7 +71,8 @@ public class ShopView extends View {
              * 定义店铺内操作
              */
             while(true){
-                System.out.println("\n=======请选择您想进行的操作========\n1.上架商品\n2.发布优惠券\n3.发货\n4.下架商品\n5.删除优惠券\n6.退出店铺");
+                int flag = 0;
+                System.out.println("\n=======请选择您想进行的操作========\n1.上架商品\n2.发布优惠券\n3.发货\n4.下架商品\n5.删除优惠券\n6.发货\n7.退出店铺");
                 Scanner cmd = new Scanner(System.in);
                 String str = cmd.next();
                 if(Objects.equals(str, "1")){
@@ -106,10 +106,13 @@ public class ShopView extends View {
                         if(order.getOrderId().equals(ID)){
                             shopController.shipOrder(ID);
                             System.out.println("订单发货成功！");
+                            flag = 1;
                             break;
                         }
                     }
-                    System.out.println("未找到该订单！");
+                    if(flag == 0){
+                        System.out.println("未找到该订单！");
+                    }
                 }else if(Objects.equals(str, "4")){
                     System.out.println("请输入要下架的商品id：");
                     Scanner id = new Scanner(System.in);
@@ -120,10 +123,11 @@ public class ShopView extends View {
                         if(commodity.getCommodityId().equals(ID)){
                             shopController.deleteCommodity(ID);
                             System.out.println("商品下架成功！");
+                            flag = 1;
                             break;
                         }
                     }
-                    System.out.println("未找到该商品！");
+                    if(flag ==0){System.out.println("未找到该商品！");}
                 }else if(Objects.equals(str, "5")){
                     System.out.println("请输入要删除的优惠券id：");
                     Scanner id = new Scanner(System.in);
@@ -134,11 +138,14 @@ public class ShopView extends View {
                         if(coupon.getCouponId().equals(ID)){
                             shopController.deleteCoupon(ID);
                             System.out.println("优惠券删除成功！");
+                            flag = 1;
                             break;
                         }
                     }
-                    System.out.println("未找到该优惠券！");
+                    if(flag==0){System.out.println("未找到该优惠券！");}
                 }else if(Objects.equals(str, "6")){
+                    shopController.restock();
+                }else if(Objects.equals(str, "7")){
                     System.out.println("您已安全离开店铺后台！");
                     break;
                 }else{
@@ -146,9 +153,18 @@ public class ShopView extends View {
                 }
             }
         } else if (TMallSystem.getBuyer()!=null){
+            for(int i = 0; i < 60; i ++) {System.out.print("=");}
+            System.out.print("WELCOME TO MY SHOP");
+            for(int i = 0; i < 60; i ++) {System.out.print("=");}
+            System.out.print('\n');
+            System.out.printf("|%-15s|%-15s|%-5s|%-10s|%-5s|%-40s|%-40s|",
+                    "Name","Description","Price","Category","Store","CommodityID","ShopID");
+            System.out.println();
             for (Object o:args){
-                System.out.println(args);
+                System.out.println(o);
             }
+            for(int i = 0; i < 60 * 2 + 18; i ++) {System.out.print("=");}
+            System.out.print('\n');
         }
 
         return null;

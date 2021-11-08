@@ -79,14 +79,16 @@ public class Seller implements User{
 
     @Override
     public String toString() {
-        return "Seller{" +
-                "sellerId='" + sellerId + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", idNumber='" + idNumber + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return  String.format("|%-10s|%-10s|%-20s|%-11s|%-20s|%-40s|",
+                name,nickname,idNumber,phone,password,sellerId);
+//        return "Seller{" +
+//                "sellerId='" + sellerId + '\'' +
+//                ", password='" + password + '\'' +
+//                ", name='" + name + '\'' +
+//                ", idNumber='" + idNumber + '\'' +
+//                ", nickname='" + nickname + '\'' +
+//                ", phone='" + phone + '\'' +
+//                '}';
     }
 
     @Override

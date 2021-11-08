@@ -87,14 +87,7 @@ public class ShoppingCartLogic {
 
     @Override
     public String toString() {
-        return "ShoppingCartLogic{" +
-                "commodityId='" + commodityId + '\'' +
-                ", cname='" + cname + '\'' +
-                ", price='" + price + '\'' +
-                ", amount='" + amount + '\'' +
-                ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
+        return String.format("|%-10s\t|%-20s|%-8s\t|%-5s|%-5s\t|%-40s|%-30s|",
+                cname,description,amount,price,category,commodityId,createDate);
     }
 }

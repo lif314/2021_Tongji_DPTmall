@@ -90,14 +90,16 @@ public class Shop {
 
     @Override
     public String toString() {
-        return "Shop{" +
-                "shopId='" + shopId + '\'' +
-                ", sellerId='" + sellerId + '\'' +
-                ", shopName='" + shopName + '\'' +
-                ", creditScore='" + creditScore + '\'' +
-                ", category='" + category + '\'' +
-                ", shopAddress='" + shopAddress + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return  String.format("|%-10s|%-5s|%-5s|%-20s|%-20s|%-40s|%-40s|",
+                shopName,creditScore,category,shopAddress,description,sellerId,shopId);
+//        return "Shop{" +
+//                "shopId='" + shopId + '\'' +
+//                ", sellerId='" + sellerId + '\'' +
+//                ", shopName='" + shopName + '\'' +
+//                ", creditScore='" + creditScore + '\'' +
+//                ", category='" + category + '\'' +
+//                ", shopAddress='" + shopAddress + '\'' +
+//                ", description='" + description + '\'' +
+//                '}';
     }
 }

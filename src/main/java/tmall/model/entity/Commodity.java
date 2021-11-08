@@ -94,18 +94,22 @@ public class Commodity {
         this.description = description;
     }
 
+//    @Override
+//    public String toString() {
+//        return  String.format("%-6s\t", cname) + "|" +
+//                String.format("%-10s\t", description) + "|" +
+//                String.format("%-10s\t", price) + "|" +
+//                String.format("%-10s\t", category) + "|" +
+//                String.format("%-10s\t", storeNum) + "|" +
+//                String.format("%-10s\t", commodityId) + "|" +
+//                String.format("%-10s\t", shopId);
+//    }
     @Override
     public String toString() {
-        return "Commodity{" +
-                "commodityId='" + commodityId + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", price='" + price + '\'' +
-                ", category='" + category + '\'' +
-                ", storeNum='" + storeNum + '\'' +
-                ", cname='" + cname + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return  String.format("|%-15s|%-15s|%-5s|%-10s|%-5s|%-40s|%-40s|",
+                cname,description,price,category,storeNum,commodityId,shopId);
     }
+
 
     /**
      * @author Strange

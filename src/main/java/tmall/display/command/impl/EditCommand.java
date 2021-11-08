@@ -1,8 +1,9 @@
 package tmall.display.command.impl;
 
-import tmall.controller.factory.UserManageAbstractFactory;
-import tmall.controller.factory.UserManageProducer;
+import tmall.controller.factory.AbstractFactory;
+import tmall.controller.factory.FactoryProducer;
 import tmall.controller.impl.BuyerInfoController;
+import tmall.controller.impl.CartController;
 import tmall.controller.impl.FavoriteController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
@@ -47,12 +48,18 @@ public class EditCommand extends Command {
     @Override
     public Object[] execute(Object... args) {
         String params = (String) args[0];
-        if (params.startsWith("BuyerInfo")&&TMallSystem.getBuyer()!=null){
-            String password = params.substring(19,params.length());
-            UserManageAbstractFactory userManageAbstractFactory = new UserManageProducer().getUserManageController("info");
-            BuyerInfoController buyerInfoController = (BuyerInfoController) userManageAbstractFactory.getUserInfoController("buyer");
-            buyerInfoController.editBuyerPassword(TMallSystem.getBuyer().getBuyerId(),password);
+        if (params.startsWith("BuyerInfo") && TMallSystem.getBuyer() != null) {
+            String password = params.substring(19, params.length());
+            AbstractFactory userInfoControllerFactory = FactoryProducer.getFactory("info");
+            BuyerInfoController buyerInfoController = (BuyerInfoController) userInfoControllerFactory.getUserInfoController("buyer");
+            buyerInfoController.editBuyerPassword(TMallSystem.getBuyer().getBuyerId(), password);
             System.out.println("密码修改成功！");
+        } else if (params.startsWith("CommodityCount")) {
+            String[] split = params.substring(15, params.length()).split("\\*");
+            String commodityId = split[0];
+            String count = split[1];
+            new CartController().editCommodityInfo(count,commodityId,TMallSystem.getBuyer().getBuyerId());
+            System.out.println("修改商品数量成功");
         }
         return null;
     }

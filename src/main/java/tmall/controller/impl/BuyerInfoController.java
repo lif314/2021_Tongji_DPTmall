@@ -31,6 +31,7 @@ public class BuyerInfoController implements UserInfoController {
      */
     @Override
     public Object getInfo(String ID) {
+        buyersInfo = BuyerDI.getAll();
         for(Buyer buyer : buyersInfo){
             if(buyer.getBuyerId().equals(ID))
                 return buyer;
@@ -76,8 +77,8 @@ public class BuyerInfoController implements UserInfoController {
         if(buyer == null)
             return false;
         BuyerDI.updatePassword(buyer.getBuyerId(),value);
-        buyer.setPasswd(value);
-        originator.setState(buyer);
+        Buyer b = new Buyer(buyer.getBuyerId(),value,buyer.getIdNumber(),buyer.getPhone(),buyer.getNickname(),buyer.getGender(),buyer.getBirthday());
+        originator.setState(b);
 
         return true;
     }

@@ -1,6 +1,7 @@
 package tmall.display.dispatcher;
 
 
+import tmall.controller.DCH_impl.ComplaintController.Chatroom;
 import tmall.display.view.View;
 import tmall.display.view.impl.*;
 
@@ -45,6 +46,8 @@ public class Dispatcher {
         DivisionView divisionView = new DivisionView();
         HomeView homeView = new HomeView();
         ActivityView activityView = new ActivityView();
+        ServiceView serviceView = new ServiceView();
+        ChatRoomView chatRoomView = new ChatRoomView();
         this.addView("CommodityView",commodityView);
         this.addView("CommodityDivisionView",commodityDivisionView);
         this.addView("LoginView",loginView);
@@ -53,6 +56,8 @@ public class Dispatcher {
         this.addView("DivisionView",divisionView);
         this.addView("HomeView",homeView);
         this.addView("ActivityView",activityView);
+        this.addView("ServiceView",serviceView);
+        this.addView("ChatRoomView",chatRoomView);
     }
 
     /**

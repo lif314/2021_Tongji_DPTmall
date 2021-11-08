@@ -1,7 +1,7 @@
 package tmall.display.command.impl;
 
-import tmall.controller.factory.UserManageAbstractFactory;
-import tmall.controller.factory.UserManageProducer;
+import tmall.controller.factory.AbstractFactory;
+import tmall.controller.factory.FactoryProducer;
 import tmall.controller.impl.BuyerInfoController;
 import tmall.display.command.Command;
 import tmall.tmallSystem.TMallSystem;
@@ -42,8 +42,8 @@ public class RollbackCommand extends Command {
     public Object[] execute(Object... args) {
         String params = (String) args[0];
         if (params.startsWith("BuyerInfo")&& TMallSystem.getBuyer()!=null){
-            UserManageAbstractFactory userManageAbstractFactory = new UserManageProducer().getUserManageController("info");
-            BuyerInfoController buyerInfoController = (BuyerInfoController) userManageAbstractFactory.getUserInfoController("buyer");
+            AbstractFactory userInfoControllerFactory = FactoryProducer.getFactory("info");
+            BuyerInfoController buyerInfoController = (BuyerInfoController) userInfoControllerFactory.getUserInfoController("buyer");
             buyerInfoController.rollbackEdite();
             System.out.println("买家信息回滚成功！");
         }

@@ -19,7 +19,7 @@ public class EnterDivisionViewCommand extends Command {
 
     /**
      * 这里采用单例模式
-     * @return InstructionOrder对象
+     * @return EnterDivisionViewCommand对象
      */
     public static EnterDivisionViewCommand getEnterDivisionViewCommand() {
         if (enterDivisionViewCommand == null) {

@@ -4,6 +4,9 @@ import tmall.controller.impl.CommodityVenueController;
 import tmall.controller.impl.ShopController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
+import tmall.model.entity.Commodity;
+
+import java.util.List;
 
 /**
  * @Description Command包为命令模式的实现类，包含一个父类Command，工厂类CommandFactory，以及其它具体的实现类

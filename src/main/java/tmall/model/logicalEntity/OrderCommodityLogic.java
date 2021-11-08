@@ -60,11 +60,15 @@ public class OrderCommodityLogic {
 
     @Override
     public String toString() {
-        return "OrderCommodityLogic{" +
-                "commodityId='" + commodityId + '\'' +
-                ", cname='" + cname + '\'' +
-                ", price='" + price + '\'' +
-                ", amount='" + amount + '\'' +
-                '}';
+
+        return  String.format("|%-10s|%-5s|%-8s|%-40s|",
+                cname,price,amount,commodityId);
+
+//        return "OrderCommodityLogic{" +
+//                "commodityId='" + commodityId + '\'' +
+//                ", cname='" + cname + '\'' +
+//                ", price='" + price + '\'' +
+//                ", amount='" + amount + '\'' +
+//                '}';
     }
 }

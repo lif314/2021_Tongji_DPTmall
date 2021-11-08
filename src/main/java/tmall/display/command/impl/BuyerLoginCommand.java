@@ -39,8 +39,10 @@ public class BuyerLoginCommand extends Command {
         Scanner scanner = new Scanner(System.in);
         System.out.print("请输入您的账号（Phone）：");
         String phone = scanner.next();
+//        String phone = "1838740036";
         System.out.print("请输入您的密码（Password）：");
         String password = scanner.next();
+//        String password = "123321";
         return new Object[]{TMallSystem.buyerLogin(phone, password)};
     }
 }

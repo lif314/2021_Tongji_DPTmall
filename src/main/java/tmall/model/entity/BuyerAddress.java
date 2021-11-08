@@ -65,12 +65,14 @@ public class BuyerAddress {
 
     @Override
     public String toString() {
-        return "BuyerAddress{" +
-                "buyerAddressId='" + buyerAddressId + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", receiveName='" + receiveName + '\'' +
-                ", receivePhone='" + receivePhone + '\'' +
-                ", receiveAddress='" + receiveAddress + '\'' +
-                '}';
+        return  String.format("|%-15s|%-15s|%-20s|%-40s|%-40s|",
+                receiveName,receivePhone,receiveAddress,buyerAddressId,buyerId);
+//        return "BuyerAddress{" +
+//                "buyerAddressId='" + buyerAddressId + '\'' +
+//                ", buyerId='" + buyerId + '\'' +
+//                ", receiveName='" + receiveName + '\'' +
+//                ", receivePhone='" + receivePhone + '\'' +
+//                ", receiveAddress='" + receiveAddress + '\'' +
+//                '}';
     }
 }

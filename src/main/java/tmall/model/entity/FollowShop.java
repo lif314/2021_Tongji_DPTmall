@@ -57,10 +57,12 @@ public class FollowShop {
 
     @Override
     public String toString() {
-        return "FollowShop{" +
-                "shopId='" + shopId + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", followDate='" + followDate + '\'' +
-                '}';
+        return  String.format("|%-10s|%-40s|%-40s|",
+                followDate,buyerId,shopId);
+//        return "FollowShop{" +
+//                "shopId='" + shopId + '\'' +
+//                ", buyerId='" + buyerId + '\'' +
+//                ", followDate='" + followDate + '\'' +
+//                '}';
     }
 }

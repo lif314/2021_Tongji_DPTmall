@@ -6,9 +6,39 @@
     <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
     <followDate>2021-11-02 22:31:39</followDate> 
   </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <followDate>2021-11-02 22:34:52</followDate> 
+  </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <followDate>2021-11-06 16:57:38</followDate> 
+  </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7*2</commodityId>  
+    <followDate>2021-11-06 16:57:48</followDate> 
+  </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>  
+    <followDate>2021-11-06 17:01:20</followDate> 
+  </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>5bd19950-f97b-43a0-94af-721301367215</commodityId>  
+    <followDate>2021-11-06 17:02:32</followDate> 
+  </FollowCommodity>  
+  <FollowCommodity> 
+    <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>  
+    <commodityId>5608ff1b-33bf-40e9-a223-dd5893ba8991</commodityId>  
+    <followDate>2021-11-06 17:11:19</followDate> 
+  </FollowCommodity>  
   <FollowCommodity>
     <buyerId>c481e837-3461-4e11-b68e-361e40b7233a</buyerId>
-    <commodityId>1f7c3228-0daf-45fd-ab8b-777583c3a8b7</commodityId>
-    <followDate>2021-11-02 22:34:52</followDate>
+    <commodityId>7adde8d2-cf89-4072-abdd-9110f1accae3</commodityId>
+    <followDate>2021-11-06 17:50:57</followDate>
   </FollowCommodity>
 </FollowCommoditys>

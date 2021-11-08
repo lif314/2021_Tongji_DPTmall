@@ -89,7 +89,11 @@ public class ShoppingCenter extends Controller {
         Commodity commodity = commodityDao.getByCommodityId(commodityId);
         OrderCommodityLogic orderCommodityLogic = new OrderCommodityLogic(commodity.getCommodityId(), commodity.getCname(), commodity.getPrice(), amount);
         orderCommodityLogics.add(orderCommodityLogic);
-        System.out.println(orderCommodityLogics);
+        System.out.printf("|%-10s|%-5s|%-8s|%-40s|%n",
+                "Name","Price","Amount","CommodityID");
+        for(OrderCommodityLogic ocl : orderCommodityLogics){
+            System.out.println(ocl);
+        }
     }
 
     /**
@@ -142,6 +146,9 @@ public class ShoppingCenter extends Controller {
      * @return paidMoney
      */
     public String calPaidMoney(){
+        if(totalMoney==0) {
+            calTotalMoney();//为了保证必定有totalMoney
+        }
         Calculator calculator = new Calculator(totalMoney,coupon,activity);
         return Double.toString(calculator.doCalculation());
     }

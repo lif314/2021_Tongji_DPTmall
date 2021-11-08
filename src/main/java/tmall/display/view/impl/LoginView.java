@@ -16,7 +16,7 @@ public class LoginView extends View {
             homeView.show(EnterHomeViewCommand.getEnterHomeViewCommand().execute());
             return true;
         }else{
-            System.out.println("登陆失败");
+            System.out.println("登陆失败，请重新选择身份登录！");
             return false;
         }
     }

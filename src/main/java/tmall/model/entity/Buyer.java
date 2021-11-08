@@ -90,15 +90,17 @@ public class Buyer implements User{
 
     @Override
     public String toString() {
-        return "Buyer{" +
-                "buyerId='" + buyerId + '\'' +
-                ", passwd='" + passwd + '\'' +
-                ", idNumber='" + idNumber + '\'' +
-                ", phone='" + phone + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday='" + birthday + '\'' +
-                '}';
+        return  String.format("|%-10s|%-10s|%-15s|%-20s|%-11s|%-10s|%-40s|",
+                nickname,gender,passwd,idNumber,phone,birthday,buyerId);
+//        return "Buyer{" +
+//                "buyerId='" + buyerId + '\'' +
+//                ", passwd='" + passwd + '\'' +
+//                ", idNumber='" + idNumber + '\'' +
+//                ", phone='" + phone + '\'' +
+//                ", nickname='" + nickname + '\'' +
+//                ", gender='" + gender + '\'' +
+//                ", birthday='" + birthday + '\'' +
+//                '}';
     }
 
     @Override

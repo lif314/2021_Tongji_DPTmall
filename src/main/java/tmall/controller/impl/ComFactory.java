@@ -10,8 +10,9 @@ import java.util.List;
 
 
 /**
-* 应用享元和工厂模式添加商品
-*/
+ * @Author Sir Lancelot
+ * @Description 应用享元和工厂模式上架商品
+ */
 public class ComFactory {
     List<Commodity> commodityList = new ArrayList<>();
     final HashMap<String, Commodity> commodityHashMap = new HashMap<>();
@@ -50,10 +51,11 @@ public class ComFactory {
             commodityHashMap.put(cname, commodity);
             tips = "商品\""+cname+"\"上架成功！";
         }
-//            obj[0] = commodity;
-//            obj[1] = tips;
-        ShopController.Notify N = new ShopController.notifyNewCommodity();
-        N.notify(current_shopId);
+//        ShopController.Notify N = new ShopController.notifyNewCommodity();
+//        N.notify(current_shopId);
+        ShopController shopController = new ShopController();
+        shopController.strategy = new ShopController.notifyNewCommodity();
+        shopController.notifySubscribers(current_shopId);
         return tips;
     }
 }

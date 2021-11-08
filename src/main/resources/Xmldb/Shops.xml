@@ -4,10 +4,10 @@
   <Shop>
     <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>
     <sellerId>83540ad1-c858-48e2-8717-0b9c5789bc27</sellerId>
-    <shopName>LzaShop</shopName>
+    <shopName>TMall Shop</shopName>
     <creditScore>10</creditScore>
-    <category>电子</category>
-    <shopAddress>同济大学嘉定小区</shopAddress>
-    <description>哈皮</description>
+    <category>综合</category>
+    <shopAddress>上海浦东</shopAddress>
+    <description>甄选好物 享你所想</description>
   </Shop>
 </Shops>

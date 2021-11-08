@@ -46,10 +46,12 @@ public class OrderPromotion {
 
     @Override
     public String toString() {
-        return "OrderPromotion{" +
-                "orderId='" + orderId + '\'' +
-                ", promotionId='" + promotionId + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return  String.format("|%-5s|%-40s|%-40s|",
+                type,orderId,promotionId);
+//        return "OrderPromotion{" +
+//                "orderId='" + orderId + '\'' +
+//                ", promotionId='" + promotionId + '\'' +
+//                ", type='" + type + '\'' +
+//                '}';
     }
 }

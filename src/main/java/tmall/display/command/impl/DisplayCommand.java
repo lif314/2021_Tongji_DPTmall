@@ -1,17 +1,23 @@
 package tmall.display.command.impl;
 
-import tmall.controller.factory.UserManageAbstractFactory;
-import tmall.controller.factory.UserManageProducer;
+import tmall.controller.factory.AbstractFactory;
+import tmall.controller.factory.FactoryProducer;
 import tmall.controller.impl.BuyerInfoController;
+import tmall.controller.impl.CartController;
 import tmall.controller.impl.FavoriteController;
 import tmall.controller.orderController.ShoppingCenter;
 import tmall.display.command.Command;
-import tmall.model.entity.User;
+import tmall.display.view.impl.CommodityView;
+import tmall.model.entity.*;
+import tmall.model.logicalEntity.OrderLogic;
+import tmall.model.logicalEntity.ShoppingCartLogic;
 import tmall.tmallSystem.TMallSystem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 王文炯
@@ -66,26 +72,82 @@ public class DisplayCommand extends Command {
                 try {
                     Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();
                     Method method = aClass.getMethod("display" + params, String.class);
+                    for(int i = 0; i < 38; i ++) {System.out.print("=");}
+                    System.out.print("YOUR ORDER");
+                    for(int i = 0; i < 38; i ++) {System.out.print("=");}
+                    System.out.println();
                     System.out.println(method.invoke(super.getConcreteController(), TMallSystem.getBuyer().getBuyerId()));
+                    for(int i = 0; i < 38 * 2 + 10; i ++) {System.out.print("=");}
+                    System.out.print('\n');
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
 //                展示收藏夹里的商品
             } else if ("FavoriteCommodities".equals(params)) {
-//                其他数据的显示，因为不需要参数，所以直接反射动态调用即可，如支付方式，优惠券和活动等等
-
                 FavoriteController favoriteController = new FavoriteController();
                 return favoriteController.displayFavoriteCommodities(TMallSystem.getBuyer().getBuyerId());
-
-            }else if("BuyerInfo".equals(params)){
-                UserManageAbstractFactory userManageAbstractFactory = new UserManageProducer().getUserManageController("info");
-                BuyerInfoController buyerInfoController = (BuyerInfoController) userManageAbstractFactory.getUserInfoController("buyer");
+            } else if ("BuyerInfo".equals(params)) {
+//                展示买家信息
+                AbstractFactory userInfoControllerFactory = FactoryProducer.getFactory("info");
+                BuyerInfoController buyerInfoController = (BuyerInfoController) userInfoControllerFactory.getUserInfoController("buyer");
                 User buyer = (User) buyerInfoController.getInfo(TMallSystem.getBuyer().getBuyerId());
-            }else {
-                try {
-                    Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();
-                    Method method = aClass.getMethod("display" + params);
-                    System.out.println(method.invoke(super.getConcreteController()));
+                System.out.println(String.format("|%-10s|%-10s|%-15s|%-20s|%-11s|%-10s|%-40s|",
+                        "nickname","gender","passwd","idNumber","phone","birthday","buyerId"));
+                System.out.println(buyer);
+            }
+            else if ("CartBill".equals(params)) {
+//                展示购物车内商品总价
+                CartController cartController = new CartController();
+                int i = cartController.checkCartBill(TMallSystem.getBuyer().getBuyerId());
+                System.out.println("您购物车内的商品总价为：" + i + "元");
+            }
+            else if ("ShoppingCart".equals(params)) {
+    //                展示购物车内所有商品
+                    List<ShoppingCartLogic> shoppingCartLogics = new CartController().showCommodity(TMallSystem.getBuyer().getBuyerId());
+                    new CommodityView().show(shoppingCartLogics);
+                } else {
+    //                其他数据的显示，因为不需要参数，所以直接反射动态调用即可，如支付方式，优惠券和活动等等
+                    try {
+                        Class<? extends ShoppingCenter> aClass = ((ShoppingCenter) super.getConcreteController()).getClass();
+                        Method method = aClass.getMethod("display" + params);
+
+                        Object list = method.invoke(super.getConcreteController());
+                        if(list instanceof Commodity){
+
+                        }else if(list instanceof String){
+                            //payMethod
+                            System.out.println("注：索引从0开始");
+                            System.out.println(list);
+                        }else {
+                            List<?> alist = (List<?>) list;
+                            if(alist.get(0) instanceof Commodity){
+                                List<Commodity> realList = (ArrayList<Commodity>) alist;
+                            }else if(alist.get(0) instanceof Activity){
+                                List<Activity> realList = (ArrayList<Activity>) alist;
+                            }else if(alist.get(0) instanceof Coupon){
+                                for(int i = 0; i < 58; i ++) {System.out.print("=");}
+                                System.out.print("YOUR COUPON");
+                                for(int i = 0; i < 58; i ++) {System.out.print("=");}
+                                System.out.print("\n");
+                                List<Coupon> realList = (ArrayList<Coupon>) alist;
+                                System.out.println(String.format("|%-8s|%-10s|%-12s|%-12s|%-40s|%-40s|",
+                                        "full","minus","startTime","endTime","couponId","shopId"));
+                                if(realList.size()!=0) {
+                                    for (Coupon c : realList) {
+                                        System.out.print(c);
+                                    }
+                                }
+                                for(int i = 0; i < 58 * 2 + 11; i ++) {System.out.print("=");}
+                                System.out.print("\n");
+                            }else if(alist.get(0) instanceof BuyerAddress){
+                                List<BuyerAddress> realList = (ArrayList<BuyerAddress>) alist;
+                            }
+                        }
+
+
+//                    for(int i = 0; i < 58 * 2 + 11; i ++) {System.out.print("=");}
+//                    System.out.print("\n");
+//                    System.out.println(method.invoke(super.getConcreteController()));
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }

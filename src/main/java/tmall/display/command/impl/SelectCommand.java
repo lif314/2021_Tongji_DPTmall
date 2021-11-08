@@ -52,6 +52,12 @@ public class SelectCommand extends Command {
         if (super.getConcreteController() instanceof ShoppingCenter) {
             // 如果首字母为C，则为选择商品，以“*”为分隔，前面为商品Id，后面为商品数量
             if (params.startsWith("C")) {
+
+                for(int i = 0; i < 27; i ++) {System.out.print("=");}
+                System.out.print("YOU HAVE CHOSEN");
+                for(int i = 0; i < 27; i ++) {System.out.print("=");}
+                System.out.print("\n");
+
                 String[] commodityAndCount = params.substring(1,params.length()).split("\\*");
                 // 商品Id
                 String commodityId = commodityAndCount[0];
@@ -64,6 +70,10 @@ public class SelectCommand extends Command {
                 }
                 ((ShoppingCenter) super.getConcreteController()).selectCommodity(commodityId, account);
                 // 如果首字母为P，则选择的是活动或者优惠券，活动首字母为A，优惠券首字母为C，以“&”为分割
+
+                for(int i = 0; i < 27 * 2 + 15; i ++) {System.out.print("=");}
+                System.out.print("\n");
+
             } else if (params.startsWith("PA") || params.startsWith("PC")){
                 String[] activityAndCoupon = params.substring(1,params.length()).split("\\&");
                 String activity = null;
@@ -82,15 +92,25 @@ public class SelectCommand extends Command {
                     }
                 }
                 ((ShoppingCenter) super.getConcreteController()).selectPromotions(activity, coupon);
+
+                System.out.println("您已成功选择该优惠券！");
                 // 如果输入的参数是BuyerAddress，那么则为选择买家地址，不用输入参数，买家Id直接从系统变量里读取
             } else if ("BuyerAddress".equals(params)){
                 Class<? extends Controller> concreteControllerClass = this.getConcreteController().getClass();
                 try {
                     String buyerId = TMallSystem.getBuyer().getBuyerId();
                     List<BuyerAddress> buyerAddresses = ((ShoppingCenter) super.getConcreteController()).displayBuyerAddress(buyerId);
-                    for(BuyerAddress b : buyerAddresses){
-                        System.out.println(b);
-                    }
+
+                    for(int i = 0; i < 58; i ++) {System.out.print("=");}
+                    System.out.print("BUYER ADDRESS");
+                    for(int i = 0; i < 58; i ++) {System.out.print("=");}
+                    System.out.print("\n");
+                    System.out.println(String.format("|%-15s|%-15s|%-20s|%-40s|%-40s|",
+                            "receiveName","receivePhone","receiveAddress","buyerAddressId","buyerId"));
+                    for(BuyerAddress b : buyerAddresses){System.out.println(b);}
+                    for(int i = 0; i < 58 * 2 + 13; i ++) {System.out.print("=");}
+                    System.out.print("\n");
+
 //                    获取对应的方法
                     Method method = concreteControllerClass.getMethod("select" + params, buyerId.getClass());
 //                    用户输入买家地址Id
@@ -98,6 +118,8 @@ public class SelectCommand extends Command {
                     Scanner scanner = new Scanner(System.in);
                     String buyerAddressId = scanner.next();
                     method.invoke(this.getConcreteController(),buyerAddressId);
+
+                    System.out.println("已获取您的地址！");
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
@@ -109,9 +131,16 @@ public class SelectCommand extends Command {
                     case "0": method = OrderPaymentMethod.UnionPay.name(); break;
                     case "1": method = OrderPaymentMethod.WeChat.name(); break;
                     case "2": method = OrderPaymentMethod.AliPay.name(); break;
+                    default: method = "";
                 }
                 ((ShoppingCenter) super.getConcreteController()).selectPayMethod(method);
-                System.out.println("购物方式选择成功，您已选择 *"+method+"* 作为您本次购物的支付方式");
+                if (!method.equals("")) {
+                    System.out.println("购物方式选择成功，您已选择 *"+method+"* 作为您本次购物的支付方式");
+                }
+                else {
+                    System.out.println("支付方式不存在，请重新输入");
+                }
+
             }
         }
         return null;

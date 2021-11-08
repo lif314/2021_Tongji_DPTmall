@@ -48,10 +48,12 @@ public class FollowCommodity {
 
     @Override
     public String toString() {
-        return "FollowCommodity{" +
-                "buyerId='" + buyerId + '\'' +
-                ", commodityId='" + commodityId + '\'' +
-                ", followDate='" + followDate + '\'' +
-                '}';
+        return  String.format("|%-10s|%-40s|%-40s|",
+                followDate,buyerId,commodityId);
+//        return "FollowCommodity{" +
+//                "buyerId='" + buyerId + '\'' +
+//                ", commodityId='" + commodityId + '\'' +
+//                ", followDate='" + followDate + '\'' +
+//                '}';
     }
 }

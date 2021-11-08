@@ -36,6 +36,7 @@ public class PayCommand extends Command {
      */
     @Override
     public Object[] execute(Object... args) {
+        System.out.println("支付成功！");
         ((ShoppingCenter) super.getConcreteController()).payImmediately();
         return null;
     }

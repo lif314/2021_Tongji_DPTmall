@@ -73,13 +73,15 @@ public class Activity {
      */
     @Override
     public String toString() {
-        return "Activity{" +
-                "activityId='" + activityId + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", activityName='" + activityName + '\'' +
-                ", discount='" + discount + '\'' +
-                '}';
+        return  String.format("|%-10s|%-10s|%-11s|%-12s|%-42s|",
+                activityName,discount,startTime,endTime,activityId);
+//        return "Activity{" +
+//                "activityId='" + activityId + '\'' +
+//                ", startTime='" + startTime + '\'' +
+//                ", endTime='" + endTime + '\'' +
+//                ", activityName='" + activityName + '\'' +
+//                ", discount='" + discount + '\'' +
+//                '}';
     }
 
 }

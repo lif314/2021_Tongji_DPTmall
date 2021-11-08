@@ -59,11 +59,13 @@ public class ShoppingCart {
 
     @Override
     public String toString() {
-        return "ShoppingCart{" +
-                "buyerId='" + buyerId + '\'' +
-                ", commodityId='" + commodityId + '\'' +
-                ", amount='" + amount + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
+        return  String.format("|%-10s|%-10s|%-40s|%-40s|",
+                amount,createDate,buyerId,commodityId);
+//        return "ShoppingCart{" +
+//                "buyerId='" + buyerId + '\'' +
+//                ", commodityId='" + commodityId + '\'' +
+//                ", amount='" + amount + '\'' +
+//                ", createDate='" + createDate + '\'' +
+//                '}';
     }
 }

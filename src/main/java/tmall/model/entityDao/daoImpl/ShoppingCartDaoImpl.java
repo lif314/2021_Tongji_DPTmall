@@ -19,7 +19,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     private final XMLContext<ShoppingCart> shoppingCartXMLContext = new ProxyXmlContext<>(ShoppingCart.class);
 
     // 购物车联系集
-    private ShoppingCart shoppingCart;
+    private static ShoppingCart shoppingCart;
 
     /**
      * 添加商品到购物车
@@ -109,8 +109,9 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         for (ShoppingCart cart : init) {
             if(cart.getCommodityId().equals(commodityId) && cart.getBuyerId().equals(buyerId)){
                 cart.setAmount(newAmount);
+                shoppingCartXMLContext.add(cart);
+                return;
             }
-            shoppingCartXMLContext.add(cart);
         }
     }
 

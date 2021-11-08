@@ -10,7 +10,8 @@ import tmall.model.entityDao.daoInterface.CouponDao;
 import java.util.List;
 
 /**
- * 应用策略和建造者模式添加活动
+ * @Author Sir Lancelot
+ * @Description 发布活动
  */
 public class ActivityBuilder{
     String current_shopId;
@@ -28,11 +29,14 @@ public class ActivityBuilder{
      * @param minus 减多少元
      */
     public void addCoupon(String startTime, String endTime, String full, String minus) {
-        ShopController.Notify N = new ShopController.notifyNewCoupon();
-        N.notify(current_shopId);
         CouponDao couponDao = new CouponDaoImpl();
         couponDao.create(current_shopId, startTime, endTime, full, minus);
         couponDao.addToDb();
+//        ShopController.Notify N = new ShopController.notifyNewCoupon();
+//        N.notify(current_shopId);
+        ShopController shopController = new ShopController();
+        shopController.strategy = new ShopController.notifyNewCoupon();
+        shopController.notifySubscribers(current_shopId);
     }
 
     /**

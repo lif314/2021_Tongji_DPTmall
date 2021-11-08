@@ -3,28 +3,30 @@ package tmall;
 import tmall.display.FrontController;
 import tmall.display.command.Command;
 import tmall.display.command.CommandFactory;
+import tmall.display.dispatcher.Dispatcher;
 import tmall.model.entity.User;
+import tmall.tmallSystem.TMallSystem;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ApplicationStart {
     public static User user;
 
     public static void main(String[] args) {
+        System.out.println("*********欢迎您来到天猫购物节！(Exit退出)*********");
+        System.out.println("请选择您的登录身份(BuyerLogin/SellerLogin)");
         //添加需要用到的页面
         Scanner scanner = new Scanner(System.in);
         FrontController frontController = FrontController.getFrontController();
-//        //显示登录界面
-//        Command loginView = CommandFactory.getCommand("LoginCommand");
-//        frontController.dispatchSingleCommand(loginView);
-        //根据用户输入初始化为对应的用户对象
-//        User user = getUser();
-        //显示命令大全界面
-//        Command orderView = CommandFactory.getCommand("InstructionCommand");
-//        frontController.dispatchSingleCommand(orderView);
-        // 项目主体
+        String command = "";
         while(true){
-            String command = scanner.nextLine();
+            System.out.print("Command>>");
+            command = scanner.nextLine();
+            if (Objects.equals(command, "Exit")) {
+                System.out.println("bye");
+                break;
+            }
             frontController.dispatchSingleCommand(command);
         }
     }

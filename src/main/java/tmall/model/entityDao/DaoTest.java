@@ -21,7 +21,9 @@ public class DaoTest {
 //        Shop shop = shopDao.create(seller.getSellerId(), "LzaShop", "10", "电子", "同济大学嘉定小区", "哈皮");
 //        shopDao.addToDb();
 //
-//        CommodityDao commodityDao = new CommodityDaoImpl();
+        CommodityDao commodityDao = new CommodityDaoImpl();
+        List<Commodity> all = commodityDao.getAll();
+        System.out.println(all);
 //        Commodity commodity = commodityDao.create(shop.getShopId(), "100", CommodityCategory.SHIRT.name(), "56", "七匹狼", "爱你所爱！");
 //        commodityDao.addToDb();
 //
@@ -61,8 +63,8 @@ public class DaoTest {
 //        List<Order> allByShopId = orderDao.getAllByShopId("b3388015-b394-4cae-ab2c-154edd8ab8ea");
 //        System.out.println(allByShopId);
 
-        BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
-        buyerAddressDao.create("c481e837-3461-4e11-b68e-361e40b7233a", "llf", "18387400236", "同济大学 嘉定校区");
-        buyerAddressDao.addToDb();
+//        BuyerAddressDao buyerAddressDao = new BuyerAddressDaoImpl();
+//        buyerAddressDao.create("c481e837-3461-4e11-b68e-361e40b7233a", "llf", "18387400236", "同济大学 嘉定校区");
+//        buyerAddressDao.addToDb();
     }
 }

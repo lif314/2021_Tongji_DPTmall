@@ -79,13 +79,15 @@ public class OrderPayment {
 
     @Override
     public String toString() {
-        return "OrderPayment{" +
-                "orderPaymentId='" + orderPaymentId + '\'' +
-                ", payMethod='" + payMethod + '\'' +
-                ", payStatus='" + payStatus + '\'' +
-                ", totalMoney='" + totalMoney + '\'' +
-                ", paidMoney='" + paidMoney + '\'' +
-                ", paidTime='" + paidTime + '\'' +
-                '}';
+        return  String.format("|%-10s|%-5s|%-10s|%-10s|%-10s|%-40s|",
+                payMethod,payStatus,totalMoney,paidMoney,paidTime,orderPaymentId);
+//        return "OrderPayment{" +
+//                "orderPaymentId='" + orderPaymentId + '\'' +
+//                ", payMethod='" + payMethod + '\'' +
+//                ", payStatus='" + payStatus + '\'' +
+//                ", totalMoney='" + totalMoney + '\'' +
+//                ", paidMoney='" + paidMoney + '\'' +
+//                ", paidTime='" + paidTime + '\'' +
+//                '}';
     }
 }

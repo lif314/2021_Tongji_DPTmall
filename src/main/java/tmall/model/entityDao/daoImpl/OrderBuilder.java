@@ -108,6 +108,8 @@ public class OrderBuilder {
      */
     public OrderBuilder setOrderCommodities(List<OrderCommodityLogic> commodities){
         XMLContext<Commodity> commodityXMLContext = new ProxyXmlContext<>(Commodity.class);
+//        System.out.println("购物车商品数量："+commodities.size());
+//        System.out.println(commodities);
         String commodityId = commodities.get(0).getCommodityId();
         Commodity c = commodityXMLContext.findById(commodityId);
         String shopId = c.getShopId();

@@ -72,14 +72,16 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", orderPaymentId='" + orderPaymentId + '\'' +
-                ", buyerAddressId='" + buyerAddressId + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return  String.format("|%-5s|%-10s|%-40s|%-40s|%-40s|%-40s|",
+                status,createTime,orderId,buyerId,orderPaymentId,buyerAddressId);
+//        return "Order{" +
+//                "orderId='" + orderId + '\'' +
+//                ", buyerId='" + buyerId + '\'' +
+//                ", orderPaymentId='" + orderPaymentId + '\'' +
+//                ", buyerAddressId='" + buyerAddressId + '\'' +
+//                ", createTime='" + createTime + '\'' +
+//                ", status='" + status + '\'' +
+//                '}';
     }
 }
 

@@ -82,13 +82,15 @@ public class Coupon {
 
     @Override
     public String toString() {
-        return "Coupon{" +
-                "couponId='" + couponId + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", full='" + full + '\'' +
-                ", minus='" + minus + '\'' +
-                '}';
+        return  String.format("|%-8s|%-10s|%-12s|%-12s|%-40s|%-40s|\n",
+                full,minus,startTime,endTime,couponId,shopId);
+//        return "Coupon{" +
+//                "couponId='" + couponId + '\'' +
+//                ", shopId='" + shopId + '\'' +
+//                ", startTime='" + startTime + '\'' +
+//                ", endTime='" + endTime + '\'' +
+//                ", full='" + full + '\'' +
+//                ", minus='" + minus + '\'' +
+//                '}';
     }
 }

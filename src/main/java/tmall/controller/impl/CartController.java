@@ -1,13 +1,16 @@
 package tmall.controller.impl;
 
 
+import tmall.controller.Controller;
 import tmall.controller.iterators.checkBillIterator;
 import tmall.model.entity.Buyer;
 import tmall.model.entity.Commodity;
 
 import java.util.*;
 
+import tmall.model.entity.ShoppingCart;
 import tmall.model.entityDao.daoImpl.ShoppingCartDaoImpl;
+import tmall.model.entityDao.daoInterface.ShoppingCartDao;
 import tmall.model.logicalEntity.*;
 
 /**
@@ -25,12 +28,7 @@ import tmall.model.logicalEntity.*;
  *      [11] 创建订单
  *      [12] 展示订单
  */
-public class CartController {
-
-    private final ShoppingCartDaoImpl scDIl = new ShoppingCartDaoImpl();
-    // List<ShoppingCartLogic> cartsInfo = scDIl.
-
-
+public class CartController extends Controller {
 
     /**
      * 展示指定用户购物车里的商品
@@ -38,11 +36,13 @@ public class CartController {
      * @return 一个商品集合的 List
      */
     public List<ShoppingCartLogic> showCommodity(Buyer buyer){
-        return scDIl.getCartByBuyerId(buyer.getBuyerId());
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+        return shoppingCartDao.getCartByBuyerId(buyer.getBuyerId());
     }
 
     public List<ShoppingCartLogic> showCommodity(String buyerID){
-        return scDIl.getCartByBuyerId(buyerID);
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+        return shoppingCartDao.getCartByBuyerId(buyerID);
     }
 
     /**
@@ -53,10 +53,14 @@ public class CartController {
      * @return 是否找到改商品并成功修改
      */
     public void editCommodityInfo(String newInfo, String cmdtyID, String buyerID){
-        if(newInfo.equals("0"))
-            scDIl.deleteOne(buyerID , cmdtyID);
-        else
-            scDIl.updateCommodityAmount(buyerID,cmdtyID,newInfo);
+        if(newInfo.equals("0")){
+            ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+            shoppingCartDao.deleteOne(buyerID , cmdtyID);
+        }
+        else{
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+            shoppingCartDao.updateCommodityAmount(buyerID,cmdtyID,newInfo);
+        }
     }
 
     /**
@@ -66,7 +70,8 @@ public class CartController {
      * @return 总价
      */
     public int checkChosenCartBill(List<Commodity> cmdtyList, Buyer buyer){
-        List<ShoppingCartLogic> cartsInfo = scDIl.getCartByBuyerId(buyer.getBuyerId());
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+        List<ShoppingCartLogic> cartsInfo = shoppingCartDao.getCartByBuyerId(buyer.getBuyerId());
         checkBillIterator itr = new checkBillIterator(cartsInfo);
         return itr.check(cmdtyList);
     }
@@ -77,7 +82,8 @@ public class CartController {
      * @return 购物车内所有商品的总价
      */
     public int checkCartBill(String buyerID){
-        List<ShoppingCartLogic> cartsInfo = scDIl.getCartByBuyerId(buyerID);
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+        List<ShoppingCartLogic> cartsInfo = shoppingCartDao.getCartByBuyerId(buyerID);
         int sum = 0;
         for(ShoppingCartLogic cart : cartsInfo){
             sum += Integer.parseInt(cart.getAmount()) * Integer.parseInt(cart.getPrice());
@@ -92,8 +98,9 @@ public class CartController {
      * @param amount 商品数量
      */
     public void addCart(String buyerID,String commodityId,String amount){
-        scDIl.create(buyerID, commodityId, amount);
-        scDIl.addToDb();
+        ShoppingCartDao shoppingCartDao = new ShoppingCartDaoImpl();
+        ShoppingCart shoppingCart = shoppingCartDao.create(buyerID, commodityId, amount);
+        shoppingCartDao.addToDb();
     }
 
     public void deleteAll(Buyer buyer){

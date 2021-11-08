@@ -1,7 +1,7 @@
 package tmall.model.logicalEntity;
 
 import java.util.List;
-
+import java.lang.String;
 public class OrderLogic {
 
     /**
@@ -248,28 +248,32 @@ public class OrderLogic {
 
     @Override
     public String toString() {
-        return "OrderLogic{" +
-                "orderId='" + orderId + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", status='" + status + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", shopName='" + shopName + '\'' +
-                ", shopAddress='" + shopAddress + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", buyerAddressId='" + buyerAddressId + '\'' +
-                ", receiveName='" + receiveName + '\'' +
-                ", receivePhone='" + receivePhone + '\'' +
-                ", receiveAddress='" + receiveAddress + '\'' +
-                ", activityId='" + activityId + '\'' +
-                ", couponId='" + couponId + '\'' +
-                ", promotionMoney='" + promotionMoney + '\'' +
-                ", orderPaymentId='" + orderPaymentId + '\'' +
-                ", payMethod='" + payMethod + '\'' +
-                ", payStatus='" + payStatus + '\'' +
-                ", totalMoney='" + totalMoney + '\'' +
-                ", paidMoney='" + paidMoney + '\'' +
-                ", paidTime='" + paidTime + '\'' +
-                ", commodityList=" + commodityList +
-                '}';
+
+//        String up = "=".repeat(60) + "YOUR ORDER" + "=".repeat(60) + '\n';
+        String inf =
+                "|orderId        = " + orderId + "\n" +
+                "|createTime     = " + createTime + "\n" +
+                "|status         = " + status + "\n" +
+                "|shopId         = " + shopId + "\n" +
+                "|shopName       = " + shopName + "\n" +
+                "|shopAddress    = " + shopAddress + "\n" +
+                "|buyerId        = " + buyerId + "\n" +
+                "|buyerAddressId = " + buyerAddressId + "\n" +
+                "|receiveName    = " + receiveName + "\n" +
+                "|receivePhone   = " + receivePhone + "\n" +
+                "|receiveAddress = " + receiveAddress + "\n" +
+                "|activityId     = " + activityId + "\n" +
+                "|couponId       = " + couponId + "\n" +
+                "|promotionMoney = " + promotionMoney + "\n" +
+                "|orderPaymentId = " + orderPaymentId + "\n" +
+                "|payMethod      = " + payMethod + "\n" +
+                "|payStatus      = " + payStatus + "\n" +
+                "|totalMoney     = " + totalMoney + "\n" +
+                "|paidMoney      = " + paidMoney + "\n" +
+                "|paidTime       = " + paidTime + "\n" +
+                "|commodityList  = " + commodityList;
+//        String down = '\n' + "=".repeat(60 * 2 + 10);
+//        return up + inf + down;
+        return inf;
     }
 }

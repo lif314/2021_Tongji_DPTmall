@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Commoditys> 
   <Commodity> 
@@ -7,43 +7,52 @@
     <price>100</price>  
     <category>SHIRT</category>  
     <storeNum>56</storeNum>  
-    <cname>七匹狼</cname>  
-    <description>爱你所爱！</description> 
+    <cname>7Wolf</cname>  
+    <description>Love yourself</description> 
   </Commodity>  
   <Commodity> 
     <commodityId>5bd19950-f97b-43a0-94af-721301367215</commodityId>  
     <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
     <price>36</price>  
-    <category>书籍</category>  
+    <category>BOOK</category>  
     <storeNum>20</storeNum>  
-    <cname>设计模式</cname>  
-    <description>好，很有精神</description> 
+    <cname>Design Pattern</cname>  
+    <description>Good book</description> 
   </Commodity>  
   <Commodity> 
     <commodityId>5608ff1b-33bf-40e9-a223-dd5893ba8991</commodityId>  
     <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
     <price>99999</price>  
-    <category>人</category>  
+    <category>SHIRT</category>  
     <storeNum>1</storeNum>  
-    <cname>李林飞</cname>  
-    <description>yyds</description> 
+    <cname>LLF Shirt</cname>  
+    <description>clean</description> 
   </Commodity>  
   <Commodity> 
     <commodityId>025e4239-b879-43ff-a405-52e73e973aba</commodityId>  
     <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
     <price>999</price>  
-    <category>大佬</category>  
+    <category>FRUIT</category>  
     <storeNum>1</storeNum>  
-    <cname>wwj</cname>  
-    <description>yyds</description> 
+    <cname>Apple</cname>  
+    <description>nice</description> 
   </Commodity>  
-  <Commodity>
-    <commodityId>7adde8d2-cf89-4072-abdd-9110f1accae3</commodityId>
-    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>
-    <price>27</price>
-    <category>生活用品</category>
-    <storeNum>87</storeNum>
-    <cname>富士保温杯</cname>
-    <description>守护你的温暖</description>
-  </Commodity>
+  <Commodity> 
+    <commodityId>7adde8d2-cf89-4072-abdd-9110f1accae3</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>27</price>  
+    <category>FRUIT</category>  
+    <storeNum>87</storeNum>  
+    <cname>Watermelon</cname>  
+    <description>Sweet enough</description> 
+  </Commodity>  
+  <Commodity> 
+    <commodityId>ccf09f85-8f53-44ab-8b6a-1aff2f85807c</commodityId>  
+    <shopId>b3388015-b394-4cae-ab2c-154edd8ab8ea</shopId>  
+    <price>68</price>  
+    <category>茶叶</category>  
+    <storeNum>45</storeNum>  
+    <cname>锡兰红茶</cname>  
+    <description>宠坏你的味蕾</description> 
+  </Commodity> 
 </Commoditys>

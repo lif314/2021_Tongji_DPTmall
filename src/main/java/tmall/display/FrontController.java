@@ -43,7 +43,52 @@ public class FrontController {
      * @param command 需要派发的命令
      */
     public void dispatchSingleCommand(String command){
-        if (command !=null){
+        if(command.equals("cd Commodity")){
+            System.out.println("您已进入<购买商品>场景，可以输入以下命令：\n");
+            System.out.println(
+                    "Enter VS<commodityId>Page(查看商品所在的店铺)\n" +
+                            "Select C<commodityId>(选择此商品)\n" +
+                            "Display TotalMoney(展示原价)\n" +
+                            "Display ShopCoupon(展示店铺优惠券)\n" +
+                            "Select PC<couponId>(选择此优惠券)\n" +
+                            "Display PaidMoney(展示优惠后总价)\n" +
+                            "Add C<commodityId>*<num>-ToShoppingCart(添加商品到购物车)" +
+                            "Display ShoppingCart(展示购物车)\n" +
+                            "Select BuyerAddress(选择收货地址)\n" +
+                            "Display PayMethod(展示所有支付方式)\n" +
+                            "Select PayMethod<?>(选择支付方式)\n" +
+                            "Pay(支付)\n" +
+                            "Display OrderDetail(展示订单详情)\n");
+        }
+        else if(command.equals("cd UserInfo")){
+            System.out.println("您已进入<个人信息管理>场景，可以输入以下命令：\n");
+            System.out.println(
+                    "Display BuyerInfo(展示买家信息)\n" +
+                            "Edit BuyerInfo-password-<pwd>(修改买家密码)\n" +
+                            "Rollback BuyerInfo(回滚买家状态)\n" +
+                            "Get VerifyCitation(卖家获取信用评价)\n");
+        }
+        else if(command.equals("cd Service")){
+            System.out.println("您已进入<客服>场景，可以输入以下命令：\n");
+            System.out.println(
+                    "Enter ServicePage(联系客服)\n" +
+                            "Complaint(投诉)\n");
+        }
+        else if(command.equals("cd Shop")){
+            System.out.println("您已进入<店铺>场景，可以输入以下命令：\n");
+            System.out.println(
+                    "Enter VS<shopId>Page(进入该店铺详情)\n");
+        }
+        else if(command.equals("cd Cart")){
+            System.out.println("您已进入<购物车>场景，可以输入以下命令：\n");
+            System.out.println(
+                    "Add C<commodityId>*<num>(把num个商品加入购物车)\n" +
+                            "Display ShoppingCart(展示购物车)\n" +
+                            "Display CartBill(展示购物车总价)\n" +
+                            "Edit CommodityCount<commodityId>*<num>(编辑商品数量)\n");
+        }
+
+        else if (command != null && !command.equals("")){
             // 交给解释器解释传入的命令，返回需要调用的命令类名和可能用到的页面名
             Object[] commandAndView = new String[0];
             try {

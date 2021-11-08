@@ -11,14 +11,13 @@ import java.util.*;
  * @Author Sir Lancelot
  * @Description 店铺后台相关操作
  * 特别地，查看商品详情应调用 CommodityDisplayController 中的 commodityDetailDisplay(String commodityId)
- * 增加会场级活动的 管理员操作也在本类中，路径为 ShopController.ActivityBuilder.addVenueActivity(管理员功能已舍弃？)
  */
 public class ShopController extends Controller {
-
+    public Notify strategy;
     /**
      * 本函数在seller选择店铺时使用，返回店铺的商品、活动、订单等信息。返回值结构是根据流程图定义的
      * @param args shopId
-     * @return obj[1]: 商品列表，供页面直接展示用  obj[2]: 优惠券列表，供页面直接展示用   obj[3]: 订单列表，供页面直接展示用
+     * @return obj[0]: 商品列表，供页面直接展示用  obj[1]: 优惠券列表，供页面直接展示用   obj[2]: 订单列表，供页面直接展示用
      */
     @Override
     public Object[] execute(Object... args) {
@@ -53,6 +52,7 @@ public class ShopController extends Controller {
         public void notify(String shopId){
             FollowShopDao followShopDao = new FollowShopDaoImpl();
             List<FollowShop> SubscriberList = followShopDao.getAllByShopId(shopId);
+//            System.out.println("Observers: "+SubscriberList);
             for(FollowShop followShop: SubscriberList){
                 followShop.cheers("2");
             }
@@ -94,6 +94,12 @@ public class ShopController extends Controller {
             return Double.parseDouble(args[0]) * Double.parseDouble(args[1]);
         }
     }
+    /**
+     * 应用策略模式通知所有店铺粉丝
+     */
+    public void notifySubscribers(String shopId){
+        strategy.notify(shopId);
+    }
 
     /**
      * 店铺后台删除优惠券
@@ -118,7 +124,6 @@ public class ShopController extends Controller {
 
     /**
      * 查看店铺订单列表
-     * @return
      */
     public List<Order> getOrderList(String shopId){
         OrderDao orderDao = new OrderDaoImpl();
@@ -148,5 +153,35 @@ public class ShopController extends Controller {
     public void shipOrder(String orderId){
         OrderDao orderDao = new OrderDaoImpl();
         orderDao.updateOrderStatus(orderId, "WAIT_RECEIVE");
+    }
+    public void restock(){
+        System.out.println("请选择线上订货或线下采购：");
+        System.out.println("1.线上  2.线下");
+        Scanner type = new Scanner(System.in);
+        String t = type.next();
+        DetailedCommodity line = new DetailedCommodity();
+        if(t.equals("1")){
+            line = new OnlineRestockedCommodity();
+        }else if(t.equals("2")){
+            line = new OfflineRestockedCommodity();
+        }else{
+            System.out.println("输入错误！");
+        }
+        System.out.println("请选择国内补货或海外进口：");
+        System.out.println("1.国内  2.国外");
+        Scanner area = new Scanner(System.in);
+        String a = type.next();
+        if(a.equals("1")){
+            Home home = new Home();
+            line.defineProductionPlace(home);
+        }else if(a.equals("2")){
+            Abroad abroad = new Abroad();
+            line.defineProductionPlace(abroad);
+        }else{
+            System.out.println("输入错误！");
+        }
+        System.out.println("进货方式：");
+        line.restockDetailedCommodity();
+        line.productionPlace.restockDetailedCommodity();
     }
 }
