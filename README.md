@@ -1,6 +1,28 @@
-# Tongji SSE Design Pattern Project -- TMall
+# 2021同济软件 设计模式项目
 
-## Git协作流程
+## 1. 项目说明
+天猫购物平台
+
+
+
+
+
+## 2. 项目成员
+
+
+## 3. 设计模式介绍
+- MVC模式
+
+
+
+## 4. 项目展示
+
+
+
+
+
+
+## 5. Git协作流程
 
 ### 如何将本仓库拉到本地
 
@@ -67,32 +89,6 @@
 `git commit -m "note on your code"`
 
 `git push`
-
-## Git协作规范
-
-1. main分支只能进行push、pull和merge操作；
-
-2. 为了避免误操作别人的分支，在新建自己的分支时，请加上自己名字首字母的前缀，例如 gtc.branch1；
-
-3. 在写代码之前请确认自己所在的分支，可以通过 `git branch -l` 查看，或者 `git checkout {your branch name}` 直接切换到自己的分支；
-
-4. 写代码之前请保持自己的分支与最新版本一致，操作参考“Git协作流程-继续未完成代码的编写”；
-
-5. 请勿修改别人的代码，如需修改，请提交Issues或QQ私聊或线下交流；
-
-6. commit message 规范，格式：<type>: <subject>
-
-   1. feat：新功能
-   2. fix：修bug
-   3. style：代码格式变动
-   4. refactor：重构（不是新功能，也不是修bug）
-   5. merge：合并时使用
-
-   例如：feat: 买家购买商品
-
-   例如：refactor: 优化搜索性能
-
-   我们应该只会用到这四个，subject中英文皆可，建议每次commit只涉及一个点的变动。
 
    
 
